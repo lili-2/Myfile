@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //apply拦截方法 reflect反射
+        // function fn(){
+        //     return '我是函数';
+        // }
+        // let newfn = new Proxy(fn,{
+        //     apply(){
+        //         return '函数吗';
+        //     }
+        // });
+        // console.log(newfn());
+
+        //增强方法的一些功能
+        //Reflect.apply(调用的函数，this指向，参数数组);
+
+        // function sum(a,b){
+        //     return a+b;
+        // }
+        // let newsum = new Proxy(sum,{
+        //     apply(target,context,args){
+        //         //console.log(target,context,args);// 方法 this指向 传入参数
+        //         return Reflect(...arguments);
+        //     }
+        // });
+        // console.log(newsum(2,3));
+
+        //Reflect 反射 通过Reflect对象直接拿到语言内部的东西
+        //'assign' in Object --> Reflect.has(Object,'assign');
+        function show(...args){
+            console.log(this);
+            console.log(args);
+        }
+        show(1,2,3,4);
+        show.call('abc',1,2,3,4);
+        Reflect.apply(show,'aaa',[1,2,3,4]);
+    </script>
+</body>
+</html>

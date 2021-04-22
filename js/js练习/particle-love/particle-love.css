@@ -1,0 +1,108 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background-color: #060a11;
+    @font-face {
+        [font-family: <family-name>;]?
+        [src: [ <uri> [format(<string>#)]? | <font-face-name> ]#;]?
+        [unicode-range: <urange>#;]?
+        [font-variant: <font-variant>;]?
+        [font-feature-settings: normal|<feature-tag-value>#;]?
+        [font-stretch: <font-stretch>;]?
+        [font-weight: <weight>];
+        [font-style: <style>];
+      }
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.center_top{
+    position: absolute;
+    transform: translate(0,-50%);
+    transition: all;
+    animation-name: start;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    top : 50%;  
+    width: 100%;
+}
+@keyframes start{
+    0% {top : 50% ; opacity: 0;}
+    80% {top : 50% ; opacity: 1;}
+    100% {top: 100px}
+}
+.center_top{
+    color: #fff;
+    text-align: center;
+}
+.center_top .text{
+    font-size: 40px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+.center_bottom{
+    color: #fff;
+    font-size: 21px;
+
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    animation-name: middle;
+    animation-duration: 2s;
+    animation-delay: 4s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+@keyframes middle{
+    0% {opacity: 0;}
+    80% {opacity: 0;}
+    100%{opacity: 1;}
+}
+.center_bottom .three_pic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.center_bottom .three_pic>div{
+    width: 70px;
+    height: 70px;
+    margin: 25px;
+    transform: rotate(45deg);
+    background-color: #fff;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-name: end;
+    animation-duration: 5s;
+    animation-delay: 6s;
+}
+.center_bottom .three_pic .pic_1{
+    animation-delay: 2s;
+}
+.center_bottom .three_pic .pic_2{
+    animation-delay: 2.2s;
+}
+.center_bottom .three_pic .pic_3{
+    animation-delay: 2.4s;
+}
+@keyframes end{
+    0%{ transform: scale(0) rotate(45deg);}
+        
+    70%{ transform: scale(0.5) rotate(45deg);}
+
+    85%{ transform: scale(1.2) rotate(45deg);}
+
+    100%{ transform: scale(1.0) rotate(45deg);}
+}
+.center_bottom .three_pic>div>div{
+    transform: rotate(-45deg);
+    font-size: 18px;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <canvas id="cavas" width="1000" height="700" style ="border: 1px solid black">
+            您的浏览器不支持canvas，请更新浏览器
+        </canvas>
+    </div>
+    <script>
+        const canvas = document.getElementById('cavas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.onmousedown = function(e){
+            var e = e || event;
+            let x1 = e.clientX - canvas.offsetLeft;
+            let y1 = e.clientY - canvas.offsetTop;
+            ctx.moveTo(x1,y1);
+
+            canvas.onmousemove = function(e){
+                let x2 = e.clientX - canvas.offsetLeft;
+                let y2 = e.clientY - canvas.offsetTop;
+                ctx.lineWidth = 10;
+                ctx.lineTo(x2,y2);
+                ctx.stroke();
+            }
+            canvas.onmouseup = function(e){
+                canvas.onmousemove = null;
+            }
+        }
+    </script>
+</body>
+</html> 

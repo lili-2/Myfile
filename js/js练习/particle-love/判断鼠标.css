@@ -1,0 +1,112 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+#div1{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 200px 500px;
+    transform: rotate(45deg);
+    background-color: black;
+    overflow: hidden;
+}
+#div1>div{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+.top{
+    background-color: blue;
+    top: 0px;
+    left: -100px;
+}
+.left{
+    background-color: silver;
+    top:100px;
+}
+.right{
+    background-color: skyblue;
+    top:-100px;
+}
+.bottom{
+    background-color: red;
+    top: 0px;
+    left: 100px;
+}
+.enter-left .left{
+    animation-name: enter-left;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes enter-left{
+    0%{top: 100px;}
+    100%{top: 0;}
+} 
+.leave-left .left{
+    animation-name: leave-left;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes leave-left{
+    0%{top: 0;}
+    100%{top: 100px;}
+}
+
+.enter-right .right{
+    animation-name: enter-right;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes enter-right{
+    0%{top: -100px;}
+    100%{top: 0;}
+} 
+.leave-right .right{
+    animation-name: leave-right;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes leave-right{
+    0%{top: 0;}
+    100%{top: -100px;}
+}
+.enter-top .top{
+    animation-name: enter-top;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes enter-top{
+    0%{left: -100px;}
+    100%{left: 0;}
+} 
+.leave-top .top{
+    animation-name: leave-top;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes leave-top{
+    0%{left: 0;}
+    100%{left: -100px;}
+}
+
+.enter-bottom .bottom{
+    animation-name: enter-bottom;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes enter-bottom{
+    0%{left: 100px;}
+    100%{left: 0;}
+} 
+.leave-bottom .bottom{
+    animation-name: leave-bottom;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes leave-bottom{
+    0%{left: 0;}
+    100%{left: 100px;}
+}
+
+

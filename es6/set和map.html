@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let map = new Map();
+
+        let json = {
+            a: 1,
+            b: 2
+        };
+        map.set('a', 'aaa');
+
+        map.set(json, 'aaa');
+
+        map.set('aaa', json);
+
+// console.log(map.get('aaa'));
+
+// map.delete('aaa');
+// console.log(map.get('aaa'));
+
+// console.log(map.has('aaa'));
+
+// for(let [key,value] of map){
+//     console.log(key,value);  //默认就是entries
+// }
+
+// for(let key of map){
+//     console.log(key);   
+// }
+// for(let key of map.keys()){
+//     console.log(key);   
+// }
+    </script>
+</body>
+
+</html>

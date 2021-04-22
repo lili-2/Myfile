@@ -1,0 +1,139 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: rgb(141, 144, 146);
+}
+.middle {
+    text-align: center;
+    padding-top: 10px;
+    width: 570px;
+    border: 1px solid white;
+    margin: 0 auto;
+    position: relative;
+}
+.head{
+    margin-top: 10px;
+    background-color: rgb(228, 87, 5);
+    height: 50px;
+}
+header h2{
+    color: white;
+} 
+.head .home{
+    position: absolute;
+    width: 570px;
+    top: 72px;
+}
+.head .home>span{
+    color: rgb(38, 73, 177);
+    text-decoration-line: underline;
+    font-size: 5px;
+    padding: 10px;
+}
+.section {
+    background-color: rgb(255, 65, 144);
+    width: 400px;
+    margin-top: 10px;
+    font-weight: bolder;
+    overflow: hidden;
+} 
+.section>P{
+    color: black;
+    padding: 10px 0 5px 0;
+}
+.section .article{
+    padding: 5px;
+    background-color: white;
+    margin: 5px;
+    position: relative;
+}
+.section .article>p{
+    font-weight: bolder;
+}
+.section .article .aheader{
+    height: 20px;
+    background-color:  rgb(228, 87, 5);
+    margin-top: 10px;
+} 
+.section .article .aheader>p{
+    color: white;
+    font-weight: bolder;
+}
+.section .article .aaside{
+    padding: 25px;
+    background-color: rgb(38, 82, 163);
+    width: 150px;
+    height: 110px;
+    margin-top: 20px;
+    margin-left: 220px;
+    font-weight: bolder;
+    font-size: 25px;
+    box-sizing: border-box;
+}
+.middle .section .text{
+    color: red;
+    position: absolute;
+    top: 75px;
+    font-size: 1px;
+    font-weight: 400;
+    width: 220px;
+    text-align: left;
+}
+.section .afooter{
+    margin-top: 5px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    background-color: rgb(14, 1, 71);
+    color: white;
+}
+
+
+.right-section{
+	position:absolute;
+	top: 100px;
+	right: 10px;
+	width: 150px;
+	height: 200px;
+	background-color: #398a68;
+}
+.right-section p{
+	position: absolute;
+	height: 30px;
+    font-size:20px;
+    top: 10px;
+    right: 35px;
+    font-weight: bolder;
+    
+} 
+.sideheader{
+	position: absolute;
+	font-size: 18px;
+	width: 150px;
+	height: 25px;
+	background-color:#f40;
+    color:white;
+    top: 45px;
+    font-weight: bolder;
+}
+.tip {
+    position: absolute;
+    left: 40px;
+    top: 110px;
+    font-size: 12px;
+}
+.tip li{
+    text-align: left;
+} 
+.tip li>a{
+    color: rgb(19, 49, 141);
+}
+.middle .article-footer{
+    width: 570px;
+    margin-bottom: 5px;
+    background-color: rgb(19, 49, 141);
+    color: white;
+    margin-bottom: 5px;
+    font-weight: bolder;
+}

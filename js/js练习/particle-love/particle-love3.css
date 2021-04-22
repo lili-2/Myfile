@@ -1,0 +1,213 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background-color: black;
+}
+.center_top{
+    position: absolute;
+    /* transform: -50% -50%;   */
+    top : 100px;  
+    width: 100%;
+}
+.center_top{
+    color: #fff;
+    text-align: center;
+}   
+.center_top .text{
+    font-size: 40px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+.center_bottom .three_pic{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.center_bottom .three_pic>div{
+ 
+    width: 100px;
+    height: 100px;
+    transform: rotate(45deg);
+    background-color: #fff;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* overflow: hidden; */
+}
+.center_bottom .three_pic>div .nomove{
+    transform: rotate(-45deg);
+    font-size: 18px;
+    /* display: block; */
+}
+.center_bottom .pic_text{
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+}
+.pic_1:hover .pic_text{
+    color: white;
+}
+.lefter>div{
+    position: relative;
+    width: 6px;
+    height: 40px;
+    background-color: #575050;
+}
+/* .left_1:hover{
+    background-color: black;
+} */
+.left_1{
+    left: -180px;
+    top: 17px;
+    transform: rotate(45deg); 
+}
+.left_2{
+    left: -180px;
+    top: 2px;
+    transform: rotate(-45deg); 
+}
+.right_1{
+    left: 180px;
+    top: 0px;
+    transform: rotate(135deg); 
+}
+.right_2{
+    left: 180px;
+    top: -15px;
+    transform: rotate(-135deg); 
+}
+.bottomer{
+    width: 200px;
+    overflow: hidden;
+    left: 50%;
+    margin-left: -100px;
+    position: absolute;
+    color: #fff;
+    top: 65%;
+    height: 80px;
+}
+.floor_text{
+    width: 1000px;
+    left: 0px;
+    position: absolute; 
+    color: #fff;
+    display: flex;
+}
+.floor_text>div{
+    width: 200px;
+    color: #fff;
+    text-align: center;
+}
+
+.top{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    top: 0px;
+    left: -100px;
+}
+.left{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    top:100px;
+   
+}
+.right{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    top:-100px;
+}
+.bottom{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color:black;
+    top: 0px;
+    left: 100px;
+}
+
+.enter-left .left{
+    animation-name: enter-left;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes enter-left{
+    0%{top: 100px;}
+    100%{top: 0;}
+} 
+.leave-left .left{
+    animation-name: leave-left;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes leave-left{
+    0%{top: 0;}
+    100%{top: 100px;}
+}
+
+.enter-right .right{
+    animation-name: enter-right;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes enter-right{
+    0%{top: -100px;}
+    100%{top: 0;}
+} 
+.leave-right .right{
+    animation-name: leave-right;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes leave-right{
+    0%{top: 0;}
+    100%{top: -100px;}
+}
+.enter-top .top{
+    animation-name: enter-top;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes enter-top{
+    0%{left: -100px;}
+    100%{left: 0;}
+} 
+.leave-top .top{
+    animation-name: leave-top;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes leave-top{
+    0%{left: 0;}
+    100%{left: -100px;}
+}
+
+.enter-bottom .bottom{
+    animation-name: enter-bottom;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes enter-bottom{
+    0%{left: 100px;}
+    100%{left: 0;}
+} 
+.leave-bottom .bottom{
+    animation-name: leave-bottom;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes leave-bottom{
+    0%{left: 0;}
+    100%{left: 100px;}
+} 
+

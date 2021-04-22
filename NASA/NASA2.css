@@ -1,0 +1,335 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    background: black;
+    font-family: "Titillium Web", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    max-width: 1255px;
+    margin: 0 auto;
+
+}
+.top{
+    position: sticky;
+    min-width: 900px;
+    top: 0px;
+    background: url(https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/starfield-banner.jpg);
+    z-index: 1;
+    margin: 20px auto 10px auto;
+}
+ul{
+    list-style: none;
+}
+ul>li>a{
+    text-decoration: none;
+    color: #fff;
+}
+.top_center>div>ul{
+    display: flex;
+    justify-content: center;
+}
+.top_center .top_center1>ul>li{
+    padding: 30px 0px;
+    position: relative;
+}
+.top_center .top_center1>ul>li>a{
+    font-size: 1.20em;
+    font-weight: normal;
+    line-height: 20px;
+    padding: 10px 14px;
+    border-left:2px solid #555555;
+}
+.top_center .top_center1 ul>li:first-child>a{
+    border: none;
+}
+.top_center .top_center1{
+    margin-bottom: 10px;
+}
+.top_center .top_center2 ul>li{
+    height: 40px;
+    background: #555;
+}
+.top_center .top_center2 ul>li>a{
+    font-size: 14px;
+    color: #fff;
+    padding: 5px 12px;
+    line-height: 40px;
+    border-left:1px solid #888;
+}
+.top_center .top_center2 ul>li:first-child>a{
+    border: none;
+}
+.top_center .top_center2>ul>li:hover{
+    background-color: #888;
+}
+.top_center1 >ul>li .push{
+    position: absolute;
+    padding: 5px 0;
+    top: 80px;
+    left: 0px;
+    background: #15418c;
+    font-size: 14px;
+    display: none;
+}
+.top_center1 >ul>li:focus{
+    background-color: #072F54;
+}
+.top_center1 >ul>li .push>li{
+    padding: 10px 10px;
+    white-space: nowrap;
+}
+.top_center1 >ul>li .push:last-child{
+    min-width: 175.5px;
+}
+.top_center1 >ul>li .push>li:hover{
+    background-color: #072F54;
+}
+.top_center1 >ul>li .push>li>a{
+    color: #fff;
+    font-size: 1.3em;
+}
+.top_center1 >ul>li:hover{
+    background: #15418c;
+}
+.top_center1 >ul>li:hover .push{
+    display: block;
+}
+
+.top_left{
+    position: absolute;
+    left: 20px;
+    top: 10px;
+}
+.top_right{
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    display: flex;
+    align-items: center;
+}
+.top_right>input{
+    background:none; 
+    border:none;
+    color: #fff;
+    padding: 10px 35px 10px 10px;
+    margin-right: 20px;
+    height: 35px;
+    width: 156px;
+    background-color: #333333;
+}
+.search{
+    position: absolute;
+    right: 25px;
+    top: 10px;
+}
+.share{
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    color: #fff;
+}
+.middle>div .pos{
+    position: relative;
+    z-index: 0;
+}
+
+.picture_1{
+    display: inline-block;
+}
+.picture_1>img{
+    width: 600px;
+    height: 638px;
+    margin-right: 10px;
+}
+.picture_2>img{
+    width: 300px;
+    height: 325px;
+    margin-right: 10px;
+}
+.pic_1_right{
+    display: inline-block;
+}
+.pic_1 .text_1{
+    background: #39719e;
+    width: 300px;
+    height: 325px;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.2em 0.5em;
+}
+.pic_1 .text_1 a{
+    text-decoration: none;
+}
+.pic_1 .text_1 .big{
+    border-bottom: 1px solid #fff;
+    margin: 0 auto 3px;
+    width: 96%;
+    padding: 8px 0 6px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+}
+.pic_1 .text_1 .title>a{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
+.pic_1 .text_1 .title>a:hover{
+    text-decoration: underline;
+}
+.pic_1 .text_1 .title:first-child{
+    padding-top: 2px;
+}
+.pic_1 .text_1 .last{
+    padding-bottom: 10px;
+}
+.pic_1 .text_1 .footer{
+    border-top: 1px solid #fff;
+}
+.picture_3>img{
+    width: 630px;
+    height: 300px;
+    margin-top: 10px;
+}
+.middle .pic_1 .pos .pic_footer>.pic_footer_top{
+    position: absolute;
+    bottom: 36px;
+    left: 0px;
+    background: #5d7fb9;
+    opacity: 0.85;
+    padding: 6px 12px;
+}
+.middle .pic_1 .pos .pic_footer>.pic_footer_top:hover{
+    opacity: 1;
+}
+.picture_2{
+    display: inline-block;
+}
+.middle .pos .pic_footer>.pic_footer_bottom{
+    position: absolute;
+    bottom: 3px;
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 23px;
+    color: #000;
+    background: rgba(255, 255, 255, 0.8);
+    max-height: 56px;
+}
+.middle .pos .pic_footer>.pic_footer_top>a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 23px;
+}
+.middle .display{
+    display: inline-block;
+}
+.middle .pos .pic_footer>.pic_footer_bottom:hover{
+    background-color: rgba(255, 255, 255, 1);
+}
+.middle .pic_1 .picture_1 .pic_footer>.pic_footer_bottom{
+    width: 600px;
+}
+.middle .pic_1 .picture_2 .pic_footer>.pic_footer_bottom{
+    width: 300px;
+}
+.middle .pic_1 .picture_3 .pic_footer>.pic_footer_bottom{
+    width: 630px;
+}
+.middle .pic_1 .picture_4 .pic_footer>.pic_footer_bottom{
+    width: 300px;
+}
+.picture_4>img{
+    width: 300px;
+    height: 300px;
+    margin: 10px 10px 0 10px;
+}
+.middle .pic_1 .picture_4 .pic_footer>.pic_footer_top{
+    bottom: 59px;
+}
+.picture_5>img{
+    width: 600px;
+    height: 300px;
+    margin: 10px 10px 10px 0px;
+}
+.picture_6{
+    width: 300px;
+    height: 300px;
+}
+.picture_6>img{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+.middle .last>div>img{
+    width: 300px;
+    height: 300px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.middle .pic_1 .picture_10 .pic_footer>.pic_footer_top{
+    bottom: 59px;
+}
+.middle .pic_1 .picture_7 .pic_footer>.pic_footer_top{
+    bottom: 59px;
+}
+.footer{
+    margin: 30px 0 0 0;
+    text-align: center;
+    background: #15418c;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+}
+.footer:hover{
+    background: #5d7fb9;
+}
+.ffooter{
+    min-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 10px 50px 10px;
+    position: relative;
+}
+.ffooter>img{
+    width: 80px;
+    height: 80px;
+}
+.ffooter_text{
+    position: absolute;
+    top: 30px;
+    left: 90px;
+    display: inline-block;
+}
+.ffooter_text>p{
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.ffooter_list{
+    position: absolute;
+    bottom: 25px;
+    right: 5px;
+    display: flex;
+}
+.ffooter_list>li{
+    padding-left: 30px;
+}
+.ffooter_list>li>a{
+    font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    color: #5d7fb9;
+    font-weight: bold;
+    font-size: 12px;
+}
+.ffooter_list>li>a:hover{
+  text-decoration: underline;
+}
+.ffooter_list>li>a:focus{
+    text-decoration: underline;
+}

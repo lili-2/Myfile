@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{ 
+            margin: 0;
+             padding: 0; 
+        }
+        #big{
+            margin: 100px auto;
+            width: 600px;
+            height: 350px;
+            border: 1px solid black;
+            padding: 15px 0;
+        }
+        .little{
+            padding: 0 15px;
+            line-height: 30px;
+            height: 30px;
+        }
+        /* div:hover{
+            background-color:lightblue;
+        } */
+        #menu{
+            width: 80px;
+            background: #fff;
+            position: absolute;
+            display: none;
+        }
+        #menu ul{
+            width: 100%;
+            list-style: none;
+            border: 2px solid #666;
+            border-bottom: 0px;
+        }
+        #menu ul li{
+            height: 30px;
+            font-size: 16px;
+            color: #333;
+            line-height: 30px;
+            text-align: center;
+            border-bottom: 2px solid #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <ul>
+            <li>帮助</li>
+            <li>设置</li>
+            <li>复制</li>
+            <li>粘贴</li>
+            <li>剪切</li>
+        </ul>
+    </div>
+    <article id="big">
+        <div class="little" id="a123" οnclick="changeColor(this)">
+            <input type="checkbox" id="myCheck">
+            <span>我的文件</span>
+        </div>
+        <div class="little">
+            <input type="checkbox" id="myCheck">
+            <span>我的文件</span>
+        </div>
+        <div class="little">
+            <input type="checkbox" id="myCheck">
+            <span>我的文件</span>
+        </div>
+        <div class="little">
+            <input type="checkbox" id="myCheck">
+            <span>我的文件</span>
+        </div>
+        <div class="little">
+            <input type="checkbox" id="myCheck">
+            <span>我的文件</span>
+        </div>
+        <div class="little">
+            <input type="checkbox" id="myCheck">
+            <span>我的文件</span>
+        </div>
+    </article>
+    <script>
+        var big = document.getElementById('big').getElementsByTagName('div');
+        // for (var i = 0; i < big.length; i++) {
+        //     big[i].onmousemove = function () {
+        //         for (var j = 0; j < big.length; j++) {
+        //             big[j].style.backgroundColor = '';
+        //         }
+        //         this.style.backgroundColor = 'blue';
+        //     };
+        // }
+		for (var i = 0; i < big.length; i++) {
+                big[i].onclick = function () {
+                    
+                    this.style.backgroundColor = 'lightblue';
+					this.onclick = null;
+                };
+            }
+
+        var menu=document.getElementById("menu");
+
+        document.oncontextmenu=function(event){
+            menu.style.display="block";
+            menu.style.left=event.clientX+"px";
+            menu.style.top=event.clientY+"px";
+        }
+        document.onclick=function () {
+				menu.style.display="none";
+		}
+    </script>
+</body>
+</html>

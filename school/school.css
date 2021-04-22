@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+.top {
+    width: 100%;
+    height: 170px;
+    margin: 0 auto;
+    background-color: #014a95;
+}
+.tleft{
+    width: 398px;
+    height: 94px;
+    padding-top: 38px;
+    padding-right: 20px;
+    padding-left: 30px;
+    float: left;
+}
+.tmid{
+    padding-top: 6px;
+    float: left;
+    height: 150px;
+}
+.tright>a{
+    position: absolute;
+    font-size: 14px;
+    color: #fff;
+    top: 40px;
+    width: 65px;
+    text-align: right;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+.tright .class1{
+    right: 30px;
+    background-image: url(http://www.xiyou.edu.cn/newWeb/images/colorIcon_09.png);
+}
+.tright .class2{
+    right: 115px;
+    background-image: url(http://www.xiyou.edu.cn/newWeb/images/colorIcon_11.png);
+}
+.tright .class3{
+    right: 200px;
+    background-image: url(http://www.xiyou.edu.cn/newWeb/images/colorIcon_07.png);
+}
+.tright .class4{
+    right: 285px;
+    background-image: url(http://www.xiyou.edu.cn/newWeb//images/colorIcon_05.png);
+}
+.tright .class5{
+    right: 370px;
+    background-image: url(http://www.xiyou.edu.cn/newWeb/images/colorIcon_03.png);
+}
+.top .right{
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    width: 220px;
+    height: 36px;
+    background: url(http://www.xiyou.edu.cn/newWeb/images/xy_img_09.png) no-repeat;
+}
+.top .right input{
+    height: 30px;
+    line-height: 30px;
+    margin-left: 18px;
+    width: 155px;
+    margin-top: 3px;
+    border: none;
+    outline:none;
+}
+.top .right a{
+    position: absolute;
+    top: 5px;
+    right: 18px;
+}
+.center{
+    height: 60px;
+    line-height: 60px;
+    margin: 0 28px;
+}
+.center ul{
+    list-style: none;
+}
+.center>ul>li{
+    position: relative;
+    float: left;
+    display: block;
+    width: 100px;
+    text-align: center;
+    font-size: 16px;
+}
+.center .start>li>a{
+    color: #4c4c4c;
+}  
+.center .start>li .end{
+    position: absolute;
+    z-index: 2;
+}
+.center .start>li .end li{
+    width: 118px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: none;
+    border-top: 1px solid #fff;
+    background: rgba(255,255,255,0.9);
+    font-size: 14px;
+}
+.center .start>li ul li>a {
+    color: #4c4c4c ;
+}
+.center .start>li:hover{
+    background: url(http://www.xiyou.edu.cn/newWeb/images/xy_img_18.png)no-repeat top center;
+}
+/*.center .start>li>a:link {
+    color:  #4c4c4c;
+} 
+.center .start>li>a:visited {
+    color:  #014a95;
+}  */
+.center .start>li>a:hover {
+    color:  #014a95;
+}  
+.center .start>li>a:active {
+    color:  #014a95;
+}  
+.center .start>li:hover ul li {
+    display: block;
+}
+.center .start>li ul li>a:hover {
+    color: #014a95;
+}
