@@ -1,3 +1,0 @@
-moudle.expoets = app => {
-    ReadableStreamDefaultController.
-}
