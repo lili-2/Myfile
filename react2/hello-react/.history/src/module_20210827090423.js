@@ -1,0 +1,1 @@
+const React = {a:1}

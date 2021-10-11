@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类式组件</title>
+</head>
+
+<body>
+
+    <div id="test"></div>
+
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入react-dom.用于支持react支持Dom -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+
+    <script type="text/babel">
+        //1. 创建类式组件
+        //3个重要的 要有继承 render 和返回值
+        class MyComPonent extends React.Component {
+            render() {
+                //render是放在
+                return <h2>我是用类定义的 组件(适用于(复杂组件的定义))</h2>
+            }
+        }
+        // 2.渲染组件到页面
+        ReactDOM.render(<MyComPonent/>,document.getElementById('test'));
+
+    </script>
+</body>
+
+</html>　

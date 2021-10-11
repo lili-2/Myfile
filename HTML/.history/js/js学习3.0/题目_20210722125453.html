@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+//*****************类型转换个getter
+        // 两个等号 类型不一样 会调用toString方法 重写该方法
+        // var a = {
+        //     _dafult :0,
+        //     toString: function(){
+        //         return ++ this._dafult;
+        //     }
+        // }
+        // if(a == 1 && a == 2 && a == 3){
+        //     console.log('true');
+        // }
+
+
+
+         //getter -> 访问一个变量的时候进行拦截
+
+        // var _default = 0;
+        // Object.defineProperty(window,"a",{
+        //     get(){
+        //         return ++_default;
+        //     } 
+        // })
+        // if(a === 1 && a === 2 && a === 3){
+        //     console.log('true');
+        // }else{
+        //     console.log('false');
+        // }
+
+//************************类型转换
+        // var len1 = ({} + {}).length;//类型转换 toString
+        // // ({}).toString() "[object Object]"  字符串拼接 结果30
+
+        // var len2 = ([] + []).length; //0
+        // //[1,2,3].toString() "1,2,3"
+
+        var len3 = (function(){}).length;// (function(){}).toString()
+                                        // "function(){}".length 12 错误
+        function test (a,b,c){
+            console.log(arguments)
+        }
+        test(1,2,3,4);
+
+        console.log(test.length);//形参
+                                        
+
+    </script>
+</body>
+</html>

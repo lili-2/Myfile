@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+        }
+
+        input {
+            margin-top: 200px;
+            width: 400px;
+            height: 30px;
+            padding: 0 5px;
+
+        }
+
+        ul {
+            width: 100%;
+            border: 1px solid rgb(175, 172, 172);
+            border-top: none;
+            padding: 0 5px;
+            list-style: none;
+            font-size: 15px;
+            max-height: 400px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        ul>li {
+            border-bottom: 1px solid rgb(175, 172, 172);
+            position: relative;
+            padding: 3px 5px;
+        }
+        ul li .light{
+             color: rgb(219, 219, 10); 
+        }
+        ul li>span:last-child{
+            position: absolute;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <input class="input" type="text" placeholder="city">
+        <ul class="search">
+            <!-- <li><span></span></li> -->
+        </ul>
+    </form>
+    <script>
+        const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+        const arr = [];
+        fetch(endpoint)
+            .then(blob => blob.json())
+            .then(data => arr.push(...data));
+        
+            function number(x){
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',')
+        }
+        //查找符合条件的
+        function find(word,arr){
+            return arr.filter(place  => {
+                const regex = new RegExp(word,'gi');//gi全局模式 不区分大小写 
+                return place.city.match(regex) || place.state.match(regex);
+            })
+        }
+
+        function display(){
+            //wordarr 符合条件的数组
+            const wordarr = find(this.value,arr);
+            const html = wordarr.map(place => {
+
+                //匹配与搜索一样的字母 改变颜色
+                const regex = new RegExp(this.value,'gi');
+                const cityname = place.city.replace(regex,`<span class="light">${this.value}</span>`);
+                return 
+                `
+                    <li>
+                        <span class="name">${cityname},${place.state}</span>
+                        <span class="population">${number(place.population)} </span>
+                    </li>
+                `
+            }).join('');
+            search.innerHTML = html;
+        }
+        const search = document.querySelector('.search');
+        const input = document.querySelector('.input');
+
+        input.addEventListener('change',display);
+        input.addEventListener('keyup',display);
+    </script>
+</body>
+
+</html>

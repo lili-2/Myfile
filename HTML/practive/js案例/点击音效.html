@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: rgb(63, 62, 62);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            height: 150px;
+            width: 150px;
+            position: relative;
+        }
+        .container>div{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #f5f5f5;
+            transition: all 1s ease;
+            border-radius: 50%;
+        }
+        .top{
+            top: 0px;
+            left: calc(50% - 21px);
+        }
+        .bottom{
+            bottom: 0px;
+            left: calc(50% - 21px);
+        }
+        .left{
+            top: calc(50% - 21px);
+            left: 0px;
+        }
+        .right{
+            top: calc(50% - 21px);
+            right: 0px;
+        }
+        .container .showed{
+            box-shadow: 0 0 3px blue,
+                        0 0 10px blue,
+                        0 0 20px blue,
+                        0 0 40px blue;
+            border-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top" data-key="38"></div>
+        <div class="bottom"  data-key="40"></div>
+        <div class="left" data-key="37"></div>
+        <div class="right" data-key="39"></div>
+        <audio data-key="38" src="./sound/boom.wav"></audio>
+        <audio data-key="39" src="./sound/boom.wav"></audio>
+        <audio data-key="40" src="./sound/boom.wav"></audio>
+        <audio data-key="37" src="./sound/boom.wav"></audio>
+    </div>
+    <script>
+        window.addEventListener('keydown',function(e){
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+            if(audio === null) return;
+            audio.currentTime = 0;
+            audio.play();
+            
+            key.classList.add('showed');
+            // setTimeout(function(){
+            //     key.classList.remove('showed');
+            // },1000)
+        });
+        const keys = document.querySelectorAll('.container>div');
+
+        function removeshowed(e){
+            this.classList.remove('showed');
+        }
+        keys.forEach(key => {
+            key.addEventListener('transitionend',removeshowed);
+        })
+    </script>
+</body>
+</html>

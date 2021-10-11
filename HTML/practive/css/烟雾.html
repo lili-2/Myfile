@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 100px;
+            min-height: 100vh;
+            color: white;
+        }
+
+        p {
+            user-select: none;
+            display: inline-block;
+        }
+
+        p:hover {
+            animation-name: example;
+            animation-duration: 5s;
+            
+        }
+
+        @keyframes example {
+            0% {
+                opacity: 1;
+                filter: blur(0);
+                transform: translateX(0) translateY(0) translateZ(0) rotate(0deg) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                filter: blur(20px);
+                transform: translateX(100px) translateY(-200px) translateZ(60px) rotate(180deg) scale(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p class="text">
+            When I do well in the exam, I will show my paper to my parents, they are so happy to see me do well in the
+            exam. I want to be happy all the time. But I have put so much pressure on myself. One day, my parents tell
+            me that they don’t care how I do well in the exam, they just want me to be happy. I know I should relax
+            myself and be happy.
+        </p>
+        <p class="text">
+            a
+        </p>
+    </div>
+    <script>
+        const text = document.querySelector('.text');
+        text.innerHTML = document.textContent.replace(/\s/g, "<span>$&</span>");
+    </script>
+</body>
+
+</html>

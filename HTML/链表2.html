@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Node{
+            constructor(element){
+                this.element = element;
+                this.pre = null;
+                this.next = null;
+            }
+        }
+        class list{
+            constructor(element){
+                this.size = 0;
+                this.head = null;
+                this.tail = null;
+            }
+            // add(element){
+            //     let node = new Node(element);
+            //     if(this.head === null){
+            //         this.Tail = node;
+            //         this.head = node;
+            //         node.pre = null;
+            //         node.next = null;
+            //     }else{
+            //         node.next = this.head;
+            //         this.head.pre = node;
+            //         node.pre = null;
+            //         this.head = node;
+            //     }  
+            //     this.size++;  
+            // }
+            add(element){
+                let node = new Node(element);
+                if(this.head === null){
+                    this.Tail = node;
+                    this.head = node;
+                    node.pre = null;
+                    node.next = null;
+                }else{
+                    this.Tail.next = node;
+                    node.pre = this.Tail;
+                    this.Tail = node;
+                }
+            }
+            del(position){
+                let current = this.head;
+                for(let i = 0;i < position - 1;i++)
+                {
+                    current = current.next;
+                }
+                current.pre.next = current.next;
+                current.next.pre = current.pre; 
+            }
+        }
+        let ll = new list();
+        ll.add(1);
+        ll.add(2);
+        ll.add(3);
+        ll.add(4);
+        ll.del(3);
+        console.log(ll);
+    </script>
+</body>
+</html>

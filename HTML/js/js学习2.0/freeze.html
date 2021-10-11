@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Object.freeze 密封对象
+        // 'use strict'
+        // function Test (){
+        //     this.a = 1;
+        //     this.b = 2;
+        // }
+        // Test.prototype.c = 3;
+        
+        // const test = new Test();
+
+        // const newTest = Object.freeze(test);
+
+        // console.log(newTest === test);//true 同一个引用,返回原对象
+
+        // const newTest =  Object.freeze(test);//在冻结之前可以更改 prototype __proto__
+
+        // console.log(test.a);//可读
+
+        // test.d = 4;//不可增加
+        // console.log(test);
+
+        // test.a = 111;
+        // console.log(test);//更改无效 严格模式下报错
+
+        // delete test.a;
+        // console.log(test);//删除无效
+
+        // Test.prototype.c = 333;//通过构造函数原型属性更改其属性是可以
+        // test.__proto__.c = 333;//通过对象的proto更该原型上的属性是可以的
+
+        // MDN上说原型不可改,不是原型对象上的属性
+        // Test.prototype = {//原型对象不可更改
+        //     a:1,
+        //     b:2
+        // }
+        // test.__proto__ = {//报错 原型不给重写
+        //     a : 1,
+        //     b : 2
+        // }
+
+        //浅冻结
+        // console.log(test);
+
+
+        //****************************2***********************************************
+
+        // const obj = {
+        //     _a: 1,
+        //     b: 2,
+        //     c: {
+        //         _d:3,
+        //         get d(){
+        //             return this._d;
+        //         },
+        //         set d(newValue){
+        //             console.log(this);
+        //             this._d = newValue
+        //         }
+        //     },
+        //     get a (){
+        //         return this._a;
+        //     },
+        //     set a (newValue){
+        //         this._a = newValue;
+        //     }
+        // }
+        // Object.freeze(obj);
+
+        // // const res = Object.isFrozen(obj);
+
+        // // console.log(res);
+
+        // // obj.a = 2;
+        // obj.c.d = 4;//Object.freeze浅冻结 
+
+        // console.log(obj.a);//通过set仍然不可修改
+
+        //****************************3***********************************************
+
+        //es5环境中报错 ...is not object
+        //es6环境中 返回参数本身
+        // const res = Object.freeze(123);
+        // console.log(res);
+
+        // const arr = [1,2,3];
+        // Object.freeze(arr);
+
+        // // arr.push(4);//报错 extensible 不可扩展
+        // // arr[0] = 3;//不可更改 严格模式报错
+
+        // // arr.splice(2,1);//直接报错
+        // console.log(arr);
+
+        //****************************4***********************************************
+        // const o = {
+        //     a: 1,
+        //     b: 2,
+        //     c: {
+        //         d: 3,
+        //         e: {
+        //             f:4
+        //         }
+        //     }
+        // }
+        // Object.deepFreeze  = function(o){
+        //     //不用Object.keys 是因为 这个方法拿不到 不可枚举的属性
+        //     var _keys = Object.getOwnPropertyNames(o);
+
+        //     if(_keys.length){
+        //         _keys.forEach(function(k){
+        //             var _value = o[k];
+        //             if(typeof _value === 'object' && _value !== null){
+        //                 Object.deepFreeze(_value);
+        //             }
+        //         })
+        //     }
+        //     return Object.freeze(o);
+        // }
+
+        // // console.log(Object.deepFreeze('123'));
+        // console.log(Object.deepFreeze(o));
+        // o.a = 2;
+        // o.c.d = 2;
+        // console.log(Object.deepFreeze(o));
+    </script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    width: 100%;
+    margin: 0 auto;
+    background: #f6f9fe url(https://mat1.gtimg.com/pingjs/ext2020/weather/2017/images/bg-cb2b2552e8.jpg) no-repeat center top;
+}
+
+header {
+    width: 1260px;
+    margin: 0 auto;
+}
+
+header .header_top {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, .24);
+    justify-content: space-between;
+}
+
+.header_top>div {
+    display: flex;
+    align-items: center;
+}
+
+header #pos::before {
+    content: '';
+    float: left;
+    height: 16px;
+    width: 16px;
+    background-image: url(https://mat1.gtimg.com/pingjs/ext2020/weather/2017/images/sprites/sprite-7d98dbada9.png);
+    background-position: -216px -126px;
+    background-size: 234px 212px !important;
+    margin-right: 7px;
+    margin-top: 1px;
+}
+
+#pos {
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.guanzhu {
+    font-size: 14px;
+    color: #fff;
+    opacity: .7;
+    margin: 0 15px;
+}
+
+#search {
+    font-family: "Microsoft Yahei";
+    border: none;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 49px;
+    padding: 5px 13px;
+    width: 251px;
+    height: 20px;
+    color: rgba(255, 255, 255, .7);
+    line-height: 20px;
+    font-size: 14px;
+    margin-right: 30px;
+    outline: none;
+}
+#search1{
+    position: relative;
+}
+#city{
+    position: absolute;
+    left: 0px;
+    top: 35px;
+    background: #fff;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 15%);
+    border-radius: 5px;
+    margin-top: 4px;
+    padding: 20px 0 10px;
+    width: 280px;   
+}
+.city_{
+    <p id="cur-location" class="match" data-province="北京市" data-city="北京市" data-district="" style="display: block;">北京市</p>
+}
+.tit{
+    font-size: 12px;
+    color: #9f9f9f;
+    height: 12px;
+    line-height: 12px;
+    margin-bottom: 8px;
+    margin-top: 2px;
+    clear: both;
+    padding: 0 20px;
+}
+#today {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#today>div {
+    display: flex;
+    align-items: flex-end;
+}
+
+#today>div>div {
+    display: flex;
+    align-items: flex-end;
+    margin: 15px;
+}
+
+#today>div>div>div {
+    margin: 0px 5px;
+}
+
+#time {
+    font-size: 14px;
+    color: #fff;
+    opacity: .6;
+    height: 19px;
+    line-height: 19px;
+    margin-bottom: 20px;
+}
+
+#temp {
+    display: inline-block;
+    font-size: 86px;
+    color: #fff;
+    height: 86px;
+    line-height: 86px;
+    margin-right: 15px;
+}
+
+#weather {
+    display: inline-block;
+    font-size: 28px;
+    color: #fff;
+    line-height: 45px;
+    height: 45px;
+    margin-right: 24px;
+}
+
+#today .today_pic {
+    width: 20px;
+    height: 20px;
+    background-image: url(https://mat1.gtimg.com/pingjs/ext2020/weather/2017/images/sprites/sprite-7d98dbada9.png);
+}
+
+#wind_pic{
+    background-position: -75px -191px;
+    background-size: 234px 212px !important
+}
+
+#hum_pic {
+    background-position: -191px -119px;
+    background-size: 234px 212px !important;
+}
+
+#press_pic {
+    background-position: -191px -96px;
+    background-size: 234px 212px !important;
+}
+
+#car_pic {
+    background-position: -52px -191px;
+    background-size: 234px 212px !important;
+}
+
+#tips_pic {
+    background-position: -121px -191px;
+    background-size: 234px 212px !important;
+}
+
+.today_text {
+    font-size: 18px;
+    color: #fff;
+    line-height: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+.middle {
+    width: 1200px;
+    margin: 200px auto 0px auto;
+}
+
+.middle>div {
+    padding: 20px 30px 27px;
+}
+
+.hour {
+    height: 143px;
+    margin-bottom: 40px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 14px 0 rgb(0 0 0 / 8%);
+    width: 1140px;
+    overflow: hidden;
+}
+.title {
+    font-size: 18px;
+    color: #344665;
+    height: 21px;
+    line-height: 21px;
+    margin-bottom: 22px;
+    float: left;
+    margin-right: 10px;
+    font-weight: 400;
+}
+
+#tips_text::before,
+.title::before {
+    content: '';
+    float: left;
+    height: 7px;
+    width: 7px;
+    overflow: hidden;
+    margin-right: 10px;
+    background: #344665;
+    border-radius: 50%;
+    margin-top: 8px;
+}
+
+#tips_text::before {
+    height: 11px;
+    width: 11px;
+    margin-right: 13px;
+    background: #fff;
+    border-radius: 50%;
+    margin-top: 5px
+}
+
+.hour_header {
+    height: 21px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title_a {
+    font-size: 12px;
+    color: #8a9baf;
+    height: 21px;
+    line-height: 21px;
+    display: inline-block;
+}
+
+.btn_two>div {
+    z-index: 2;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+}
+
+.btn_l {
+    background-image: url(https://mat1.gtimg.com/pingjs/ext2020/weather/2017/images/sprites/sprite-7d98dbada9.png);
+    background-position: -136px -154px;
+    background-size: 234px 212px !important;
+    margin-right: 8px;
+}
+
+.btn_r {
+    background-image: url(https://mat1.gtimg.com/pingjs/ext2020/weather/2017/images/sprites/sprite-7d98dbada9.png);
+    background-position: -191px 0;
+    background-size: 234px 212px !important;
+}
+
+.days_7 {
+    width: 740px;
+    height: 492px;
+    padding: 20px 0 0;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 14px 0 rgb(0 0 0 / 8%);
+}
+
+.to_15 {
+    background: #f8faff;
+    border: 1px solid #dce5f0;
+    border-radius: 37px;
+    font-size: 12px;
+    color: #384c78;
+    line-height: 26px;
+    height: 26px;
+    width: 100px;
+    text-align: center;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        //1. 对于在事件被触发 n秒后再执行的回调 延迟执行
+        //2. 在n秒内在出发事件 重新开始计时
+        // 例如Ajax  第一次不需要延时，第二次需要延时
+        // 提交数据 输入验证
+
+        
+        var oBox = document.getElementsByClassName('box')[0];
+
+        // var t = null;
+        // oBox.onmouseover = function(){
+        //     clearTimeout(t);
+        //     t = setTimeout(function(){
+        //         console.log("hello");
+        //     },3000)
+        // }
+
+        function test(){
+            console.log("hello");
+        }        
+        
+        
+    </script>
+</body>
+</html>

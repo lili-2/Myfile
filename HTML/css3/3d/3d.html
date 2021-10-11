@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="3d.css"> -->
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+}
+.cube{
+    height: 200px;
+    width: 200px;
+    margin:  200px auto;
+    transform-style: preserve-3d;
+    animation: rotate 5s linear infinite;
+}
+.pic{
+    height: 200px;
+    width: 200px;
+}
+.cube div{
+    position: absolute;
+}
+@keyframes rotate{
+    from{transform: rotateX(0deg) rotateY(0deg);}
+    from{transform: rotateX(360deg) rotateY(360deg);}
+}
+.top{
+    transform: translateZ(100px);
+}
+.bottom{
+    transform: translateZ(-100px);
+}
+.left{
+    transform: rotateY(90deg) translateZ(100px);
+}
+.right{
+    transform: rotateY(-90deg) translateZ(100px);
+}
+.front{
+    transform: rotateX(90deg) translateZ(100px);
+}
+.back{
+    transform: rotateX(-90deg) translateZ(100px);
+}
+    </style>
+</head>
+<body>
+    <div class="cube">
+        <div class="top">
+            <img src="https://p1.ssl.qhimgs1.com/t017168981b923908d7.jpg" class="pic">
+        </div>
+        <div class="bottom">
+            <img src="https://p1.ssl.qhimgs1.com/t017168981b923908d7.jpg" class="pic">
+        </div>
+        <div class="left">
+            <img src="https://p1.ssl.qhimgs1.com/t017168981b923908d7.jpg" class="pic">
+        </div>
+        <div class="right">
+            <img src="https://p1.ssl.qhimgs1.com/t017168981b923908d7.jpg" class="pic">
+        </div>
+        <div class="front">
+            <img src="https://p1.ssl.qhimgs1.com/t017168981b923908d7.jpg" class="pic">
+        </div>
+        <div class="back">
+            <img src="https://p1.ssl.qhimgs1.com/t017168981b923908d7.jpg" class="pic">
+        </div>
+    </div>
+</body>
+</html>

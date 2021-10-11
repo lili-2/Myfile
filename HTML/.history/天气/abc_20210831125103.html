@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <script>
+        $.ajax({
+			type : "GET",
+			async : false,
+			url : "https://geoapi.qweather.com/v2/city/lookup?location=beij&key=10f80340ea1945758e1d310429dd537e",
+			dataType : "jsonp",//数据类型为jsonp  
+			jsonp : "jsonpCallback",//服务端用于接收callback调用的function名的参数
+			success : function(data) {
+				alert(data["userName"]);
+			},
+			error : function(error) {
+				console.log('错误'error);
+			}
+		});
+    </script>
+</body>
+</html>

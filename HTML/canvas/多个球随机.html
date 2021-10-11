@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        const ballArr = [];
+        canvas.width = document.documentElement.clientWidth;
+        canvas.height = document.documentElement.clientHeight;
+
+        // function Ball(color) {
+        //     //圆心点 半径 样式
+        //     this.x = Math.random() * canvas.width;
+        //     this.y = Math.random() * canvas.height;
+        //     this.r = 10;
+        //     this.color = color;
+        //     this.dx = parseInt(Math.random() * 10) - 5;
+        //     this.dy = parseInt(Math.random() * 10) - 5;
+
+        //     ballArr.push(this);
+        // }
+        // Ball.prototype.render = function () {
+        //     ctx.beginPath();
+        //     ctx.fillStyle = this.color;
+        //     ctx.arc(this.x, this.y, this.r, 360 * (Math.PI / 180), false);
+        //     ctx.fill();
+        // }
+        // var p1 = new Ball();
+        // for (let i = 0; i < 20; i++) {
+        //     new Ball('red');
+        // }
+        // Ball.prototype.updata = function () {
+        //     this.x += this.dx;
+        //     this.y += this.dy;
+        //     if (this.x < 0 || this.x > canvas.width) {
+        //         this.dx = -this.dx;
+        //     }
+        //     if (this.y < 0 || this.y > canvas.height) {
+        //         this.dy = -this.dy;
+        //     }
+        // }
+        // setInterval(function(){
+        //     ctx.clearRect(0,0,canvas.width,canvas.height);
+        //     for(let k = 0;k < ballArr.length; k++){
+        //         ballArr[k].updata();
+        //         ballArr[k].render();
+        //     }
+        // },30)
+        //16.7 由系统决定回调函数的执行机制
+        // requestAnimationFrame(function run() {
+        //     ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //     for (let k = 0; k < ballArr.length; k++) {
+        //         ballArr[k].updata();
+        //         ballArr[k].render();
+        //     }
+        //     requestAnimationFrame(run); 
+        //});
+
+        class Ball {
+            constructor(color) {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.r = 10;
+                this.color = color;
+                this.dx = parseInt(Math.random() * 10) - 5;
+                this.dy = parseInt(Math.random() * 10) - 5;
+                // ballArr.push(this);
+            }
+            render(){
+                ctx.beginPath();
+                ctx.fillStyle = this.color;
+                ctx.arc(this.x,this.y,this.r,2*Math.PI,false);
+                ctx.fill();
+            }
+            updata(){
+                this.x += this.dx;
+                this.y += this.dy;
+                if(this.x >= canvas.width || this.x < 0){
+                    this.dx = -this.dx;
+                }
+                if(this.y >= canvas.height || this.y < 0){
+                    this.dy = -this.dy;
+                }
+            }
+        }
+        for(let i = 0;i < 20; i++){
+            ballArr.push(new Ball);
+        }
+        setInterval(() => {
+            ctx.clearRect(0,0,canvas.width,canvas.height)
+            for(let i = 0;i < ballArr.length; i++){
+                ballArr[i].updata();
+                ballArr[i].render();
+            }
+        }, 30);
+    </script>
+</body>
+
+</html>

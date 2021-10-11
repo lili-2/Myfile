@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="J_btn" onclick="console.log(this)">test</button>
+    <button  onclick="(function () {console.log(this)})()">test2</button>  <!-- window -->
+    <script>
+        //this js关键字 当前环境执行期上下文对象的一个属性 
+        //this 在不同的环境 不用作用下 表现是不同的
+        //全局作用域的this -> 全局对象
+        //window和this的关系
+
+        // console.log(this === window);//true
+
+        // var a = 1;
+        // var b = function(){ return 'function'};
+        // // console.log(window.a === a);//true
+        // // console.log(window.b === b);//true
+
+        // console.log(a);
+        // console.log(b);
+
+        // window.aa = 1;
+        // window.bb = function(){ return 'function'};
+        // console.log(aa);
+        // console.log(bb);
+
+        // this.aa = 1;
+        // this.bb = function(){ return 'function'};
+        // console.log(aa);
+        // console.log(bb);
+
+        // var a = 'global -> a';
+        // var obj = {
+        //     a:'obj -> a',
+        //     test: function(){
+        //         console.log(this.a);
+        //         console.log(window.a);
+        //     }
+        // }
+        // obj.test();
+        //obj -> a  global -> a
+        //在node环境下 window is not defined
+        //若将window.a换成global.a  打印undefined
+        //在node环境下 需要挂载到global上
+
+        //获取全局对象 web:window,self,frames,this
+        //            node:global
+        //            worker:self
+        //  通用对象 globalThis
+
+        // var a = 'global -> a';
+        // var obj = {
+        //     a:'obj -> a',
+        //     test: function(){
+        //         console.log(this.a);
+        //         console.log(window.a);//global -> a
+        //         console.log(self.a);  //global -> a
+        //         console.log(frames.a);//global -> a
+        //     }
+        // }
+        // obj.test();
+
+        // function test(){
+        //     'use strict'
+        //     return this;
+        // }
+        // console.log(test()); //undefined 在严格模式下
+        // console.log(window.test());//window
+        // //谁调用函数 函数内部的执行默认就是谁
+
+    //类**************************************************************** 
+
+        //类的本质就是函数
+        //类 class xxx -> 容器/作用域/模块
+        // class Test1{
+        //     constructor(){
+
+        //     }
+        //     say(){
+
+        //     }
+        //     static do(){
+
+        //     }
+        // }
+        // const test1 = new Test1();
+
+        // function Test2(){  //相当于 constructor
+
+        // };
+        // Test2.prototype.say = function(){
+
+        // };
+        // Test2.do = function(){};
+  
+        // class Test {
+        //     constructor(){
+        //         //类的非静态方法 会在实例化过程中添加到this上
+        //         //new - this this->{function () {}}
+        //         this.test = function(){
+        //             console.log('none-static' + this);
+        //         }
+        //     }
+
+        //     // 类的静态方法  -> Test.prototypr{...}
+        //     // new 生成新的this this -> {} -> _proto_ -> Test.prototype
+        //     test(){
+        //         console.log('static' + this);
+        //         console.log(this===test1);
+        //         console.log(this===Test);
+        //     }
+        // }
+        // //this->{} 实例化对象 时 this 指向
+        // const test1 = new Test();
+
+        // test1.test()//在test中的this仍然指向实例化出来的对象
+
+    //     const testA = Object.create(null);//指定原型 prototype 指向
+    //     console.log(testA)//__proto__ 没有
+
+    //     const testB = {};
+    //     console.log(testB)//__proto__ Object
+
+    //继承**************************************************************** 
+    // class Father{
+    //     constructor(){
+    //         //基类 没有this
+    //         // new -> this -> {} -> 添加age属性
+    //         this.age = 44;
+    //     }
+    //     swim(){
+    //         console.log('Go swimming!!!');
+    //     }
+    // }
+    // class Son extends Father{
+    //     constructor(){
+    //         super();
+    //         this.hobby = 'traval';
+    //         console.log(this.age);//能访问到this 
+    //         //super 调用Father 上的 constructor
+    //         //生成了this的绑定 Father上的this 指向了son的实例
+    //         //相当于执行了 this -> new Father() -> {} 然后才能继续给this上添加东西
+    //     }
+    //     // 不加super报错： derived class派生类 
+    //     study (){
+    //         console.log(this);//this指向Son的实例
+    //         this.swim();
+    //     }
+    // }
+    // const son = new Son();
+    // son.study();//继承之后 能打印出来 Go swimming!!!
+    // // 这个方法在 son.__proto__ 指的 Father Father原型上的方法有swim
+
+    //call apply bind**************************************************************** 
+
+    // var obj = {
+    //     a: 1
+    // }
+    // var obj2 = {
+    //     a: 100
+    // }
+    // var a = 2;
+
+    // function test (b,c) {
+    //     // this 默认指向window
+    //     // 用了call之后 1
+    //     console.log(this.a,b,c);
+    // }
+
+    // test(3,4);
+
+    // test.call(obj,3,4);
+    // test.apply(obj,[3,4]);
+    //bind不是立即执行 而是返回一个新函数
+
+     // bind 只会生效一次 
+    // var test1 = test.bind(obj,3,4);
+    // test1();
+
+    // var test2 = test1.bind(obj2,3,4);
+    // test2();
+
+    // var t = test.bind(obj2,3,4).bind(obj,3,4);//100 3 4
+    // t();
+
+    //箭头函数的this*************************************************************** 
+        // 'use strict'
+        // const test = () => {
+        //     console.log(this); //window
+        // }
+        // test();
+
+        // var obj = {
+        //     a: 1
+        // }
+        // var a = 2;
+
+        // const test = () => {
+        //     console.log(this.a);
+        // }
+
+        // test();//2
+        // test.call(obj);//2
+        //箭头函数忽略任何形式的this指向的改变
+        //静态this指向
+
+        // new test();//箭头函数一定不是一个构造器
+        
+        // obj.test = () => {
+        //     //箭头函数中的this不是谁绑定指向谁
+        //     console.log(obj);
+        //     console.log(this);
+        // }
+        // obj.test();
+
+        // obj.test = function(){
+        //         var t = () => {
+        //         //this->obj
+        //         console.log(this);
+        //     }
+        //     t();
+        // }
+        // obj.test();
+
+        // obj.test = function(){
+        //     setTimeout(() => {
+        //         //this——>obj
+        //         console.log(this);
+        //     },0)
+        // }
+        // obj.test();
+
+        // obj.test = function(){
+        //     var t1 = () => {
+        //         //this -> obj
+        //         var t2 = () => {
+        //             console.log(this);
+        //         }
+        //         t2();
+        //     }
+        //     t1();
+        // }
+        // obj.test();
+
+        // obj.test = function(){
+        //     var t1 = function() {
+        //         //this -> window
+        //         var t2 = () => {
+        //             console.log(this);
+        //         }
+        //         t2();
+        //     }
+        //     t1();
+        // }
+        // obj.test();
+
+        //箭头函数中的this指向外层作用域(非箭头函数)的this
+
+    // 对象this*************************************************************** 
+            // this 基本原则 : 谁调用this this就指向谁
+
+        // const test2 = () => {
+        //     console.log(this.b);
+        // }
+        // var obj = {
+        //     a: 1,
+        //     b: 2,
+        //     test: function(){
+        //         console.log(this.a);
+        //     },
+        //     test2: test2,
+        //     c: {
+        //         d: 4,
+        //         test3: function(){
+        //             //this -> obj.c
+        //             console.log(this);
+        //             console.log(this.d);
+        //         }
+        //     }
+        // }
+
+        // function test2(){
+        //     console.log(this.b);
+        // }
+
+        // obj.test();
+        // obj.test2();//函数怎么声明关系不大
+        // // 例外是 箭头函数 undefined
+
+        // obj.c.test3();
+
+        // //对象方法内部的this -> 最近的引用
+
+        // var obj2 = {
+        //     a: 1,
+        //     b: 2,
+        //     test3: function(){
+        //         //this -> window 
+        //         //最近的引用就是 window 他是一个孤立的函数
+        //         function t (){
+        //             console.log(this);
+        //         }
+        //         t();
+        //     }
+        // }
+        // obj2.test3();
+        // obj.__proto__ = {
+        //     e: 20
+        // }
+        // console.log(obj2.e);
+
+        // var obj3 = Object.create({
+        //     test4: function(){
+        //         console.log(this.a + this.b);
+        //     }
+        // })
+        // obj3.a = 1;
+        // obj3.b = 2;
+        // obj3.test4();
+        // //1. test4由obj3调用 
+        // //2. obj3就是test4最近的调用
+        // //3. test4 this-> obj3
+        // //4. obj3里面不存在test4 所以沿着原型链找原型
+        // //5. 只要链上由test4 直接调用 如果找不到 报错
+
+    // object.defineProperty*************************************************************** 
+
+    // var obj3 = {}
+    // Object.defineProperty(obj3,'a',{
+    //     get: function(){
+    //         console.log(this);//指向obj3
+    //     }
+    // })
+
+    // function Test (){
+    //     this.a = 1;
+    //     this.b = 2;
+    //     console.log(this);
+    // }
+    // new Test();
+    //this 指向实例化对象
+    //构造函数里默认隐式return this或者手动返回this 这个this指向的新对象构造都是成功的
+    //如果手动返回了一个新对象 this指向的新对象的构造是失败的
+    // 如果你手动返回了一个新对象 this指向的对象就被忽略了
+
+    // 关于事件处理函数的绑定*************************************************************** 
+    // var oBtn = document.getElementById("J_btn");
+    // //onclick事件处理函数内部的this指向被绑定DOM元素
+    // oBtn.onclick = function(){
+    //     console.log(this);
+    // }
+    // oBtn.addEventListener('click',function(){
+    //     console.log(this);
+    // })
+    //事件处理函数内部的this总是指向被绑定DOM元素
+
+    // ;(function(doc){
+    //     var oBtn = document.getElementById("J_btn");
+    //     function Plus (a,b){
+    //         this.a = a;
+    //         this.b = b;
+    //         this.init();
+    //     }
+    //     Plus.prototype.init = function(){
+    //         this.bindEvent();
+    //     }
+    //     // Plus.prototype.bindEvent = function(){
+    //     //     oBtn.addEventListener('click',this.handleBtnclick.bind(this));
+    //     // }
+    //     Plus.prototype.bindEvent = function(){
+    //         var _self = this;
+    //         oBtn.addEventListener('click',function(){
+    //             _self.handleBtnclick();
+    //             //谁调用它this指向谁
+    //         });
+    //     }
+    //     Plus.prototype.handleBtnclick = function(){
+    //         console.log(this);//this指向button 所以要bind一下
+    //         console.log(this.a,this.b);//undefined undefined
+    //         console.log(this.a + this.b);
+    //     }
+
+    //     window.Plus = Plus;
+    // })(document)
+    // new Plus(3,4);
+
+
+    // 在类中*******************************************
+    // 类中是严格模式 父亲有个吃水果的方法 水果
+    // 儿子有自己的水果 使用父亲吃水果的方法吃自己的水果
+
+    class Father{
+        get fruit(){
+            return 'apple'
+        }
+        eat (){
+            console.log('I am eating a' + this.fruit);
+        }
+    }
+
+    class Son {
+        get fruit(){
+            return pear;
+        }
+    }
+
+    const father = new Father();
+    const son = new Son();
+
+    father.
+    </script>
+</body>
+</html>

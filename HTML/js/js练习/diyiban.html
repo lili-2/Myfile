@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="轮播.css"> -->
+    <!-- <script src="轮播.js"></script> -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        img {
+            height: 200px;
+            width: 400px;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        .first_picture {
+            position: absolute;
+            height: 200px;
+            width: 400px;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .first_left {
+            display: flex;
+            position: absolute;
+            left: 0px;
+        }
+
+        .first_picture .lmove {
+            width: 160px;
+            height: 20px;
+            position: absolute;
+            bottom: 10px;
+            left: calc(50% - 80px);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .first_picture .lmove .face {
+            width: 20px;
+            height: 20px;
+            background-color: coral;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="first_picture">
+        <ul class="first_left">
+            <li>
+                <img
+                    src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3995913724,2825994249&fm=26&gp=0.jpg">
+            </li>
+            <li>
+                <img
+                    src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3749106654,1121902450&fm=26&gp=0.jpg">
+            </li>
+            <li>
+                <img
+                    src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=189563440,1413634148&fm=11&gp=0.jpgs">
+            </li>
+            <li>
+                <img
+                    srxc="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2273812492,20588707&fm=26&gp=0.jpg">
+            </li>
+            <li>
+                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=51221531,2422902303&fm=26&gp=0.jpg">
+            </li>
+            <li>
+                <img
+                    src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3995913724,2825994249&fm=26&gp=0.jpg">
+            </li>
+        </ul>
+        <div class="lmove">
+            <span class="face"></span>
+            <span class="face"></span>
+            <span class="face"></span>
+            <span class="face"></span>
+            <span class="face"></span>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            const picture = document.getElementsByClassName('first_left')[0];
+            picture.style.left = 0 + 'px';
+            let index = 0;
+            function move(obj, target, speed) {
+                clearInterval(obj.timer);
+                let oldValue = parseInt(getComputedStyle(obj)["left"]);
+                if (target < oldValue) {
+                    speed = -speed;
+                }
+                obj.timer = setInterval(function () {
+                    let oldValue = parseInt(getComputedStyle(obj)["left"]);
+                    let newVlaue = oldValue + speed;
+                    if (newVlaue <= target && speed < 0) {
+                        newVlaue = target;
+                    }
+                    picture.style.left = newVlaue + "px";
+                    if (newVlaue === target) {
+                        clearInterval(obj.timer);
+                    }
+                }, 30);
+            };
+            const circle = document.getElementsByClassName('face');
+            function change() {
+                setInterval(function () {
+
+                    index++;
+                    move(picture, -400 * index, 10);
+                    index %= circle.length + 1;
+                    console.log(index, picture.style.left);
+                    if (index === circle.length) {
+                        picture.style.left = 0 + 'px';
+                        console.log(picture.style.left)
+                        console.log("执行");
+                    }
+                }, 2000)
+            };
+            change();
+        }
+    </script>
+</body>
+
+</html>

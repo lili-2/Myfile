@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .all {
+            width: 100%;
+            height: 100%;
+        }
+
+        .banner {
+            background: url("../QQTIM/images/banner-bg.jpg") center no-repeat;
+            background-size: 100% 100%;
+            width: 100%;
+            height: 965px;
+            position: relative;
+        }
+
+        .banner .navv {
+            width: 100%;
+            height: 150px;
+            background: url("../QQTIM/images/nav_bg.png");
+            position: relative;
+        }
+
+        .banner .nav_brand {
+            width: 93px;
+            height: 44px;
+            position: absolute;
+            top: 30px;
+            left: 140px;
+        }
+
+        .banner .sul {
+            position: absolute;
+            top: 40px;
+            left: 250px;
+        }
+
+        .banner .sul li {
+            float: left;
+            margin: 0 30px;
+            cursor: pointer;
+        }
+
+        .banner .zhuce {
+            position: absolute;
+            top: 37px;
+            left: 750px;
+        }
+
+        .zhuce a {
+            display: inline-block;
+            width: 80px;
+            height: 30px;
+            border-radius: 20px;
+            background-color: rgb(18, 183, 245);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .banner .login {
+            position: absolute;
+            top: 0px;
+            right: 180px;
+        }
+
+        .banner .login li {
+            float: left;
+            height: 20px;
+            line-height: 20px;
+            font-size: 12px;
+            margin: 20px;
+            font-weight: bold;
+        }
+
+        .banner .nowMan {
+            width: 200px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 12px;
+            position: absolute;
+            top: 50px;
+            right: 200px;
+        }
+
+        /*宣传页*/
+        .banner .banner-logo {
+            width: 220px;
+            height: 124px;
+            position: absolute;
+            left: 50%;
+            margin-left: -110px;
+            top: 200px;
+        }
+
+        .banner .download {
+            width: 240px;
+            height: 53px;
+            position: absolute;
+            left: 50%;
+            margin-left: -120px;
+            top: 350px;
+        }
+
+        .banner .banner-list {
+            width: 812px;
+            height: 147px;
+            position: absolute;
+            left: 50%;
+            margin-left: -406px;
+            margin-top: 300px;
+        }
+
+        .banner .banner-product {
+            width: 100%;
+            height: 347px;
+            position: absolute;
+            background: url("../QQTIM/images/banner-product.png") no-repeat;
+            background-size: 100% 100%;
+            bottom: 0;
+        }
+
+        /*第二页*/
+        .sound {
+            width: 100%;
+        }
+
+        .sound .sound-text {
+            width: 100%;
+            height: 321px;
+            background: url("../QQTIM/images/sound-text.png") no-repeat;
+        }
+
+        .sound .sound-bg {
+            width: 100%;
+            height: 800px;
+            background: url("../QQTIM/images/sound-bg.jpg") no-repeat center;
+        }
+
+        .sound .goutong {
+            width: 100%;
+            background-color: #ffffff;
+            height: 500px;
+            position: relative;
+        }
+
+        .sound .sound-phone {
+            width: 664px;
+            height: 764px;
+            position: absolute;
+            bottom: 0;
+            left: 80px;
+        }
+
+        .sound .text1 {
+            position: absolute;
+            width: 330px;
+            top: 200px;
+            right: 200px;
+        }
+
+        .sound .whatever {
+            position: absolute;
+            width: 434px;
+            top: 350px;
+            right: 200px;
+        }
+
+        .flie-bg {
+            background: url("../QQTIM/images/file-bg.jpg") no-repeat;
+            width: 100%;
+            height: 800px;
+            background-size: 100% 100%;
+        }
+
+        /*第四页*/
+        .four {
+            width: 100%;
+            height: 500px;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        .four .file-mac {
+            width: 597px;
+            height: 330px;
+            position: absolute;
+            top: 50%;
+            margin-top: -165px;
+            right: 100px;
+        }
+
+        .four .h1 {
+            width: 270px;
+            position: absolute;
+            top: 100px;
+            left: 200px;
+        }
+
+        .four .p1 {
+            width: 275px;
+            position: absolute;
+            top: 230px;
+            left: 200px;
+            font-size: 14px;
+        }
+
+        /*第五页*/
+        .five .interest-bg {
+            width: 100%;
+            height: 800px;
+            background-size: 100% 100%;
+            background: url("../QQTIM/images/interest-bg.jpg") no-repeat center;
+        }
+
+        .five .five-bottom {
+            width: 100%;
+            height: 600px;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        .five-bottom .interest-phone {
+            position: absolute;
+            width: 344px;
+            height: 506px;
+            bottom: 0;
+            left: 200px;
+        }
+
+        .five-bottom .h1 {
+            width: 341px;
+            position: absolute;
+            top: 300px;
+            right: 200px;
+            font-size: 40px;
+        }
+
+        .five-bottom .p1 {
+            width: 341px;
+            position: absolute;
+            top: 450px;
+            right: 200px;
+            /*font-size: 14px;*/
+        }
+
+        /*底部*/
+        .footer {
+            width: 100%;
+            height: 300px;
+            background-color: rgb(42, 42, 42);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .footer .div1 {
+            float: left;
+            width: 80px;
+            height: 90px;
+            margin-left: 150px;
+        }
+
+        .footer .footerImg1 {
+            width: 80px;
+            height: 60px;
+            background: url("../QQTIM/images/footer.png") 0px 0;
+        }
+
+        .footer .footerImg2 {
+            width: 80px;
+            height: 60px;
+            background: url("../QQTIM/images/footer.png") -106px 0;
+        }
+
+        .footer .footerImg3 {
+            width: 80px;
+            height: 60px;
+            background: url("../QQTIM/images/footer.png") -216px 0;
+        }
+
+        .footer .footerImg4 {
+            width: 80px;
+            height: 60px;
+            background: url("../QQTIM/images/footer.png") -326px 0;
+        }
+
+        .footer .div1 p {
+            font-size: 14px;
+            text-align: center;
+            color: gray;
+        }
+
+        .footer .div2 {
+            position: absolute;
+            width: 934px;
+            margin-top: 60px;
+            /*margin-left: 100px;*/
+            overflow: hidden;
+            margin-bottom: 50px;
+            margin-left: -462px;
+            left: 50%;
+        }
+
+        .footer .text3 {
+            width: 400px;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            margin-left: -200px;
+        }
+
+        .footer .p2 {
+            text-align: center;
+            color: gray;
+            margin-top: 20px;
+            /* font-family: 幼圆; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <div class="banner">
+            <nav class="navv">
+                <div class="nav_brand"><img src="../QQTIM/images/nav_brand.png" alt=""></div>
+                <ul class="sul">
+                    <li><a href="https://office.qq.com/">首页</a></li>
+                    <li><a href="https://office.qq.com/download.html">下载</a></li>
+                    <li><a href="">动态</a></li>
+                </ul>
+                <span class="zhuce"><a href="">注册</a></span>
+                <ul class="login">
+                    <li><a href="">登录</a></li>
+                    <li><a href="">QQ会员</a></li>
+                    <li><a href="">QQ安全</a></li>
+                </ul>
+                <span class="nowMan">当前在线人数：227,333,246</span>
+            </nav>
+            <!--宣传页-->
+            <div class="banner-logo"><img src="../QQTIM/images/banner-logo.png" alt=""></div>
+            <div class="download"><img src="../QQTIM/images/banner-download.png" alt=""></div>
+            <div class="banner-list"><img src="../QQTIM/images/banner-list.png" alt=""></div>
+            <div class="banner-product"></div>
+        </div>
+        <!--第二页-->
+        <div class="sound">
+            <div class="sound-text"></div>
+            <!--此处页面需要实现视察滚动的效果 所以我们需要用到data-stellar-background-ratio="0.5"的属性  0.5为默认滚动速度的一半-->
+            <div class="sound-bg" data-stellar-background-ratio="0.5"></div>
+            <div class="goutong">
+                <div class="sound-phone"><img src="../QQTIM/images/sound-phone.png" alt=""></div>
+                <h1 class="text1">&emsp;&emsp;&emsp;&emsp;沟通，是跨越千山万水的亲切的声音</h1>
+                <p class="whatever">
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;无论何时何地，你都能自由享受QQ在各种终端上的高清通话，与好友一起想聊多久就聊多久
+                </p>
+            </div>
+        </div>
+        <!--第三页-->
+        <!--此处页面需要实现视察滚动的效果 所以我们需要用到data-stellar-background-ratio="0.5"的属性  0.5为默认滚动速度的一半-->
+        <div class="flie-bg" data-stellar-background-ratio="0.5"></div>
+        <!--第四页-->
+        <div class="four">
+            <div class="file-mac"><img src="../QQTIM/images/file-mac.png" alt=""></div>
+            <h1 class="h1">沟通，是随时随地爽快收发</h1>
+            <p class="p1">通过QQ电脑和手机上的文件都能收发自如，更有手机在线查阅，轻松你的工作和生活</p>
+        </div>
+        <!--第五页-->
+        <section class="five">
+            <!--此处页面需要实现视察滚动的效果 所以我们需要用到data-stellar-background-ratio="0.5"的属性  0.5为默认滚动速度的一半-->
+            <div class="interest-bg" data-stellar-background-ratio="0.5"></div>
+            <div class="five-bottom">
+                <div class="interest-phone"><img src="../QQTIM/images/interest-phone.png" alt=""></div>
+                <h1 class="h1">沟通，是志同道合的放肆的青春</h1>
+                <p class="p1">既是世界很大，你也不会孤单，在兴趣部落有和你一样的人，期待着和你一起发现精彩</p>
+            </div>
+        </section>
+        <!--底部-->
+        <footer class="footer">
+            <div class="div2">
+                <div class="div1">
+                    <div class="footerImg1"></div>
+                    <p>QQ手机版</p>
+                </div>
+                <div class="div1">
+                    <div class="footerImg2"></div>
+                    <p>QQ&emsp;PC版</p>
+                </div>
+                <div class="div1">
+                    <div class="footerImg3"></div>
+                    <p>QQ&emsp;Mac版</p>
+                </div>
+                <div class="div1">
+                    <div class="footerImg4"></div>
+                    <p>QQ&emsp;平板版</p>
+                </div>
+            </div>
+            <div class="text3">
+                <p class="p2">Copyright&nbsp;©&emsp;1997-2019&nbsp;Tencent All Right Reseved.</p>
+                <p class="p2">腾讯公司&emsp;版权所有</p>
+            </div>
+
+        </footer>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>
+        登陆
+    </button>
+    <div id="button"></div>
+    <script>
+        const manage = "http://192.168.200.38:8080/JavaWebDemo_war_exploded/login?login=true&username=admin&passwd=admin";
+        var a;
+        fetch(manage)
+            .then(blob => blob.json())
+            .then(data => {
+                console.log(data);
+                a = data;
+                // btn.innerHTML = a.info;
+            });
+        const btn = document.getElementById('button');
+        // btn.onclick = function(){
+            // btn.innerHTML = a.info;
+            if(a !== undefined){
+                btn.innerHTML = a.info;
+                console.log(a.info);
+            }
+        
+    </script>
+</body>
+</html>

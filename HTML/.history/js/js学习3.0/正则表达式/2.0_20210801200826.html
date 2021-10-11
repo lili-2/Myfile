@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则量词 属性 方法</title>
+</head>
+<body>
+    <script>
+        //量词  
+        // n+ 出现一次到正无穷{1,正无穷}
+        // n* 出现0次到正无穷 {0,正无穷} *比+ 会多出一次空 
+        // n? 出现一次或0次   {0，1}
+        // n{x,y}  
+        //字符串从左到右 依次先匹配多个 在匹配少，如果一旦匹配上就不回头匹配
+        //贪婪匹配原则 能匹配多个 绝不匹配少个
+
+        // var reg = /\w+/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));
+
+        // var reg = /\w*/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));
+
+        // var reg = /\d*/g,
+        //     str = 'a';
+        // console.log(str.match(reg)); //["", ""]
+
+        // var reg = /\w?/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg)); //8个 ["a", "b", "c", "d", "e", "f", "g", ""]
+    </script>
+</body>
+</html>

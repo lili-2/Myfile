@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+//*****************类型转换个getter
+        // 两个等号 类型不一样 会调用toString方法 重写该方法
+        // var a = {
+        //     _dafult :0,
+        //     toString: function(){
+        //         return ++ this._dafult;
+        //     }
+        // }
+        // if(a == 1 && a == 2 && a == 3){
+        //     console.log('true');
+        // }
+
+
+
+         //getter -> 访问一个变量的时候进行拦截
+
+        // var _default = 0;
+        // Object.defineProperty(window,"a",{
+        //     get(){
+        //         return ++_default;
+        //     } 
+        // })
+        // if(a === 1 && a === 2 && a === 3){
+        //     console.log('true');
+        // }else{
+        //     console.log('false');
+        // }
+
+//************************类型转换
+        // var len1 = ({} + {}).length;//类型转换 toString
+        // // ({}).toString() "[object Object]"  字符串拼接 结果30
+
+        // var len2 = ([] + []).length; //0
+        // //[1,2,3].toString() "1,2,3"
+
+        // var len3 = (function(){}).length;// (function(){}).toString()
+        //                                 // "function(){}".length 12 错误  0
+        // function test (a,b,c){
+        //     console.log(arguments.length);//4 实参列表   
+        // }
+        // test(1,2,3,4);
+
+        // console.log(test.length);//形参个数 形参个数和实参个数映射关系 
+
+
+//************************ 
+        // const  test = new Function('a','b','c','console.log(a + b + c)');//前三个是参数 最后一个函数体
+        // const  test = new Function('a,b,c','console.log(a + b + c)');//结果一样
+        // test(1,2,3); 
+
+        // var a = 1,
+        //     b = 2;
+        // function test (){
+        //     var b = 3;
+
+        //     // return new Function('c','var b = 10;console.log(a + b + c)')//这个东西创建出来是在总是在全局作用域下的          
+        //     // 只能访问自己的作用域 和全局作用域
+        //     // 在node环境下报错 node环境下顶级作用域并不是全局作用域 而他会找顶级作用域里的a
+        //     // 不会形成闭包 但是若直接返回 function 会形成闭包
+        //     // return function(a,b,c){
+        //     //     console.log(a,b,c);
+        //     // }
+        // }
+        // // var t = test();
+        // // t(4);
+
+        // 7
+
+        var a = 1,
+            b = 2;
+        function test (){
+            var b = 3;
+
+            eval('!funcyion _ (c) {console.log(a + b + c)}(4)')
+            //要执行它 jia
+        }
+        test();
+
+
+    </script> 
+</body>
+</html>

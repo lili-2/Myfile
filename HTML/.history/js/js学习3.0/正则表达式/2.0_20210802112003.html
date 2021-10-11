@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则量词 属性 方法</title>
+</head>
+<body>
+    <script>
+        //****量词****
+        // n+ 出现一次到正无穷{1,正无穷}
+        // n* 出现0次到正无穷 {0,正无穷} *比+ 会多出一次空 
+        // n? 出现一次或0次   {0，1}
+        // n{x,y}  从x到y 若后面 不填 就是默认正无穷
+        //         ----{1,正无穷} === n+
+        //         ----{0,正无穷} === n*
+        //         ----{0,1} === n?
+        //字符串从左到右 依次先匹配多个 在匹配少，如果一旦匹配上就不回头匹配
+        //贪婪匹配原则 能匹配多个 绝不匹配少个
+        // ^n 匹配任何以n开头的字符串
+        // n$ 任何以n结尾的字符串
+        // ?=n 匹配其后紧跟着指定字符串n的字符串 84
+        // ?!n 匹配其后不是紧跟着字符串n的  
+        // 子表达式 反向引用方法--->93 
+        // ****属性****
+        // g    reg.global  结果位true / false
+        // i    reg.ignoreCase
+        // m    reg.multiline
+        //      reg.source  出现正则表达式本体
+        //      reg.lastIndex 属性  eg:127
+        // ****方法****
+        // reg.test()  能匹配出来就是true 不能就是false
+        // reg.exec()    //execute() 执行 框架原理回涉及 eg：117
+
+
+        // var reg = /\w+/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));
+
+        // var reg = /\w*/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));
+
+        // var reg = /\d*/g,
+        //     str = 'a';
+        // console.log(str.match(reg)); //["", ""]
+
+        // var reg = /\w?/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg)); //8个 ["a", "b", "c", "d", "e", "f", "g", ""]
+
+        // var reg = /\w{1,2}/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));//["ab", "cd", "ef", "g"]
+
+        // var reg = /\w{5,}/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));//["abcdefg"]
+
+        // var reg = /\w{5,}/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));//["abcdefg"]
+
+        // var reg = /^ab/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));
+
+        // var reg = /^ab/gm,
+        //     str = 'abcdefg\nabcdefg';
+        // console.log(str.match(reg));
+
+        // var reg = /cd$/gm,
+        //     str = 'abcdabcd\nabcdefg';
+        // console.log(str.match(reg));
+
+        //检查字符串是否以abcd开头和以abcd结尾
+        // var reg = /^abcd[\s\S]*abcd$/gm,
+        // var reg = /^abcd.*abcd$/gm,
+        //     str = 'abcd123abcd';
+        // console.log(str.match(reg));
+        // //检查字符串是否以abcd开头或以abcd结尾
+        // var reg = /^abcd|abcd$/gm,
+        //     str = 'abcd123abcd';
+        // console.log(str.match(reg));
+        //检查字符串是否以abcd开头和以abcd结尾,并且开头结尾是数字
+        // var reg = /^abcd\d+abcd$/gm,
+        //     str = 'abcd123abcd';
+        // console.log(str.match(reg));
+        //匹配以138开头的11位手机号码
+        // var reg = /^138\d{8}/gi,
+        //     str = '13812338765';
+        // console.log(str.match(reg));
+
+        // var str = 'abcdabcd',
+        //     reg = /a(?=b)/g;//要带括号
+        // console.log(str.match(reg));//["a", "a"]
+
+        // var str = 'abcdaccda',
+        //     reg = /a(?!b)/g;//要带括号
+        // console.log(str.match(reg));//["a", "a"]
+
+        //匹配 xxxx 
+        // var str = 'bbaaaaccaaaaiddddbaaaa',
+        //     // reg = /(a)\1\1\1/g; //["a", "a"]
+        //     reg = /(\w)\1\1\1/g;  //["aaaa", "aaaa", "dddd", "aaaa"]
+        //     //(a)有记忆 知道每次匹配的谁 括号括起来子表达式的一种
+        //     // \n 反向引用 反向引用第几(n)个子表达式
+        //     // /(a)\1\1\1 匹配4个a
+        //     // 反向引用记忆那个表达式三次 遇到了就记住了不匹配就忘记重新记忆
+        // console.log(str.match(reg));
+
+        //匹配xxyy
+        // var str = 'aabbccddddddccceevv',
+        //     reg = /(\w)\1(\w)\2/g;
+        // console.log(str.match(reg)); //["aabb", "ccdd", "dddd", "ccee"]
+
+        // var reg = /123/g,
+        //     str = '123123123123';
+        // console.log(reg.exec(str));
+        //["123", index: 0, input: "123123123123", groups: undefined]
+        // console.log(reg.exec(str));
+        //["123", index: 3, input: "123123123123", groups: undefined]
+        // 0 3 6 9 12 null 0 机械化循环匹配 走到null就重走一圈 必须g全局匹配 否则就一直是0
+        //匹配结果是一个类数组的东西 自己写的类数组__proto__是object 但这个继承自Array
+
+        // console.log(reg.lastIndex);
+        // console.log(reg.exec(str)) 
+        // console.log(reg.lastIndex);
+        // console.log(reg.exec(str)) 
+        // //lastIndex 与 类数组里面的index一致  null是最后一个
+        // reg.lastIndex = 6;
+        // console.log(reg.exec(str));
+        // //可以通过 lastIndex调整exec输出结果
+        // //若修改为 不是整数 是4时 往下走
+        // reg.lastIndex = 4;
+        // console.log(reg.lastIndex);//正常修改
+        // console.log(reg.exec(str));//找到和这个数组相近的往下找能匹配上的
+        // console.log(reg.lastIndex);//再往下走 又匹配上了 下一次修改回来 与index匹配
+        // console.log(reg.exec(str));
+
+        var reg = /(\w)\1(\w)\2/g,
+            str = 'aabbccdddddccceevv';
+        console.log(str.match(reg));
+        console.log(reg.exec(str)); //["aabb", "a", "b", index: 0, input: "aabbccdddddccceevv", groups: undefined]
+        //每个类数组会多出来两项 会把子表达式是什么打印出来
+        console.log(reg.exec(str));// ["ccdd", "c", "d", index: 4, input: "aabbccdddddccceevv", groups: undefined]
+    </script>
+</body>
+</html>

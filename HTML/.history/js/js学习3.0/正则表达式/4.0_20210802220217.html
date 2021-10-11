@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正向预查 贪婪与非贪婪模式 匹配特殊字符 replace方法 模板变量替换</title>
+</head>
+<body>
+    <script>
+        //正向预查 匹配一个有条件的字符串 
+        // var str = '1231231231',
+        //     // reg = /1(?=2)/g;//匹配其后紧跟着2的1
+        //     reg = /1(?!2)/g;
+        // console.log(str.match(reg));
+
+        //贪婪模式和非贪婪模式 正则默认是贪婪模式
+        // var str = 'abcd{{efg}}abcd{{xyz}}',
+        //     // reg = /{{.*}}/g;//贪婪模式下的结果 能多就多 ["{{efg}}abcd{{xyz}}"]
+        //     reg = /{{.*?}}/g;// ? 将贪婪模式改为非贪婪模式 ["{{efg}}", "{{xyz}}"]
+        // //     reg = /{{.?}}/g;// ? 此时的问号代表的 是{0,1}
+        // // console.log(str.match(reg));
+
+        // var str = 'aaaaaa',
+        //     // reg = /\w?/g;  // ["a", "a", "a", "a", "a", "a", ""]
+        //     reg = /w??/g;     // ["", "", "", "", "", "", ""]
+        // console.log(str.match(reg));
+
+        // replace ***重要
+        
+        // var str = 'JSplusplus';
+        // var str1 = str.replace('plus','+'); //replace JS+plus 没有全局匹配的能力 
+        // console.log(str1);
+
+        // var str = 'JSplusplus',
+        //     reg = /plus/g;
+        // var str1 = str.replace(reg,'+'); // reg 里有g 结果 JS++
+        // console.log(str1);
+    
+        //******************************************************************************************
+        //例题1 xxyy ----> yyxx
+        // var str = 'aabbccdd',
+        //     reg = /(\w)\1(\w)\2/g;
+        //第一种 方法
+        // var str1 = str.replace(reg,'$2$2$1$1'); //第二个引用第二个引用第一个引用第一个引用
+        // // 用 $ 去拿子表示符中的引用的字符串
+        // console.log(str1);
+        //第二种方法
+        // var str1 = str.replace(reg,function($,$1,$2){
+        //     // console.log($,$1,$2); 
+        //     return $2 + $2 + $1 + $1;
+        //     //aabb a b 
+        //     //ccdd c d
+        //     // $ 代表当前匹配的字符串 $1 第一个子表达式 $2 第二个子表达式
+        // })
+
+        //******************************************************************************************
+        //例题2 js-plus-plus   -> jsPlusPlus
+        // var str = 'js-plus-plus',
+        //     reg = /-p/g;
+        // str1 = str.replace(reg,'P');
+        // console.log(str1);
+
+        // var str = 'js-plus-plus',
+        //     reg = /-(\w)/g;
+        // str1 = str.replace(reg,function($,$1){
+        //     console.log($,$1);// -p 2 子表达式一定要括起来
+        //                       // 括起来之后  -p p
+        //     return $1.toUpperCase(); //或报错 
+        // });
+        // console.log(str1);
+        //例题2.2 jsPlusPlus   -> js_plus_plus 
+        // var str = 'jsPlusPlus',
+        //     reg = /([A-Z])/g;
+        // var str1 = str.replace(reg,function($,$1){
+        //     return '_' + $1.toLowerCase();
+        // })
+        // console.log(str1);
+
+        //******************************************************************************************
+        //例题3 xxyyzz  -> XxYyZz
+        // var str = 'xxyyzz',
+        //     reg = /(\w)\1(\w)\2(\w)\3/g;
+        // var str1 = str.replace(reg,function($,$1,$2,$3){
+        //     return $1.toUpperCase() + $1 + $2.toUpperCase() + $2 + $3.toUpperCase() + $3 ;
+        // }); 
+        // var str = 'xxyyzz',
+        //     reg = /(\w)\1/g;
+        // var str1 = str.replace(reg,function($,$1){
+        //     return $1.toUpperCase() + $1;
+        // }); 
+        // console.log(str1);
+
+        //******************************************************************************************
+        // 例子4 aabbcc => a$b$c$ 不能使用function
+        // var str = 'aabbcc',
+        //     reg = /(\w)\1(\w)\2(\w)\3/g;
+        // // var str1 = str.replace(reg,'$1$2$3');//abc
+        // var str1 = str.replace(reg,'$1$$2$$3$');//a$2$3$ 有问题 要是有$的时候用两个$$
+        // var str1 = str.replace(reg,'$1$$$2$$$3$$');//a$b$c$
+        // console.log(str1);
+
+        // var str = 'aa\\bb\\cc'
+        //     reg = /\\/g;
+        // console.log(str); //aa\bb\cc
+        // console.log(str.match(reg)); //["\\", "\\"]
+        
+        // var str = 'aa?bb?cc'
+        //     reg = /\?/g;//加个转义符号
+        // console.log(str); //aa?bb?cc
+        // console.log(str.match(reg)); //["?", "?"]
+
+        // var str = 'aa?bb+cc'
+        //     reg = /\?|\+/g;//加个转义符号
+        // console.log(str); //aa?bb?cc
+        // console.log(str.match(reg)); 
+
+        // var str = 'aaaaaabbbbbccccc',
+        //     reg = /(\w)\1*/g;
+        // var str1 = str.replace(reg,'$1'); //abc
+        // console.log(str1);
+
+        //******************************************************************************************
+        // 例子5 100000000000 100,000,000,000;
+        // var str = '100000000000';
+        // var reg = /\d{3}/g;
+        // var str1 = str.replace(/(\d{3}\B)/g,'$1,');
+        // // \B 非单词边界
+        // console.log(str.match(reg));
+        // console.log(str1);
+
+        var reg = /(/g;
+
+    </script>                                                                                                                                                                                                                                                                                     
+</body>
+</html>

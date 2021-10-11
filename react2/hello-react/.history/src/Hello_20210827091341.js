@@ -1,0 +1,1 @@
+import React,{Component} = require("react");

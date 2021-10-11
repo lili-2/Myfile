@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //查询字符串
+        let getQueryStringArga = function () {
+            let qs = (location.search.length > 0) ? location.search.substring(1) : "",//删除查询字符串开头的问号
+                args = {};
+            for (let item of qs.split("&").map(kv => kv.split('='))) {
+                let name = decodeURIComponent(item[0]), //decodeURIComponent解码
+                    value = decodeURIComponent(item[1]);
+                if (name.length) {
+                    args[name] = value;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

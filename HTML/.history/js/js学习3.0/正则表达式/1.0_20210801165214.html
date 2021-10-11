@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        //转义
+        // 转义符号 \
+        // 转义字符 \字符
+        // var str1 = "hello '你好'world";
+        // var str2 = 'hello "你好" world';
+        // var str3 = "hello \"你好\" world";
+        // var str4 = "hello \\你好\\ world";
+        // console.log(str1);
+        // console.log(str2);
+        // console.log(str3);
+        // console.log(str4);  
+        // var str = 'hello\n你好\nworld';
+        // console.log(str);//换行
+        // document.write(str);//显示空格  \n是给编辑系统用的 不是html html是文本
+
+        // var str = '<h1>hello</h1><h2>world</h2>';//换行 报错 js默认字符串不能多行
+        //每一行字符字符串 用+拼接  或者末尾转义 转义成空格
+        // var str = '<h1>hello</h1>\
+        //     <h2>world</h2>'
+
+        // console.log(str);
+        // var wrap = document.getElementsByTagName('div')[0];
+        // wrap.innerHTML = str;
+
+        // RegExp = regular expression 
+//*****************************第一种 实例化对象
+        // var obj = new Object();
+        // var arr = new Array();
+        // var reg = new RegExp('test');
+        //     str = 'This is a test';
+        // console.log(reg.test(str));  //test 以这个正则表达式为规则 来检验这个字符串str中是否包含这个test
+                                        //字符串片段 大小写默认敏感 连续
+        // var reg = new RegExp('Test','i');//ignore 忽略大小写
+        // str = 'This is a test';
+        // console.log(reg.test(str));
+
+        // var reg = new RegExp('^Test','igm');//ignore case 忽略大小写 global 全局 multi-line  多行匹配
+        //                     //^ 表示开头
+        // str = 'This is a test.\nTest is important';
+        // // console.log(reg.test(str));//查看是否有两个 用match
+        // console.log(str.match(reg));//正则表达式那不加 全局g 只能识别一个
+//*****************************第二种
+        //  var obj = {};
+        //  var arr = [];//直接声明对象 对象字面量 对象直接量
+
+        // var reg = /test/; 
+        // var str = 'This is a test.\nTest is important';
+
+        // console.log(reg.test(str));
+        // console.log(str.match(reg));
+
+        // var reg = /^test/igm; 
+
+        // var str = 'This is a test.\nTest is important';
+        // var v = 'Test';
+        // // var reg = /v/gi;
+        // var reg = new RegExp(v,'ig');//若里面是变量 则只能用这种
+
+
+        // console.log(reg.test(str));
+        // console.log(str.match(reg));
+
+        //正则 对象
+        // var reg = /test/;
+        // // var newReg = new RegExp('test');
+        // var newReg = RegExp('test'); 
+        // console.log(reg,newReg);
+
+        // reg.a = 1;
+        // console.log(newReg.a);//undefined
+        // var reg = /test/;
+        // // var newReg = new RegExp('test');
+        // var newReg = RegExp(reg); //直接拿了 reg的引用 若加new 生成了一个新的对象 
+        // console.log(reg,newReg);
+
+        // reg.a = 1;
+        // console.log(reg===newReg);
+        // console.log(newReg.a);//1 是同一个正则 一个对象的不同引用
+         
+        // var reg = /^Test/igm,
+        //     str = 'This is a test.\nTest is important';
+        // console.log(str.match(reg));
+
+        //|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        //---修饰符-------正则属性------------------          **||
+        // i ------ ignore case 忽略大小写                    **||
+        // g ------ global 全局匹配                           **||
+        // m ------ multi-line 多行匹配                       **||  
+                                                        //   **||
+        //表达式 [] 一位的可匹配的范围 匹配中间选择一个          **||
+        // ^     代表开头                                     **||
+        // [^0]  代表非零                                     **||
+        // |     正则表达式里的或                              **||
+        // ()    1.优先级                                     **||
+        //****************************************************|||
+        //||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+        // var str = '09wdhuh23fuhugu0g567hdughursgu',//匹配成功过的就不能再匹配了567只能匹配56
+        //     reg = /[1234567890][1234567890]/g;
+        // console.log(str.match(reg));
+
+        // var str = '09wdhuh23fuhugu0g567hdughursgu',//匹配成功过的就不能再匹配了567只能匹配56
+        //     reg = /[1234567890][1234567890]/g;
+        // console.log(str.match(reg));
+
+        // var reg = /[wx][yx][z]/g,
+        //     str = 'wxyz';
+        // console.log(str.match(reg));
+
+        // var str = 'dasfvrttaXx43h4u3ha';
+        //     reg = /[^a][A-Z][a-z]/g;
+        // console.log(str.match(reg));
+
+        // var str = '234IHGiwehfIhhihi)123',
+        //     reg = /(123|234)[A-z]/g;
+        // console.log(str.match(reg));
+
+        //元字符 正则使用的转义符号
+        //|||||||||||||||||||||||||||||||||||||||||||||||||||||         
+        //  \w === [0-9A-z_]                               **||
+        //  \W === [^\w]                                   **||
+        //  \d === [0-9]  digit 数字                       **||
+        //  \D === [^\d]                                   **||
+        //  \s === [\r\n\t\v\f] \r 回车\v垂直换行符 \f换页符 **||
+        //  \S === [^\s]                                   **||
+        //  \b 单词边界                                     **||
+        //  \B 非单词边界                                    **||
+        //***************************************************||
+        //|||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+        // var reg = /\wab/g,
+        //     str = '23_abc-%&';
+        // var reg = /\Wab/g,
+        //     str = '23&abc-%&';
+        // console.log(str.match(reg)); 
+
+        // var reg = /[\W][\w]/g,
+        //     str = '23&abc-%&';
+        // console.log(str.match(reg)); 
+
+        // var reg = /\Dab/g,
+        // str = '23&abc-%&';
+        // console.log(str.match(reg)); 
+
+        // var reg = /\sab/g,
+        //     str = '23   ab-&*&';
+        // console.log(str.match(reg));
+
+        // var reg = /\Bis\b/g,
+        //     str = 'This is a test';
+        // console.log(str.match(reg));
+
+        var reg = /\t/g,
+            str = 'This\nis a test';
+        console.log(str.match(reg));
+    </script>
+</body>
+</html>

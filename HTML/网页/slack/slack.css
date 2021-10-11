@@ -1,0 +1,407 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(87, 19, 87);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.top_first{
+    position: relative;
+}
+.top_first .top_1_list{
+    position: absolute;
+    top: 25px;
+    font-weight: 100;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    padding: 10px 0;
+    display: none;
+}
+.top_first .top_1_list>li{
+    color: black;
+    height: 30px;
+    padding: 0 10px;
+    line-height: 30px;
+    width: 170px;
+}
+.top_first .top_1_list>li:last-child{
+    border-top: 1px solid rgb(177, 174, 174);
+}
+.top_first .top_1_list>li:hover{
+    background-color: rgb(46, 46, 126);
+}
+.top_first:hover .top_1_list{
+    display: block;
+}
+header{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.header{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 70px;
+    color: black;
+    animation: move 1s;
+    position: fixed;
+    top: 10px;
+}
+@keyframes move{
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+.top_middle{
+    display: flex;
+}
+.h_left{
+    margin: 0 40px;
+}
+.top_middle>span:nth-child(1)::after{
+    
+    margin-left: 5px;
+    content: url(https://a.slack-edge.com/3099b/marketing/img/icons/icon_chevron_white_nav.svg);
+}
+.top_middle>span{
+    width: 100px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.top_middle>span:not(:first-child):hover{
+    text-decoration: underline;
+}
+.right{
+    display: flex;
+    font-weight: bolder;
+    cursor: pointer;
+    margin-left: 150px;
+}
+.right>div{
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 0 10px;
+    font-size: 15px;
+}
+.right>div:nth-child(1){
+    width: 70px;
+}
+.right>div:nth-child(2){
+    background-color: rgb(87, 19, 87);
+    border: 1px solid white;
+    line-height: 38px;
+}
+.right>div:nth-child(3){
+    color: rgb(87, 19, 87);
+    background-color: white;
+}
+.right>div:nth-child(2):hover{
+    border-width: 2px;
+    line-height: 36px;
+}
+.right>div:nth-child(3):hover{
+    border: 2px solid rgb(138, 38, 138);
+    line-height: 36px;
+}
+.ad{
+    width: 100%;
+    height: 70px;
+    /* position: absolute; */
+    top: 70px;
+    border-radius: 70px;
+    background-color: rgb(20, 107, 158);
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    color: white;
+    font-weight: 500;
+}
+.ad button{
+    margin-left: 10px;
+    border: none;
+    color: white;
+    font-size: 17px;
+    font-weight: bolder;
+    background-color: inherit;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+.ad button::after{
+    position: absolute;
+    margin-left: 10px;
+    content: url(https://a.slack-edge.com/3099b/marketing/img/icons/icon_workspace_arrow_white_nav.svg);
+}
+.ad .click{
+    position: absolute;
+    right: 50px;
+    color: white;
+    cursor: pointer;
+}
+.middle{
+    margin: 80px auto 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.middle p{
+    font-size: 60px;
+    font-weight: bolder;
+    color: white;
+}
+.middle .color_y{
+    color: rgb(221, 157, 20);
+}
+.two{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    font-weight: 600;
+    font-size: 0;
+}
+.two>span{
+    height: 60px;
+    line-height: 60px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.two>span:first-child{
+    width: 180px;
+    background-color: #fff;
+    color: #611f69;
+    box-shadow: inset 0 0 0 1px #611f69;
+}
+.two>span:last-child{
+    width: 300px;
+    background-color: #ebeaeb;
+    color: #1d1d1d;
+    /* cursor: not-allowed; */
+    cursor: no-drop;
+}
+video{
+    display: block;
+    width: 700px;
+    height: 600px;
+    margin: 0px auto;
+}
+.middle_right{
+    position: absolute;
+    width:640px;
+    right: 0px;
+    z-index: -10;
+}
+.middle_right > div{
+    position: relative;
+    margin-top: 500px;
+    border-radius: 4px;
+}
+.right1{
+    position: relative;
+    width: 620px;
+}
+.right1>div{
+    display: inline-block;
+} 
+.right1 > .right1_header{
+    display: flex;
+    align-items: center;
+    height: 35px;
+    padding: 10px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    background: #2b092b;
+}
+.right1 > .right1_header>span{
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 5px;
+}
+.right1 > .right1_header>span:nth-child(1){
+    background-color: #ff6059;
+}
+.right1 > .right1_header>span:nth-child(2){
+    background-color: #ffbe2f;
+}
+.right1 > .right1_header>span:nth-child(3){
+    background-color: #2aca41;
+}
+.right1 > .right1_aside{
+    width: 240px;
+    background-color: #791984;
+    height: 515px;
+    border-bottom-left-radius: 4px;
+}
+.right1 > .right1_aside  div{
+    height: 90px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+.right1 > .right1_aside .right1_aside_header_text{
+    color: #c6c6c6;
+    font-size: 18px;
+    margin-left: 5px;
+}
+.right1 > .right1_aside div>video{
+    position: relative;
+    width: 100px;
+    margin: 0;
+}
+.right1 > .right1_aside  div video::after{
+        content: '';
+        height: 10px;
+        width: 10px;
+        background: #2EB67D;
+        border: 2px solid #791984;
+        position: absolute;
+        border-radius: 50%;
+}
+.right1 > .right1_aside div:nth-child(2){
+    background-color: rgb(30, 114, 211);
+}
+.right1 > .right1_aside div>video{
+    position: relative;
+    height: 100%;
+}
+.right1 .right1_right{
+    position: absolute;
+    width: calc(620px - 240px);
+    border-bottom-right-radius: 4px;
+    background-color: white;
+}
+.right1 .right1_right .r_r_header{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+.right1 .right1_right .r_r_header>img{
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+.right1 .right1_right .r_r_content1{
+    display: flex;
+    padding:5px 10px;
+}
+.right1 .right1_right .r_r_content1>img{
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+.r_r_content1>div{
+    width: 100%;
+}
+.r_r_content1>div .name{
+    font-weight: 900;
+}
+.r_r_content1>div .time{
+    color: #616061;
+    font-size: 12px;
+    margin-left: 3px;
+}
+.r_r_content1 div .three_length>span{
+    border-radius: 1000px;
+    display: inline-block;
+    height: 8px;
+    background: #ddd;
+    border: 1px solid #ddd;
+    width: 100%;
+}
+.r_r_content1 div .zan{
+    line-height: 13px;
+    padding: 4px 8px;
+    display: inline-flex;
+    align-items: center;
+    background: rgba(29,28,29,.04);
+    border-radius: 12px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.r_r_content1 div .zan img{
+    width: 14px;
+    height: 14px;
+}
+.r_r_content1 div .zan span{
+    margin: 0 5px;
+}
+.middle_left{
+    width: 550px;
+    margin-left: 20px;
+    display: none;
+}
+.middle_left>h2{
+    font-size: 50px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+.middle_left_middle{
+    margin-top: 20px;
+    width: 400px;
+    border-radius: 5px;
+    border: 1px solid black;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    justify-items: center;
+    align-items: start; */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.middle_left_middle>a{
+    flex: 1;
+    display: block;
+    height: 100%;
+    margin-left: 30px;
+}
+.middle_left_middle>a:not(:last-child){
+    border-right: 1px solid black;
+}
+.middle_left2{
+    top: 200px;
+    position: fixed;
+    transform: translate(-100px);
+    animation-name: move2;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+@keyframes move2{
+    0%{
+        transform: translateY(200px);
+        display: none;
+    }
+    100%{
+        transform: translateY(0px);
+        display: block;
+    }
+}

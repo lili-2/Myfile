@@ -1,0 +1,39 @@
+window.onload = function () {
+    const concern = []
+    const guanzhu = document.getElementsByClassName('guanzhu')[0];
+    // guanzhu.addEventListener('click',)
+    // localStorage.setItem("key", "value");
+
+    $.ajax({
+        url: `https://wis.qq.com/weather/common?source=pc&weather_type=observe|forecast_1h|forecast_24h|index|alarm|limit|tips|rise&province=%E9%99%95%E8%A5%BF%E7%9C%81&city=%E8%A5%BF%E5%AE%89%E5%B8%82&county`,
+        type: "GET",
+        dataType: "JSONP",
+        success: function (data) {
+            update(data.data)
+        },
+        error: function (error) {
+            console.log("错误")
+            console.log(error)
+        }
+    });
+    // search.addEventListener('keydown', function (e, v) {
+    //     if (e.keyCode === 13) {
+    //         // console.log(search.value)
+    //         searchcity(search.value)
+    //     }
+    // })
+    // searchcity = function (value) {
+    //     $.ajax({
+    //         url: `https://wis.qq.com/city/like?source=pc&city=${value}`,
+    //         type: "GET",
+    //         dataType: "JSONP",
+    //         success: function (data) {
+    //             update(data)
+    //         },
+    //         error: function (error) {
+    //             console.log("错误")
+    //             console.log(error)
+    //         }
+    //     });
+    // }
+}

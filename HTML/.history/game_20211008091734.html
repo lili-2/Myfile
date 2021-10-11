@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俄罗斯方块</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <style>
+        body {
+            background-color: #303952;
+        }
+
+        .score {
+            color: ghostwhite;
+            text-align: center;
+            font-size: 20px;
+            margin-top: 30px;
+        }
+
+        .box {
+            width: 375px;
+            height: 650px;
+            background-color: #596275;
+            /* border: 1px solid #0abde3; */
+            box-shadow: #33d9b2 0px 0px 8px;
+            margin: 10px auto;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .block1 {
+            width: 25px;
+            height: 25px;
+            background-color: #33d9b2;
+            box-shadow: #33d9b2 0px 0px 8px;
+            position: absolute;
+            /* top: 0px; */
+        }
+
+        .fixedBlock {
+            width: 25px;
+            height: 25px;
+            background-color: #75a5e7;
+            box-shadow: #a5b1c2 0px 0px 8px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="score">本次得分：0</div>
+    <div class="box">
+        <!-- <div class="block1"></div> -->
+    </div>
+</body>
+<script>
+    const STEP = 25
+    const ROW = 26
+    const COL = 15
+    var MODELS = [
+        // _|
+        {
+            0: { row: 2, col: 0 }, 1: { row: 2, col: 1 },
+            2: { row: 2, col: 2 }, 3: { row: 1, col: 2 }
+        },
+        // L
+        {
+            0: { row: 2, col: 0 }, 1: { row: 2, col: 1 },
+            2: { row: 2, col: 2 }, 3: { row: 1, col: 0 }
+        },
+        // T
+        {
+            0: { row: 2, col: 0 }, 1: { row: 2, col: 1 },
+            2: { row: 2, col: 2 }, 3: { row: 1, col: 1 }
+        },
+        // I
+        {
+            0: { row: 0, col: 1 }, 1: { row: 1, col: 1 },
+            2: { row: 2, col: 1 }, 3: { row: 3, col: 1 }
+        },
+        // 田
+        {
+            0: { row: 1, col: 0 }, 1: { row: 1, col: 1 },
+            2: { row: 2, col: 0 }, 3: { row: 2, col: 1 }
+        },
+        // Z
+        {
+            0: { row: 1, col: 0 }, 1: { row: 1, col: 1 },
+            2: { row: 2, col: 1 }, 3: { row: 2, col: 2 }
+        },
+    ]
+    var curModel = {}
+    // 记录所有块元素的位置
+    var fixedBlocks = {}
+    var currentX = 0, currentY = 0;
+    var timer = null
+    var cnt = 0
+    function init() {
+        creatModel();
+        onKeyDown();
+    }
+
+    // 根据数据源创建块元素
+    function creatModel() {
+        // 判断游戏是否结束
+        if (isGameOver()) {
+            over()
+            return
+        }
+        curModel = MODELS[_.random(0, MODELS.length - 1)]
+        currentX = 0
+        currentY = 0
+        for (var key in curModel) {
+            var divBox = document.createElement("div")
+            divBox.className = "block1"
+            document.querySelector(".box").appendChild(divBox)
+        }
+        locationModel()
+        autoDown()
+    }
+
+    // 根据数据源定位块元素
+    function locationModel() {
+        // 首先判断是否越界
+        checkBound()
+        var eles = document.getElementsByClassName("block1")
+        for (let i = 0; i < eles.length; i++) {
+            // 单个块元素
+            var singleBlock = eles[i]
+            // 每个块元素对应的数据
+            var blockModel = curModel[i]
+            singleBlock.style.top = (currentY + blockModel.row) * STEP + "px"
+            singleBlock.style.left = (currentX + blockModel.col) * STEP + "px"
+        }
+    }
+
+    function onKeyDown() {
+        var block1 = document.getElementsByClassName("block1")[0]
+        // block1.style.left = "0px"
+        // block1.style.top = "0px"
+        // console.log(x,y)
+        //上下左右 38 40 37 39
+        document.onkeydown = function (event) {
+            var x = parseInt(block1.style.left)
+            var y = parseInt(block1.style.top)
+            switch (event.keyCode) {
+                case 38:
+                    rotate();
+
+                    break
+                case 39:
+                    move(1, 0)
+                    break
+                case 40:
+                    move(0, 1)
+                    break;
+                case 37:
+                    move(-1, 0)
+                    break;
+            }
+        }
+    }
+
+    function move(x, y) {
+        if (isMeet(currentX + x, currentY + y, curModel)) {
+            if (y !== 0) {
+                // 模型之间底部触碰
+                fixedModel()
+            }
+            return
+        }
+        /* var block1 = document.getElementsByClassName("block1")[0]
+        block1.style.top = parseInt(block1.style.top||0)+y*STEP+"px"
+        block1.style.left = parseInt(block1.style.left||0)+x*STEP+"px" */
+        currentX += x
+        currentY += y
+        locationModel()
+    }
+
+    function rotate() {
+        var cloneCurModel = _.cloneDeep(curModel)
+        /* 旋转后的行 = 旋转前的列
+        旋转后的列= 3 - 旋转前的行 */
+        for (var key in cloneCurModel) {
+            var blockModel = cloneCurModel[key]
+            var t = blockModel.row
+            blockModel.row = blockModel.col
+            blockModel.col = 3 - t
+        }
+        if (isMeet(currentX, currentY, cloneCurModel)) {
+            return
+        }
+        curModel = cloneCurModel
+        locationModel()
+    }
+
+    function checkBound() {
+        // 定义边界
+        const LeftBound = 0, RightBound = COL, BottomBound = ROW
+        for (let key in curModel) {
+            var blockModel = curModel[key]
+            // 判断越界
+            if ((blockModel.col + currentX) < LeftBound)
+                currentX++
+            if ((blockModel.col + currentX) >= RightBound)
+                currentX--
+            // 触碰底部
+            if ((blockModel.row + currentY) >= BottomBound) {
+                currentY--
+                fixedModel()
+            }
+        }
+    }
+
+    function fixedModel() {
+        var eles = document.getElementsByClassName("block1")
+        for (let i = 0; i < 4; i++) {
+            var singleBlock = eles[0]   //activityModelEle
+            singleBlock.className = "fixedBlock"
+            // 记录块元素
+            var blockModel = curModel[i]
+            fixedBlocks[(currentY + blockModel.row) + "_" + (currentX + blockModel.col)] = singleBlock
+        }
+        /* for (let i = eles.length - 1; i >= 0; i--) {
+            var singleBlock = eles[i]   //activityModelEle
+            singleBlock.className = "fixedBlock"
+            // 记录块元素
+            var blockModel = curModel[i]
+            fixedBlocks[(currentY + blockModel.row) + "_" + (currentX + blockModel.col)] = singleBlock
+        } */
+        isRemoveLine()
+        creatModel()
+    }
+
+    function isMeet(x, y, model) {
+        // (x,y) 模型将要移动到的位置
+        // 模型将要发生的变化 如旋转等
+        for (var key in model) {
+            var blockModel = model[key]
+            if (fixedBlocks[(y + blockModel.row) + "_" + (x + blockModel.col)]) {
+                return true
+            }
+        }
+        return false
+    }
+    function isRemoveLine() {
+        /* 判断某行中，每一列是否都存在块元素，是则清理 */
+        /* 遍历所有行所有列 */
+        for (var i = 0; i < ROW; i++) {
+            /* 假设当前行铺满，设flag=true */
+            var flag = true;
+            for (var j = 0; j < COL; j++) {
+                /* 当前行没铺满 */
+                if (!fixedBlocks[i + "_" + j]) {
+                    flag = false;
+                    break;
+                }
+            }
+            /* 当某行铺满,flag==true */
+            if (flag) {
+                removeLine(i)
+            }
+        }
+    }
+
+    // 清理已满行
+    function removeLine(line) {
+        cnt++;
+        for (let i = 0; i < COL; i++) {
+            document.querySelector(".box").removeChild(fixedBlocks[line + "_" + i])
+            fixedBlocks[line + "_" + i] = null
+        }
+
+        downLine(line);
+        creatModel()
+    }
+
+    // 下落
+    function downLine(line) {
+        for (let i = line - 1; i >= 0; i--) {
+            for (let j = 0; j < COL; j++) {
+                if (!fixedBlocks[i + "_" + j])
+                    continue
+                // 修改在数据源中的位置
+                fixedBlocks[(i + 1) + "_" + j] = fixedBlocks[i + "_" + j]
+                // 在容器中下落
+                fixedBlocks[(i + 1) + "_" + j].style.top = (i + 1) * STEP + "px"
+                fixedBlocks[i + "_" + j] = null
+            }
+        }
+
+        var score = document.getElementsByClassName("score")[0];
+        cnt++;
+        score.innerHTML = `"本次得分：" + ${cnt}`;
+    }
+
+    function autoDown() {
+        if (timer)
+            clearInterval(timer)
+        timer = setInterval(function () {
+            move(0, 1)
+        }, 800)
+    }
+
+    // 游戏结束判断
+    function isGameOver() {
+        for (let i = 0; i < COL; i++) {
+            if (fixedBlocks["0_" + i])
+                return true
+        }
+        return false
+    }
+    function over() {
+        if (timer)
+            clearInterval(timer)
+        alert("你好菜啊")
+    }
+    init();
+</script>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // //生成器是一个特殊的函数 异步编程 以前都是回调函数
+        // //yield 函数代码的分隔符
+        // function * gen(){
+        //     // console.log("hello generator");
+        //     // console.log(111);
+        //     yield 'yizhi';
+        //     // console.log(211);
+        //     yield 'yiz';
+        //     // console.log(311);
+        //     yield 'dw'
+        //     // console.log(411);
+        // }
+        // let iterator = gen();
+        // // console.log(iterator);
+        // // iterator.next();
+        // for(let v of gen()){
+        //     console.log(v);
+        // }
+        
+        // function * gen(arg){
+        //     yield 111;
+        //     yield 222;
+        //     yield 333;
+        // }
+
+        // let iterator = gen('AAA');
+        // console.log(iterator.next());
+
+        //回调地狱
+        // setTimeout(() => {
+        //     console.log(111);
+        //     setTimeout(() => {
+        //         console.log(222);
+        //         setTimeout(() => {
+        //             console.log(333);
+        //         },3000);
+        //     },2000);
+        // },1000);
+
+        //实例1
+        // function one(){
+        //     setTimeout(() => {
+        //         console.log(111);
+        //         iterator.next();
+        //     },1000)
+        // }
+        // function two(){
+        //     setTimeout(() => {
+        //         console.log(222);
+        //         iterator.next();
+        //     },2000)
+        // }
+        // function three(){
+        //     setTimeout(() => {
+        //         console.log(333);
+              
+        //     },3000);
+        // }
+
+        // function * gen(){
+        //     yield one();
+        //     yield two();
+        //     yield three();
+        // }
+
+        // let iterator = gen();
+        // iterator.next();
+        
+        //实例2
+        //模拟获取 用户数据 订单数据 商品数据
+        function getUsers(){
+            setTimeout(() => {
+                let data = '用户数据';
+                iterator.next(data);
+            },1000)
+        }
+        function getOrders(){
+            setTimeout(() => {
+                let data = '订单数据';
+                iterator.next(data);
+            },1000)
+        }
+        function getGoods(){
+            setTimeout(() => {
+                let data = '商品数据'
+            },1000)
+        }
+        function * gen(){
+            yield getUsers();
+            yield getOrders();
+            yield getGoods();
+        }
+        let iterator = gen();
+        iterator.next();
+    </script>
+</body>
+</html>

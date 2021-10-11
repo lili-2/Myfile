@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        s = "babad";
+        
+        const dp = new Array(s.length);
+
+        for(let i = s.length - 1;i >= 0;i++){
+            dp[i] = [];
+            for(let j = i--;j >= 0;j){
+                if(i===j){
+                    dp[i][j] = 1;
+                }else{
+                    dp[i][j] = dp[i+1][j-1] && s.charAt(i) === s.charAt(j) ? 1 : 0;
+                }
+            }
+        }
+        console.log(dp);
+
+//         for (let i = s.length - 1; i >= 0; i--) {
+//     dp[i] = [];
+//     for (let j = i; j < s.length; j++) {
+//       if (j - i === 0) dp[i][j] = true;
+//       // specail case 1
+//       else if (j - i === 1 && s[i] === s[j]) dp[i][j] = true;
+//       // specail case 2
+//       else if (s[i] === s[j] && dp[i + 1][j - 1]) {
+//         // state transition
+//         dp[i][j] = true;
+//       }
+
+//       if (dp[i][j] && j - i + 1 > res.length) {
+//         // update res
+//         res = s.slice(i, j + 1);
+//       }
+//     }
+//   }
+
+
+//   return res;
+// };
+        // let l = 0 //
+        // let r = 1
+        // let max =1
+        // let m = 0 // 
+        // let ret = s.charAt(0);
+        // while(r<s.length) { //下一次m右移（m+1）到r的距离一定小雨m到r的距离，因此r如果指向末尾，后面的m没必要再去看了
+        //     if(s.charAt(r) === s.charAt(l)) { //判断l,r指向字符是否相等
+        //         if(r-l === 1){
+        //             //当l,r相邻时,循环判断l和r+1指向是否相等，相等r继续右移    
+        //             while(r+1<s.length &&s.charAt(r+1) === s.charAt(l)){
+        //                 r=r+1
+        //             }
+        //         }
+        //         let temp = r - l + 1
+        //         if(temp>max) {
+        //             ret = s.slice(l,r+1);
+        //             max =  temp
+        //         }
+        //         if(l>0) { // 如果l不是第一位，将l左移动，r右移动
+        //             l -= 1
+        //             r +=1
+        //         }else { //如果l是第一位，说明当前m=0，最大回文记录完毕。m右移。
+        //             m+=1
+        //             l=m
+        //             r=m+1
+        //         }
+        //     }else {
+        //         if(l>0 && r-l===1) {// 当l,r相邻时，l左移，此时l=0('c'),r=2('c')
+        //             l -= 1
+        //         }else { // 当l,r不相邻时,说明不回文，m右移动 'abc' m=1 l=0 r=2
+        //             m+=1
+        //             l=m
+        //             r=m+1
+        //         }
+        //     }
+        // }
+    </script>
+</body>
+</html>

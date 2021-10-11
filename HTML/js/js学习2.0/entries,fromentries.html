@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //1.0
+        function Test(){
+            this.a = 1;
+            this.b = 2;
+        }
+        Test.prototype.c = 3;
+        const test = new Test();
+
+        console.log(test);
+
+        //原型上可枚举的都会打印出来 
+        for(let k in test){
+            console.log(k,test[k]);
+        }
+
+        // //变成键值对数组，可迭代的 不会找原型上的东西 必须是可枚举的
+        // const testArr = Object.entries(test);
+
+        // console.log(testArr)
+
+        // for(let [k,v] of testArr){
+        //     console.log(k,v);
+        // }
+
+        // const obj = {};
+        // Object.defineProperties(obj,{
+        //     a:{
+        //         value:1,
+        //         enumerable: true
+        //     },
+        //     b:{
+        //         value:2,
+        //         enumerable: true
+        //     }
+        // });
+        // const test2Arr = Object.entries(obj);
+        // console.log(test2Arr);
+        // //不可枚举的不会转
+        // for(let [k,v] of test2Arr){
+        //     console.log(k,v);
+        // }
+
+        // //Map可以接收一个二维数组
+        // const m = new Map([
+        //     ['a',1],
+        //     ['b',2]
+        // ]);
+        
+        // // m.set('a',1);
+        // // m.set('b',2);
+
+
+        //2.0
+
+        // const obj = {
+        //     a: 1,
+        //     b: 2
+        // }
+
+        //变成 [['a',1],['b',2]]变成键值对列表
+
+        // const objArr = Object.entries(obj);
+        // const m = new Map(objArr);
+        // console.log(m)
+          
+        // const  obj = {
+        //     a : 1, 
+        //     b : 2
+        // }
+        // Object.prototype.c = 1;
+
+        //原生entries接收一个对象
+        //const r = Object.entries(123) // 打印空数组[] 123换成[] 结果也为[] 只认对象
+        // const r = Object.entries({a:1})
+        // console.log(r);
+        //重写 entries
+
+        //用typeof判断对象变量不准确 null的结果也是 object，数组的结果也是 object，
+        //toString
+        //toString为Object的原型方法，而Array 、Function等类型作为Object的实例，都重写了toString方法
+        // Object.myEntries = function(o){
+        //     var _pool = [];
+        //     if(Object.prototype.toString.call(o) === '[object Object]'){
+        //         for(var k in o){
+        //             if(o.hasOwnProperty(k)){
+        //                 var _arr = [k,o[k]];
+        //                 _pool.push(_arr);
+        //             }
+        //         }
+        //     }
+        //     return _pool;
+        // }
+        // const r = Object.myEntries(obj);
+        // console.log(r);
+
+        // const obj = {
+        //     a: 1,
+        //     b: 2
+        // }
+        // Object.prototype.c = 3
+        // const r = Object.entries(obj);
+
+        // console.log(r);
+        // const newObj = Object.fromEntries(r);
+        // console.log(newObj);
+        //导出新对象 
+
+        // const m = new Map(r);
+        // // console.log(m);
+
+        // // const newObj = Object.fromEntries(m);
+        // // console.log(newObj);
+        // // // 可以转键值对 也可以是map
+
+        // // //重写该方法
+        // Object.myFromEntries = function(o){
+        //     var _obj = {};
+        //     // for(let item of r){
+        //     //     //console.log(item) ['a',1]
+        //     //     _obj[item[0]] = item[1];
+        //     // }
+        //     for(let [k,v] of o){
+        //         _obj[k] = v;
+        //     }
+        //     return _obj;
+        // }
+        // const nObj = Object.myFromEntries(r);
+        // console.log(nObj);
+    </script>
+</body>
+</html>

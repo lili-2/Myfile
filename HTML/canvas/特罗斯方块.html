@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="500px" height="600px"
+        style="box-shadow: #33d9b2 0px 0px 8px; background-color: rgb(230, 228, 228);"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        var arr = new Array();
+
+        class map {
+            constructor() {
+                this.w = 25;
+                this.h = 25;
+            }
+            //绘制地图 化成数组
+            rendermap() {
+                for (let i = 0; i <= canvas.clientWidth / this.w; i++) {
+                    arr[i] = new Array();
+                    for (let j = 0; j <= canvas.clientHeight / this.h; j++) {
+                        arr[i][j] = 0;
+                    }
+                }
+            }
+            //绘制方格
+            renderxy() {
+                for (let i = 0; i <= canvas.clientWidth / this.w; i++) {
+                    for (let j = 0; j <= canvas.clientHeight / this.h; j++) {
+                        if (arr[i][j] === 1) {
+                            ctx.fillStyle = "#33d9b2";
+                            ctx.beginPath();
+                            ctx.fillRect(i * this.w, j * this.h, 25, 25);
+                            ctx.fill();
+                        } else {
+                            ctx.fillStyle = "rgb(230, 228, 228)";
+                            ctx.beginPath();
+                            ctx.fillRect(i * this.w, j * this.h, 25, 25);
+                            ctx.fill();
+                        }
+                    }
+                }
+            }
+            //向下移动
+            movedown() {
+                for (let i = canvas.clientWidth / this.w; i >= 0; i--) {
+                    for (let j = canvas.clientHeight / this.h - 1; j >= 0; j--) {
+                        if (arr[i][j - 1] === 1 && arr[i][j] === 0) {
+                            arr[i][j] = 1;
+                            arr[i][j - 1] = 0;
+                        }
+                    }
+                }
+            }
+            //控制物体进行旋转
+            rotate() {
+                for (let i = canvas.clientWidth / this.w; i >= 0; i--) {
+                    for (let j = canvas.clientHeight / this.h - 1; j >= 0; j--) {
+                        if (arr[i][j] === 1) {
+                            arr[i][j] = 0;
+                            arr[j][i] = 1;
+                        }
+                    }
+                }
+            }
+        }
+        const m = new map();
+        m.rendermap();
+
+        var figur = [
+            function () {
+                arr[1][0] = 1;
+                arr[1][1] = 1;
+                arr[1][2] = 1;
+                arr[1][3] = 1;
+            }
+        ]
+        figur[0]();
+        m.renderxy();
+        (function move() {
+            setInterval(() => {
+                m.movedown();
+                m.renderxy();
+            }, 500);
+        })();
+        
+        window.onkeydown = function(e){
+            switch(e.keyCode){
+                case 38 : m.rotate()
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

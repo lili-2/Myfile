@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //this js关键字 当前环境执行期上下文对象的一个属性 
+        //this 在不同的环境 不用作用下 表现是不同的
+        //全局作用域的this -> 全局对象
+        //window和this的关系
+
+        // console.log(this === window);//true
+
+        // var a = 1;
+        // var b = function(){ return 'function'};
+        // // console.log(window.a === a);//true
+        // // console.log(window.b === b);//true
+
+        // console.log(a);
+        // console.log(b);
+
+        // window.aa = 1;
+        // window.bb = function(){ return 'function'};
+        // console.log(aa);
+        // console.log(bb);
+
+        // this.aa = 1;
+        // this.bb = function(){ return 'function'};
+        // console.log(aa);
+        // console.log(bb);
+
+        // var a = 'global -> a';
+        // var obj = {
+        //     a:'obj -> a',
+        //     test: function(){
+        //         console.log(this.a);
+        //         console.log(window.a);
+        //     }
+        // }
+        // obj.test();
+        //obj -> a  global -> a
+        //在node环境下 window is not defined
+        //若将window.a换成global.a  打印undefined
+        //在node环境下 需要挂载到global上
+
+        //获取全局对象 web:window,self,frames,this
+        //            node:global
+        //            worker:self
+        //  通用对象 globalThis
+
+        // var a = 'global -> a';
+        // var obj = {
+        //     a:'obj -> a',
+        //     test: function(){
+        //         console.log(this.a);
+        //         console.log(window.a);//global -> a
+        //         console.log(self.a);  //global -> a
+        //         console.log(frames.a);//global -> a
+        //     }
+        // }
+        // obj.test();
+
+        // function test(){
+        //     'use strict'
+        //     return this;
+        // }
+        // console.log(test()); //undefined 在严格模式下
+        // console.log(window.test());//window
+        // //谁调用函数 函数内部的执行默认就是谁
+
+
+
+
+        //类的本质就是函数
+        //类 class xxx -> 容器/作用域/模块
+        // class Test1{
+        //     constructor(){
+
+        //     }
+        //     say(){
+
+        //     }
+        //     static do(){
+
+        //     }
+        // }
+        // const test1 = new Test1();
+
+        // function Test2(){  //相当于 constructor
+
+        // };
+        // Test2.prototype.say = function(){
+
+        // };
+        // Test2.do = function(){};
+  
+        class Test {
+            // constructor(){
+            //     //类的非静态方法 new - this this->{function () {}}
+            //     this.test = function(){
+            //         console.log('no-static' + this);
+            //     }
+            // }
+
+            // 类的静态方法  -> Test.prototypr{...}
+            // new this -> {} -> _proto_ -> Test.prototype
+            test(){
+                console.log('static' + this);
+            }
+        }
+
+        //this->{} 实例化对象 时 指向 this
+        const test = new Test();
+        test.test()//在test
+    </script>
+</body>
+</html>

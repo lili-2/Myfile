@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html>
+ 
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* { margin: 0; padding: 0; list-style: none; }
+			h1{ margin: 20px; }
+			h3{ margin-top:20px; color:#cb58cb; }
+			h4{ color:blue; }
+			.wrap{ padding: 10px; }
+			#res1{ text-align: center; margin-top: 30px; }
+			#res1 li{ float:left; width:230px; list-style:none; }
+			.list { width: 100%; height: 100px; margin-top: 50px; margin-top: 240px; }	
+			.list .hot { width: 100%; height: 80px; background: #F5F5F5; padding-top: 20px; }
+			.list .hot span { display: block; float: left; width: 100px; height: 20px; text-align: center; margin: 5px 0; cursor: pointer; }
+			.list ul li{ height: 150px; background: #F5F5F5; margin: 5px 0; }
+			.list ul li:nth-child(odd){ background: #FFFFFF; }
+			.list ul li h4{ display: block; width: 50px; height: 150px; font-size: 20px; font-weight: bold; float: left; margin-left: 20px; line-height: 150px; }
+			.list ul li span{ display: block; width: 100px; height: 20px; margin: 5px 10px; float: left; text-align: center; line-height: 20px; cursor: pointer; }
+		</style>
+	</head>
+ 
+	<body>
+	<div class="wrap">
+ 
+		<!-- 天气 -->
+		<div class="weather">
+			<h1>天气预报</h1>
+			<input type="text" id="city">
+			<button>查看天气</button>
+			<h3></h3>
+			<div id="res1">
+			</div>
+		</div>
+ 
+		<!-- 热门城市 -->
+		<div class="list">
+			<h4>热门城市</h4>
+			<div class="hot">
+			</div>
+			<ul>
+			</ul>
+		</div>
+	</div>
+	<script>
+ 
+	/* 思路：
+    
+	 1）根据接口http://wthrcdn.etouch.cn/weather_mini?city=广州 
+			* ajax请求获取天气信息（默认广州）
+			* ajax请求生成html结构（并且输入内容获取相应的城市的信息）
+			
+		2）生成热门城市以及A~Z城导航 
+			* var hotCity =[]; res[i].hot、res[i].regions[j].hot  //用于放置热门城市的相应的城市
+			* var indexCity = { A[],B[],~~~~  } //用于放置A-Z的相应的城市
+				* res[i].regions[j].pinyin != undefined
+				* indexCity[attr].push(res[i].regions[j].name);
+			
+		3）、点击热门城市ajax获取
+		4）、点击a~A城市ajax获取
+ 
+	 */
+ 
+		(function(){
+			//获取节点
+			let city = document.querySelector('#city');
+			let btn = city.nextElementSibling;
+			let res = document.querySelector('#res');
+			let res1 = document.querySelector('#res1');
+			let h = document.querySelector('h3');
+			let ul = document.querySelector('ul');
+			let hot = document.querySelector('.hot');
+			let cityWrap = document.getElementsByClassName('city-wrap')[0];
+ 
+ 
+			//创建一个异步对象
+			let xhr = new XMLHttpRequest();
+ 
+			//返回数据
+			xhr.onload = function(){
+				let res = JSON.parse(xhr.responseText);
+ 
+				//1000有数据，1002没有数据
+				if(res.status === 1002){
+					return;
+				}
+				let res2 = res.data.forecast;
+				let len =  res.data.forecast.length;
+				let type=  res.data.forecast.type;
+				// console.log(res.data.forecast)
+ 
+				//遍历 res.data.forecast.type的类型，给其加图片
+				for(var i= 0; i<len; i++){
+					// console.log(res.data.forecast[i].type);
+					if(res.data.forecast[i].type == "多云") {
+						src = "tianqi/5.png";
+					}
+					if(res.data.forecast[i].type == "晴") {
+						src = "tianqi/1.png";
+					}
+					if(res.data.forecast[i].type == "阴") {
+						src = "tianqi/4.png";
+					}
+					
+				}
+				
+				// var a = '12324235';  ${}只要是变量都可以放进去
+				// 生成html
+				let ul = document.createElement('ul');
+				ul.innerHTML = res2.map(function(item){
+					return `<li>
+								<h4>${item.date}</h3>
+								<img src="${src}" alt="">
+								<p>
+									<span>${item.low}</span>~
+									<span>${item.high}</span>
+								</p>
+								<p>${item.type}</p>
+								<p>${item.fengxiang}</p>
+								
+							</li>`;
+				}).join('');
+				res1.appendChild(ul)
+			}
+ 
+			//发送请求（默认显示广州）
+			
+ 
+			h.innerHTML = '广州的天气情况';
+			res1.innerHTML = '';
+			// let _city = city.value;
+			// xhr.open('get','http://wthrcdn.etouch.cn/weather_mini?city=广州',true);
+			// xhr.send();
+		
+            xhr.open
+ 
+			// 点击按钮获取当前城市天气
+			btn.onclick = function(){
+				res1.innerHTML = '';
+				let _city = city.value;
+				h.innerHTML =_city + '的天气情况';
+				xhr.open('get','http://wthrcdn.etouch.cn/weather_mini?city='+_city,true);
+				xhr.send();
+			}
+ 
+			//热门城市  //创建一个异步对象
+			let xhr_rmCity = new XMLHttpRequest();
+			xhr_rmCity.onload = function(){
+				if(xhr_rmCity.readyState === 4 && (xhr_rmCity.status === 200 || xhr_rmCity.status === 304)){
+					// 获取所有的城市列表
+					var data = JSON.parse(xhr_rmCity.responseText);
+					var res = data.regions;
+					// console.log(res)
+				
+					// 放置热门城市
+					var hotCity =[];
+ 
+					//用于放置A-Z的相应的城市
+					var indexCity = {}
+ 
+					//创建一个数组用于放置A_z这个数组
+					var arr ='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+					console.log(arr);
+ 
+					arr.forEach(function(item){
+						indexCity[item] = [];
+						
+					})
+ 
+					// console.log(typeof(indexCity));
+					// console.log(res)
+					// console.log(indexCity)
+ 
+					console.log(res) //所有的城市列表
+					for(var i = 0;i<res.length;i++){
+						
+						//第一层region
+						if(res[i].hot){
+							hot.innerHTML += `<span>${res[i].name}</span>`;
+						}
+						//第二层region//(注意第三层的里边并没有)
+						if(res[i].regions) {
+							for(var j = 0; j < res[i].regions.length; j++) {
+								if(res[i].regions[j].hot) {
+									hot.innerHTML += `<span>${res[i].regions[j].name}</span>`
+								}
+							
+						
+							
+							//根据拼音吧相应的城市放入到相应的列表中去（市）
+								for(var attr in indexCity) {
+									if(res[i].regions[j].pinyin != undefined) {
+										// console.log(666)
+										//（注意第一层除了北京）
+										if(attr === res[i].regions[j].pinyin[0]) {
+										// 	//截取到pinyin属性的值的第一个字母，如果相等就写入相应数组
+ 
+											indexCity[attr].push(res[i].regions[j].name);
+ 
+										}
+										// console.log()
+									}
+								}	
+							}
+							// console.log(indexCity)
+						}	
+					}
+ 
+					//console.log(hotCity)
+					// console.log(indexCity)
+					//遍历生成a-zs列表
+					for(var attr in indexCity){
+						// console.log(attr)
+						var li = document.createElement("li");
+						var Capital = document.createElement("h4");
+ 
+						// <li>
+						// 	<h4></h4>
+						// 	<span></span>
+						// </li>	
+						Capital.innerText = attr;
+						li.appendChild(Capital);
+						li.innerHTML += indexCity[attr].map(function(item){//遍历每个字母下的城市
+							return `
+							<span>${item}</span>`;
+						}).join("");
+						// console.log(Capital)
+						ul.appendChild(li);
+					}
+ 
+				}
+			}
+			xhr_rmCity.open("get", "../api/data/region.json", true);
+			xhr_rmCity.send();
+ 
+			//点击获取相应的城市天气(事件委托)
+			hot.onclick = function(e){
+				let target = e.target || e.srcElement;
+				if(target.tagName.toLowerCase() === 'span'){
+					// console.log(target.innerText);
+					res1.innerHTML = '';
+					let _city = target.innerText;
+					h.innerHTML =_city + '的天气情况';
+					xhr.open('get','http://wthrcdn.etouch.cn/weather_mini?city='+target.innerText,true);
+					xhr.send();
+				}
+			}
+			ul.onclick = function(e){
+				let target = e.target || e.srcElement;
+				if(target.tagName.toLowerCase() === 'span'){
+					// console.log(target.innerText);
+					res1.innerHTML = '';
+					let _city = target.innerText;
+					h.innerHTML =_city + '的天气情况';
+					xhr.open('get','http://wthrcdn.etouch.cn/weather_mini?city='+target.innerText,true);
+					xhr.send();
+				}
+			}			
+		})();
+ 
+	</script>
+	</body>
+
+</html>

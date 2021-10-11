@@ -1,0 +1,1 @@
+exports.getMime = function

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        // class myArray{
+        //     constructor(){
+        //         Object.defineProperty(myArray.prototype,'length',{
+        //             get(){
+        //                 let length=0;
+        //                 Object.keys(this).forEach(item=>{
+        //                     if(!isNaN(parseInt(item))){
+        //                         length++;
+        //                     }
+        //                 })
+        //                 return length;
+        //             },
+        //             set(value){
+        //                 return value;
+        //             }
+        //         })
+        //     }
+        //     push(x){
+        //         this[this.length] = x;
+        //     }
+        //     foreach(){
+        //         for(let i = 0;i < this.length; i++){
+        //             console.log(this[i]);
+        //         }
+        //     }
+        // }
+        // let arr1 = new myArray();
+        // arr1.push(1);
+        // arr1.push(2);
+        // arr1.push(3);
+        class myArray{
+            constructor(){
+                this.length = 0;
+            }
+            push(x){
+                this[this.length] = x;
+            }
+            foreach(){
+                for(let i = 0;i < this.length;i++){
+                    console.log(this[i]);
+                }
+            }
+        }
+
+        let arr1 = new Proxy(new myArray(),{
+            set(target,prototype){ 
+                console.log(target,prototype);
+                if(target.length <= prototype){
+                    target.length ++;
+                }
+                return Reflect.set(...arguments);
+            }
+        })
+        arr1.push(1);
+        arr1.push(2);
+        arr1.push(3);
+    </script>
+</body>
+</html>

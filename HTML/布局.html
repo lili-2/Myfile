@@ -1,0 +1,52 @@
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function move(obj, attr, target, speed, callback) {
+                clearInterval(obj.timer);
+                var current = parseInt(getStyle(obj, attr));
+                if (current > target)
+                    speed = -speed;
+                obj.timer = setInterval(function () {
+                    var oldValue = parseInt(getStyle(obj, attr));
+                    var newValue = oldValue + speed;
+                    if ((speed < 0 && newValue < target) || (speed > 0 && newValue > target))
+                        newValue = target;
+                    obj.style[attr] = newValue + "px";
+                    if (newValue == target) {
+                        clearInterval(obj.timer);
+                        callback && callback();
+                    }
+                })
+            }
+            // function move(obj, target, speed) {
+            //     clearInterval(timer);
+
+            //     timer = setInterval(function () {
+            //         // if(index !== 1){
+            //         //     // left[0].style.backgroundColor = 'green';
+            //         //     // left[0].firstChild.style.backgroundColor = 'green';
+            //         //     // left[0].firstChild.style.color="#ccc";
+            //         // }
+            //         var oldValue = parseInt(text.offsetLeft);
+            //         var newValue = oldValue + speed;
+            //         if (newValue < target && speed < 0) {
+            //             clearInterval(timer);
+            //         }
+            //         else if (newValue > target && speed > 0) {
+            //             clearInterval(timer);
+            //         }
+            //         else obj.style.left = newValue + "px";
+            //     }, 30);
+            // }
+    </script>
+</body>
+</html> -->

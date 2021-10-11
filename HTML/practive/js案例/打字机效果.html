@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: radial-gradient(rgb(141, 204, 204), #f8f8f8);
+        }
+
+        .text {
+            font-size: 35px;
+            color: #fff;
+        }
+
+        .text .guangbiao {
+            color: black;
+            animation: flash 0.2s infinite;
+            animation-name: flash;
+        }
+
+        @keyframes flash {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="text">
+        <span class="word">
+
+        </span>
+        <span class="guangbiao">|</span>
+    </div>
+    <script>
+        let str = '这是一个打字机效果的展示';
+        const word = document.querySelector('.word');
+
+        // for(let i = 1;i <= str.length; i++){
+        //     setTimeout(function(){
+        //         word.innerHTML = str.substr(0,i);
+        //     },(i-1)*300);
+        // }
+
+        // function setText(t) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             word.innerHTML = t;
+        //             resolve();
+        //         }, 200);
+        //     })
+        // }
+        // async function main(flag) {
+        //     if (flag) {
+        //         for (let i = 1; i <= str.length; i++) {
+        //             await setText(str.substr(0, i));
+        //         }
+        //     } else {
+        //         for (let i = str.length; i >= 0;i--) {
+        //             await setText(str.substr(0, i));
+        //         }
+        //     }
+        //     setTimeout(()=>{
+        //         main(!flag);
+        //     },1000)
+        // }
+        // main(1);
+        function setText(t){
+            return new Promise((resolve,reject) => {
+                setTimeout( ()=> {
+                    word.innerHTML = t;
+                    resolve();
+                },200)
+            })
+        }
+        async function move(){
+            for(let i = 0;i <= str.length;i++){
+                await setText(str.substr(0,i))
+            }
+        }
+        move()
+    </script>
+</body>
+
+</html>

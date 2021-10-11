@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则实例集合 正向预查深入 不捕获分组</title>
+</head>
+<body>
+    <!-- <input type="text" id="test" onkeyup="test(this)">
+    <button>点击</button>
+    <script>
+        var oTest = document.getElementById('test');
+        // function test(obj){
+        //     // var reg = /\s/g;//不用加g 每打一下都会进行匹配 
+        //     var reg = /\D/g;//只能写数字 
+        //     obj.value = obj.value.replace(reg,'');
+        // }
+        // // 这个功能写不写，再提交的时候，都需要进行验证  
+
+        //用户名 只允许输入 0-9 A-z _
+        // function test(obj){
+        //     // var reg = /\W/g;
+        //     var reg = /[^A-z0-9_]+/g;// ^写在里面代表的是非
+        //     obj.value = obj.value.replace(reg,'');
+        // }
+    </script> -->
+    <input type="text" id="test">
+    <button onclick="test()">点击</button>
+    <script>
+        //948 344 3939 9393 933X
+        var oTest = document.getElementById('test');
+        function test(){
+            var val = oTest.value,
+            reg = /^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|[10|20|30|31])\d{3}[1-9Xx]$/g,
+            pass = reg.test(val);
+            console.log()
+        }
+    </script>
+</body>
+</html>

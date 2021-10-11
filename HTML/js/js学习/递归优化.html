@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //斐波那契递归写法
+        // function fibon(a,b,n) {
+        //     if (n<=2){
+        //         return a;
+        //     }
+        //     return fibon(a+b,a,n-1);
+        // }
+
+        //优化
+        function Fib(n) {
+            return n>1 ? fib(n,1,1) : 1;
+        }
+        function fib(n,prev,v){
+            return n>2 ? fib(n-1 ,v,v+prev): v+prev;
+        }
+
+        // 汉诺塔
+        // function f(n) {
+        // 	return n > 0 ? 2 * f(n - 1) + 1: 1;
+        // }
+
+        // function Y(n){
+        //     return n > 1 ? y(n,1) : 1;
+        // }  
+        // function y(n,prev) {
+        //     return n > 2 ? y(n - 1, 2 * prev + 1) : 2 * prev + 1;
+        // }
+
+        
+        //多参数转换为单参数
+        // var temp = c_add = (a) => (b) => a + b;
+        // temp = c_add(1);
+    </script>
+</body>
+</html>

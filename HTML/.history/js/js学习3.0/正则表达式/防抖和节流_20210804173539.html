@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: ;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        //1. 对于在事件被触发 n秒后再执行的回调 延迟执行
+        //2. 在n秒内在出发事件 重新开始计时
+
+        var oBox = document.getElementsByClassName('box')[0];
+        oBox.onmouseover = function(){
+            console.log('nihao');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .middle{
+            display: flex;
+            flex-direction: row-reverse;
+            width: 750px;
+            height: 150px;
+            position: relative;
+        }
+        input{
+            width: 150px;
+            height: 150px;
+            background: url(./s1.png) no-repeat;
+            background-size: 150px;
+            appearance: none;
+        }
+        .picture5:hover,
+        .picture5:checked,
+        .picture5:hover ~ .picture4,
+        .picture5:checked ~ .picture4,
+        .picture5:hover ~ .picture3,
+        .picture5:checked ~ .picture3,
+        .picture5:hover ~ .picture2,
+        .picture5:checked ~ .picture2,
+        .picture5:hover ~ .picture1,
+        .picture5:checked ~ .picture1{
+            background: url(./s2.png) no-repeat;
+            background-size: 150px;
+        }
+        .picture4:hover,
+        .picture4:checked,
+        .picture4:hover ~ .picture3,
+        .picture4:checked ~ .picture3,
+        .picture4:hover ~ .picture2,
+        .picture4:checked ~ .picture2,
+        .picture4:hover ~ .picture1,
+        .picture4:checked ~ .picture1{
+            background: url(./s2.png) no-repeat;
+            background-size: 150px;
+        }
+        .picture3:hover,
+        .picture3:checked,
+        .picture3:hover ~ .picture2,
+        .picture3:checked ~ .picture2,
+        .picture3:hover ~ .picture1,
+        .picture3:checked ~ .picture1{
+            background: url(./s2.png) no-repeat;
+            background-size: 150px;
+        }
+        .picture2:hover,
+        .picture2:checked,
+        .picture2:hover ~ .picture1,
+        .picture2:checked ~ .picture1{
+            background: url(./s2.png) no-repeat;
+            background-size: 150px;
+        } 
+        .picture1:hover,
+        .picture1:checked{
+            background: url(./s2.png) no-repeat;
+            background-size: 150px;
+        }
+        .text{
+            position: absolute;
+            top: calc(50% - 15px);
+            right: -50px;
+            width: 30px;
+        }
+        .text>p{
+            position: absolute;
+            display: none;
+        }
+        .picture1:checked ~ .text .text1,
+        .picture2:checked ~ .text .text2,
+        .picture3:checked ~ .text .text3,
+        .picture4:checked ~ .text .text4,
+        .picture5:checked ~ .text .text5{
+            display: block;
+        }
+        .big{
+            position: absolute;
+            height: calc(100% - 150px);
+            width: 100%;
+            background: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="middle">
+        <input type="radio" name="picture" class="picture5">
+        <input type="radio" name="picture" class="picture4">
+        <input type="radio" name="picture" class="picture3">
+        <input type="radio" name="picture" class="picture2">
+        <input type="radio" name="picture" class="picture1">
+        <div class="text">
+            <p class="text1">1分</p>
+            <p class="text2">2分</p>
+            <p class="text3">3分</p>
+            <p class="text4">4分</p>
+            <p class="text5">5分</p>
+        </div>
+    </div>
+    <input type="radio" name="picture" class="big">
+</body>
+</html>

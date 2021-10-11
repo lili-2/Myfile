@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>state</title>
+</head>
+
+<body>
+
+    <div id="test"></div>
+
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入react-dom.用于支持react支持Dom -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+
+    <script type="text/babel">
+        
+        class Weather extends React.Component {
+   
+            //初始化状态
+            state = {isHot: false,wind:'微风'}    
+            
+            render() {
+                const {isHot,wind} = this.state;
+                return <h2 id="title" onClick={this.changeWeather}>今天天气很{isHot ? "炎热" : '寒冷'},{wind}</h2>
+            }
+            
+            // changeWeather = function(){
+            //     const isHot = this.state.isHot;
+            //     this.setState({isHot:!isHot})
+            // }
+            
+            //自定义方法--赋值+
+            changeWeather = () => {
+                const isHot = this.state.isHot;
+                this.setState({isHot:!isHot})
+            }
+        }
+       
+        ReactDOM.render(<Weather/>,document.getElementById('test'));
+
+    </script>
+</body>
+</html>　
+<!-- 状态驱动页面显示 -->

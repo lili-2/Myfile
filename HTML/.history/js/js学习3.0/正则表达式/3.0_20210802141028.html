@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则对象方法，match与exec，字符串方法，toString,valueof,类型检测 封装typeof 工具函数</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        //正则对象方法 
+        //match 与 exec的区别
+        // 1. match 字符串对象   exec 正则对象上的方法
+        // 2. match 参数->正则   exec 参数->字符串
+        // 3. match             exec -> 一个类数组
+        //     exec 机械式循环匹配
+        //     g 执行一次匹配一次 自动增加匹配位置开头的下标，直到返回null以后
+        //                          再回到最开始重新匹配
+        //     非g  只匹配第一个可匹配的字段，且只匹配一次
+        //     无论加g与否 都返回子表达式中的字符串
+        //     match 自动循环匹配(加g)
+        //     非g  返回第一个被匹配的字段 并返回子表达式中的字符串
+        //     g    返回所有可匹配的片段 但不返回表达式中的字符串
+
+        // split 字符串分割
+        //String 构造出来的对象上的方法  eg:36
+        // 1. str.toUpperCase() 将小写转换为大写
+        // 2. str.toLowerCase() 将大写转换为小写
+        // 3. str.toLocaleUpperCase()
+        // 4. str.toLocaleLowerCase() 3和4针对一些比较特殊的语言 比如 土耳其语言中有特殊的大小写字母，
+                                     //这些语言的大小写转换要使用locale 
+                                     //针对英文字母 加不加都能实现大小写转换功能
+        // 5. str.charAt() 按照字母下标所对应的字母
+        // 6. str.charCodeAt() str.charAt找到该字母后，该字母对应的unicode编码 ascII 包含在Unicode之内
+        // 7. String.fromCharCode(72,69,76,76,79)    // HELLO 
+        // 8. str.indexOf('is',n) 从第n位开始检索 开始匹配 匹配不上返回-1 匹配上返回字符对应下标
+        // 9. str.lastIndexOf('is',n) 从后往前检索 从n开始之前的 匹配的是n之前的
+        // 10.str.substr(10,4) 从第十位开始 包含第十位 第二个参数是长度 第一位是0
+        //    str.substr(-4,4) 最后一位是-1 然后从右往左依次是-2 -3 -4 第二个参数是长度
+        // 11.str.substring(10,14)  从第十位到第14位 包含 第十 不包含 14
+        //    str.substring(14,10)  如果start>end js引擎会先调换位置 再进行匹配
+        //    str.substring(10,10) "" 返回""
+        // toString 
+ 
+        // var reg = /(\w)\1(\w)\2/,
+        //     str = 'aabbccdd';
+        // console.log(str.match(reg)); 
+        // console.log(reg.exec(str));
+
+        // var str = 'aBCd';
+        // console.log(str.toUpperCase());//ABCD
+        // console.log(str.toLowerCase());//abcd
+        // console.log(str.toLocaleUpperCase());//ABCD
+        // console.log(str.toLocaleLowerCase());//abcd
+        
+        // var str = 'This is a test';
+        // console.log(str.charAt(5));// i 
+        // console.log(str.charCodeAt(5));// 105
+        // console.log(String.fromCharCode(72,69,76,76,79));// HELLO 
+        // console.log(str.indexOf('is')); //2
+        // console.log(str.lastIndexOf('is'));// 5
+        // console.log(str.lastIndexOf('is',4));// 2
+        // console.log(str.substr(10,4)); //test
+        // console.log(str.substring(10,14)); //test 从第十位到第14位 包含 第十 不包含 14
+        // console.log(str.substring(14,10));//test 如果start>end js引擎会先调换位置 再进行匹配
+        // console.log(str.substring(10,10));//    ""
+
+        // var div = document.getElementsByTagName('div')[0];
+        // div.innerHTML = str.anchor('test'); // <div><a name="test">This is a test</a></div>
+        // div.innerHTML = str.anchor(''); //<div><a name="">This is a test</a></div>
+        // div.innerHTML = str.big('');// <div><big>This is a test</big></div>
+        // div.innerHTML = str.small('');//<div><small>This is a test</small></div>
+        // div.innerHTML = str.bold('');//<div><b>This is a test</b></div>
+        // div.innerHTML = str.fixed();//<tt>This is a test</tt>
+        // div.innerHTML = str.fontcolor('green'); //<div><font color="green">This is a test</font></div>
+        // div.innerHTML = str.fontsize('50'); 
+        // div.innerHTML = str.link('http://www.jsplusplus.com');
+        // div.innerHTML = str.strike(); //This is a test    eg:<div><strike>This is a test</strike></div>
+        // div.innerHTML = 'sentence:' + str.sub();
+        // console.log(div);  
+    </script>
+</body>
+</html>

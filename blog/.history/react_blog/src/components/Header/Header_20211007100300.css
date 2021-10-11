@@ -1,0 +1,17 @@
+.header{
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    box-shadow:0 0 3px rgb(189, 182, 182);
+}
+.header_item{
+    margin: 0 10px;
+}
+.header_title{
+    color: rgb(77, 137, 247);
+}
+.header_right{
+    width: 450px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let arr = [1,1,2,2,3,4,5];
+        // let arr1 = new Set(arr);
+
+     /**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+ var addTwoNumbers = function (l1, l2) {
+            let newNode = new ListNode();
+            let cur = newNode;
+            let add = 0;
+            while (l1 || l2) {
+                let number = 0;
+                if (l1) {
+                    number += l1.val;
+                    l1 = l1.next;
+                }
+                if (l2) {
+                    number += l2.val;
+                    l2 = l2.next;
+                }
+                number += add;
+                add = Math.floor(number / 10);
+                cur.next = new ListNode(number % 10);
+                cur = cur.next;
+            }
+             if(add) cur.next = new ListNode(add);
+            return cur.next;
+        };
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则量词 属性 方法</title>
+</head>
+<body>
+    <script>
+        //量词  
+        // n+ 出现一次到正无穷{1,正无穷}
+        // n* 出现0次到正无穷 {0,正无穷} *比+ 会多出一次空 
+        // n? 出现一次或0次   {0，1}
+        // n{x,y}  从x到y 若后面 不填 就是默认正无穷
+        //         ----{1,正无穷} === n+
+        //         ----{0,正无穷} === n*
+        //         ----{0,1} === n?
+        //字符串从左到右 依次先匹配多个 在匹配少，如果一旦匹配上就不回头匹配
+        //贪婪匹配原则 能匹配多个 绝不匹配少个
+        // ^n 匹配任何以n开头的字符串
+        // n$ 任何以n结尾的字符串
+        // ?=n 匹配其后紧跟着指定字符串n的字符串 84
+        // ?!n 匹配其后不是紧跟着字符串n的  
+        // 子表达式 反向引用方法--->93 
+
+        // var reg = /\w+/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));
+
+        // var reg = /\w*/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));
+
+        // var reg = /\d*/g,
+        //     str = 'a';
+        // console.log(str.match(reg)); //["", ""]
+
+        // var reg = /\w?/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg)); //8个 ["a", "b", "c", "d", "e", "f", "g", ""]
+
+        // var reg = /\w{1,2}/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));//["ab", "cd", "ef", "g"]
+
+        // var reg = /\w{5,}/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));//["abcdefg"]
+
+        // var reg = /\w{5,}/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));//["abcdefg"]
+
+        // var reg = /^ab/g,
+        //     str = 'abcdefg';
+        // console.log(str.match(reg));
+
+        // var reg = /^ab/gm,
+        //     str = 'abcdefg\nabcdefg';
+        // console.log(str.match(reg));
+
+        // var reg = /cd$/gm,
+        //     str = 'abcdabcd\nabcdefg';
+        // console.log(str.match(reg));
+
+        //检查字符串是否以abcd开头和以abcd结尾
+        // var reg = /^abcd[\s\S]*abcd$/gm,
+        // var reg = /^abcd.*abcd$/gm,
+        //     str = 'abcd123abcd';
+        // console.log(str.match(reg));
+        // //检查字符串是否以abcd开头或以abcd结尾
+        // var reg = /^abcd|abcd$/gm,
+        //     str = 'abcd123abcd';
+        // console.log(str.match(reg));
+        //检查字符串是否以abcd开头和以abcd结尾,并且开头结尾是数字
+        // var reg = /^abcd\d+abcd$/gm,
+        //     str = 'abcd123abcd';
+        // console.log(str.match(reg));
+        //匹配以138开头的11位手机号码
+        // var reg = /^138\d{8}/gi,
+        //     str = '13812338765';
+        // console.log(str.match(reg));
+
+        // var str = 'abcdabcd',
+        //     reg = /a(?=b)/g;//要带括号
+        // console.log(str.match(reg));//["a", "a"]
+
+        // var str = 'abcdaccda',
+        //     reg = /a(?!b)/g;//要带括号
+        // console.log(str.match(reg));//["a", "a"]
+
+        //匹配 xxxx xxyy 
+        var str = 'bbaaaaccaaaaiddddbaaaa',
+            reg = /(a)\1\1\1/g;
+            //(a)有记忆 知道每次匹配的谁 括号括起来子表达式的一种
+            // \1 反向引用
+            // /(a)\1\1\1 匹配
+        console.log(str.match(reg));//["a", "a"]
+    </script>
+</body>
+</html>

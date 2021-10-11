@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="500px" height="600px" style="border: 1px solid black">
+
+    </canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext('2d');
+
+        var maps = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0]];
+        for (var i = 0; i < 12; i++) {
+            for (var j = 0; j < 20; j++) {
+                ctx.fillRect(i * 40, j * 40, 40, 40);
+                ctx.strokeRect(i * 40, j * 40, 40, 40);
+                if (this.maps[j][i] == 1) {//方格已经有填充内容
+                    ctx.save();
+                    ctx.linewidth = 4;
+                    ctx.fillstyle = 'black';
+                    ctx.strokestyle = 'black';
+                    ctx.fillrect(i * 40, j * 40, 40, 40);
+                    ctx.strokerect(i * 40 + 2, j * 40 + 2, 38, 38);
+                    ctx.restore();
+                }
+            }
+        }
+
+        //边框
+        ctx.linewidth = 4;
+        ctx.strokestyle = 'hsla(0,100%,0%,.3)';
+        ctx.moveto(0, 0);
+        ctx.lineto(0, 20 * 40);
+        ctx.lineto(12 * 40, 20 * 40);
+        ctx.lineto(12 * 40, 0);
+        ctx.stroke();
+        ctx.restore();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.10.2.min.js"></script>
+</head>
+
+<body>
+    <script>
+        // $.ajax({
+        // 	type : "GET",
+        // 	async : false,
+        // 	url : "https://geoapi.qweather.com/v2/city/lookup?location=beij&key=10f80340ea1945758e1d310429dd537e",
+        // 	dataType : "jsonp",//数据类型为jsonp  
+        // 	jsonp : "jsonpCallback",//服务端用于接收callback调用的function名的参数
+        // 	success : function(data) {
+        // 		alert(data["userName"]);
+        // 	},
+        // 	error : function(error) {
+        // 		console.log('错误')
+        //         console.log(error)
+        // 	}
+        // });
+
+
+        // $.ajax({
+        //     url: "https://devapi.qweather.com/v7/weather/24h?location=101010100&key=10f80340ea1945758e1d310429dd537e", //接口地址，yourak是你的API key
+        //     type: "GET", //规定请求的类型（GET 或 POST）。
+        //     dataType: "jsonp", //预期的服务器响应的数据类型。
+        //     success: function (Data) {
+        //         console.log(Data); //成功输出请求的数据
+        //     },
+        //     error: function(error){
+        //         console.log(error)
+        //     }
+        // });
+
+        $.ajax({
+            url: "https://geoapi.qweather.com/v2/city/lookup?location=beij&key=10f80340ea1945758e1d310429dd537e", //接口地址，yourak是你的API key
+            type: "GET", //规定请求的类型（GET 或 POST）。
+            dataType: "json", //预期的服务器响应的数据类型。
+            success: function (Data) {
+                console.log(Data); //成功输出请求的数据
+            },
+            error : function(error){
+                console.log("错误")
+                console.log(error)
+            }
+        });
+
+        // $.ajax({
+        //     url:"https://devapi.qweather.com/v7/weather/3d?location=101010100&key=10f80340ea1945758e1d310429dd537e",
+        //     // url: "https://devapi.qweather.com/v7/indices/1d?type=1,2&location=101010100&key=10f80340ea1945758e1d310429dd537e", //接口地址，yourak是你的API key
+        //     type: "GET", //规定请求的类型（GET 或 POST）。
+        //     dataType: "json", //预期的服务器响应的数据类型。
+        //     success: function (Data) {
+        //         console.log(Data); //成功输出请求的数据
+        //     },
+        //     error : function(error){
+        //         console.log("错误")
+        //         console.log(error)
+        //     }
+        // });
+    </script>
+</body>
+
+</html>

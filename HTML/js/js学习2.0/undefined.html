@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //undefined既是一个原始数据类型，也是一个原始值数据
+        //undefined全局对象上的一个属性 window.undefined
+
+        //不可写 不可配置 不可枚举 不可重新定义
+        // Object.defineProperty(window,'undefined',{
+        //     enumerable: true,
+        // })
+
+        //函数内部没有显示返回一个值的时候，系统默认给函数返回undefined 
+        // console.log(typeof(undefined));
+        // var undefined = 1;
+
+        // //undefined不是js的关键字和保留字
+        // console.log(window.undefined);//undefined
+        // function test(){
+        //     var undefined = 1;
+        //     console.log(undefined);
+        // }
+        // test();//1
+
+        // var a = null;
+        // if(a == undefined){
+        //     console.log("true");//显示
+        // }
+
+        // console.log(typeof b)//undefined
+        // console.log(b);//报错
+
+        // function test() {
+        //     var undefined = 1;
+        //     console.log(undefined);
+        //     console.log(undefined === void(0));
+        //     console.log(window.undefined === void(0))
+        // }
+        // test();
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #big {
+            margin: 100px auto;
+            width: 600px;
+            height: 350px;
+            border: 1px solid black;
+            padding: 15px 0;
+        }
+        
+        .little {
+            padding: 0 15px;
+            line-height: 30px;
+            height: 30px;
+            box-sizing: border-box;
+        }
+        
+        div:hover {
+            background-color: rgb(208, 230, 236);
+        }
+        
+        #menu {
+            width: 80px;
+            background: #fff;
+            position: absolute;
+            display: none;
+        }
+        
+        #menu ul {
+            width: 100%;
+            list-style: none;
+            border: 2px solid #666;
+            border-bottom: 0px;
+        }
+        
+        #menu ul li {
+            height: 30px;
+            font-size: 16px;
+            color: #333;
+            line-height: 30px;
+            text-align: center;
+            border-bottom: 2px solid #666;
+        }
+    </style>
+</head>
+
+<body>
+    <article id="big" onfocus="have()" onblur="non()">
+        <div class="little" id="first">
+            <input type="checkbox" class="myCheck">
+            <span>我的文件1</span>
+        </div>
+        <div class="little">
+            <input type="checkbox" class="myCheck">
+            <span>我的文件1</span>
+        </div>
+        <div class="little">
+            <input type="checkbox" class="myCheck">
+            <span>我的文件1</span>
+        </div>
+        <div class="little">
+            <input type="checkbox" class="myCheck">
+            <span>我的文件1</span>
+        </div>
+        <div class="little">
+            <input type="checkbox" class="myCheck">
+            <span>我的文件1</span>
+        </div>
+        <div class="little">
+            <input type="checkbox" class="myCheck">
+            <span>我的文件1</span>
+        </div>
+    </article>
+    <div id="menu">
+        <ul>
+            <li id="add">增添</li>
+            <li id="dele">删除</li>
+        </ul>
+    </div>
+    <script>
+        // let bigd = document.getElementById('big').getElementsByTagName('div');
+        var bigd = document.querySelectorAll('#big>div');
+        var check = document.querySelectorAll(".myCheck");
+
+        // console.log(check);
+
+        let article = document.getElementById('big');
+
+        for (let i = 0; i < bigd.length; i++) {
+            bigd[i].onclick = function() {
+                for (let j = 0; j < bigd.length; j++) {
+                    bigd[j].style.backgroundColor = '';
+                    check[j].checked = false;
+                }
+                this.style.backgroundColor = 'lightgreen';
+                check[i].checked = true;
+            };
+        }
+
+        [...check].forEach((v, i) => v.onclick = (e) => {
+            e.stopPropagation();
+
+            if (check[i].checked == false) {
+                bigd[i].style.backgroundColor = "";
+            }
+            if (check[i].checked == true) {
+                bigd[i].style.backgroundColor = "lightgreen";
+            }
+        });
+
+        // article.onclick = function(event){
+        //     event = event || window.event;  
+        //     var target = event.target || event.srcElement;
+        //     event.target.style.backgroundColor = "lightblue";
+        // }
+
+
+
+        //设置右键出现菜单
+        var menu = document.getElementById("menu");
+        var big = document.getElementById('big');
+        article.oncontextmenu = function(event) {
+            event.preventDefault();
+            menu.style.display = "block";
+            menu.style.left = event.clientX + "px";
+            menu.style.top = event.clientY + "px";
+        }
+        document.onclick = function() {
+                menu.style.display = "none";
+            }
+            //设置 增添选项
+
+        const add = document.getElementById("add");
+        add.onclick = function() {
+            let div = document.createElement("div");
+            let text = document.createTextNode("我的文件2");
+            let input = document.createElement("input");
+
+            input.className = "myCheck";
+            // input.setAttributeNode()
+            div.appendChild(input);
+
+            div.appendChild(text);
+            div.className = "little";
+            input.type = "checkbox";
+            var first = document.getElementById("first");
+            article.appendChild(div);
+            div.onclick = function() {
+                if (!input.checked) {
+                    for (let j = 0; j < bigd.length; j++) {
+                        bigd[j].style.backgroundColor = '';
+                        check[j].checked = false;
+                    }
+                    this.style.backgroundColor = 'lightgreen';
+                    input.checked = true;
+                } else {
+                    this.style.backgroundColor = '';
+                    input.checked = false;
+                }
+            };
+        };
+        //设置删除选项
+        // var dele = document.getElementById("dele");
+        // for(i=0 ;i<bigd.length ;i++)
+        // {
+        //     bigd[i].oncontextmenu = function(){
+        //     menu.style.display = "block";
+        //     dele.onclick = (function(){
+        //          remove
+        // }
+    </script>
+</body>
+
+</html>

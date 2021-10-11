@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="900px" height="600px" style="border: 1px solid black">
+    </canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext('2d');
+        const blocks = [];
+
+        class block {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.q = 0;
+                this.number = 0;
+                this.key = 1;
+            }
+            render() {
+                ctx.beginPath();
+                ctx.fillStyle = "blue";
+                ctx.fillRect(this.x, this.y, 20, 20);
+                ctx.fill();
+            }
+
+            updata() {
+
+                for (let i = 0; i < blocks.length - 1; i++) {
+                    if (this.y + 20 == blocks[i].y && this.x == blocks[i].x && this.q == 0) {
+                        this.y = this.y;
+                        this.q = 1;
+                    }
+                }
+
+                if (this.y >= canvas.height - 20 && this.q == 0) {
+                    this.y = this.y;
+                } else if (this.q == 0) {
+                    this.y = this.y + 1;
+                }
+            }
+            
+            // updata() {
+            //     for (let i = 0; i < blocks.length - 1; i++) {
+            //         if (this.y + 20 == blocks[i].y && (this.x - blocks[i].x < 20 && this.x - blocks[i].x >= 0||  blocks[i].x - this.x < 20 && blocks[i].x - this.x >= 0) && this.q == 0) {
+            //             this.y = this.y;
+            //             this.q = 1;
+            //         }
+            //     }
+            //     if (this.y >= canvas.height - 20 && this.q == 0) {
+            //         this.y = this.y;
+            //     } else if (this.q == 0) {
+            //         this.y = this.y + 1;
+            //     }
+            // }
+        }
+        canvas.onmousedown = function (e) {
+            let x1 = e.clientX - canvas.offsetLeft;
+            let y1 = e.clientY - canvas.offsetTop;
+            blocks.push(new block(x1, y1));
+            blocks[0].render(x1, y1);
+            canvas.onmousemove = function (e) {
+                let x2 = e.clientX - canvas.offsetLeft;
+                let y2 = e.clientY - canvas.offsetTop;
+                blocks.push(new block(x2, y2));
+                for (let i = 0; i < blocks.length; i++) {
+
+                    blocks[i].render(x2, y2);
+                }
+            }
+            canvas.onmouseup = function (e) {
+                canvas.onmousemove = null;
+            }
+        }
+        setInterval(() => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            for (let i = 0; i < blocks.length; i++) {
+                blocks[i].updata();
+                blocks[i].render();
+            }
+        }, 2);
+    </script>
+</body>
+
+</html>

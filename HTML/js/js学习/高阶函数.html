@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button></button>
+    <script>
+        const btn = document.getElementsByTagName('button')[0];
+        // console.log(btn)
+        function a(){
+            console.log('执行了');
+        }
+        function dianji(a){
+            a();
+        }
+        // function dianji(a){
+        //     return function(){
+        //         a();
+        //     }
+        // }
+        btn.addEventListener('click',dianji(a))
+        //解决方法 使用高阶函数 在函数里面返回函数
+    </script>
+</body>
+</html>

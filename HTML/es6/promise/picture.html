@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function loadImage(src) {
+            const promise = new Promise((resolve,reject) => {
+                const img = document.createElement('img');
+                img.onload = function(){
+                    resolve(img);
+                }
+                img.onerror = function(){
+                    const error = new Error('url');
+                    reject(error);
+                }
+                img.src = src;
+            });
+            return promise;
+        }
+        const url = 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=189563440,1413634148&fm=11&gp=0.jpgs';
+        loadImage(url).then(img => {
+            console.log(img);
+        }).catch(e => {
+            console.log(e);
+        });
+        
+    </script>
+</body>
+</html>

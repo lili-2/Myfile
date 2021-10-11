@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        body {
+            width: 100%;
+            margin: 0 auto;
+            background: #f6f9fe url(https://mat1.gtimg.com/pingjs/ext2020/weather/2017/images/bg-cb2b2552e8.jpg) no-repeat center top;
+        }
+        header{
+           
+            margin: 0 auto;
+        }
+        header .header_top{
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,.24);
+        }
+
+        #today {
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        #today>div {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        #today>div>div {
+            display: flex;
+            align-items: flex-end;
+            margin: 10px;
+        }
+
+        #today>div>div>div {
+            margin: 0px 5px;
+        }
+
+        #time {
+            font-size: 14px;
+            color: #fff;
+            opacity: .6;
+            height: 19px;
+            line-height: 19px;
+            margin-bottom: 20px;
+        }
+
+        #temp {
+            display: inline-block;
+            font-size: 86px;
+            color: #fff;
+            height: 86px;
+            line-height: 86px;
+            margin-right: 15px;
+        }
+
+        #weather {
+            display: inline-block;
+            font-size: 28px;
+            color: #fff;
+            line-height: 45px;
+            height: 45px;
+            margin-right: 24px;
+        }
+
+        #today .today_pic {
+            width: 20px;
+            height: 20px;
+            background-image: url(https://mat1.gtimg.com/pingjs/ext2020/weather/2017/images/sprites/sprite-7d98dbada9.png);
+        }
+
+        #wind_pic {
+            background-position: -75px -191px;
+            background-size: 234px 212px !important
+        }
+
+        #hum_pic {
+            background-position: -191px -119px;
+            background-size: 234px 212px !important;
+        }
+
+        #press_pic {
+            background-position: -191px -96px;
+            background-size: 234px 212px !important;
+        }
+
+        #car_pic {
+            background-position: -52px -191px;
+            background-size: 234px 212px !important;
+        }
+
+        #tips_pic {
+            background-position: -121px -191px;
+            background-size: 234px 212px !important;
+        }
+
+        .today_text {
+            font-size: 20px;
+            color: #fff;
+            line-height: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+
+        .middle {
+            width: 1200px;
+            margin: 200px auto 0px auto;
+        }
+
+        .middle>div {
+            padding: 20px 30px 27px;
+        }
+
+        .hour {
+            height: 143px;
+            margin-bottom: 40px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 14px 0 rgb(0 0 0 / 8%);
+            width: 1140px;
+            overflow: hidden;
+        }
+
+        .title {
+            font-size: 18px;
+            color: #344665;
+            height: 21px;
+            line-height: 21px;
+            margin-bottom: 22px;
+            float: left;
+            margin-right: 10px;
+            font-weight: 400;
+        }
+
+        #tips_text::before,
+        .title::before {
+            content: '';
+            float: left;
+            height: 7px;
+            width: 7px;
+            overflow: hidden;
+            margin-right: 10px;
+            background: #344665;
+            border-radius: 50%;
+            margin-top: 8px;
+        }
+
+        #tips_text::before {
+            height: 11px;
+            width: 11px;
+            margin-right: 13px;
+            background: #fff;
+            border-radius: 50%;
+            margin-top: 5px
+        }
+
+        .hour_header {
+            height: 21px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title_a {
+            font-size: 12px;
+            color: #8a9baf;
+            height: 21px;
+            line-height: 21px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .btn_two>div {
+            z-index: 2;
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+        }
+
+        .btn_l {
+            background-image: url(https://mat1.gtimg.com/pingjs/ext2020/weather/2017/images/sprites/sprite-7d98dbada9.png);
+            background-position: -136px -154px;
+            background-size: 234px 212px !important;
+            margin-right: 8px;
+        }
+
+        .btn_r {
+            background-image: url(https://mat1.gtimg.com/pingjs/ext2020/weather/2017/images/sprites/sprite-7d98dbada9.png);
+            background-position: -191px 0;
+            background-size: 234px 212px !important;
+        }
+
+        .days_7 {
+            width: 740px;
+            height: 492px;
+            padding: 20px 0 0;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 14px 0 rgb(0 0 0 / 8%);
+        }
+
+        .to_15 {
+            background: #f8faff;
+            border: 1px solid #dce5f0;
+            border-radius: 37px;
+            font-size: 12px;
+            color: #384c78;
+            line-height: 26px;
+            height: 26px;
+            width: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header_top">
+            <img src="https://mat1.gtimg.com/pingjs/ext2020/weather/2017/images/logo-c3cae1c3ef.png" alt="logo"
+                id="logo">
+        </div>
+        <div id="today">
+            <div id="today_1">
+                <div id="time">中央气象台19:00发布</div>
+            </div>
+            <div id="today_2">
+                <div id="temp">22.</div>
+                <div id="weather">多云</div>
+                <div id="air">空气质量</div>
+            </div>
+            <div id="today_3">
+                <div id="wind">
+                    <div id="wind_pic" class="today_pic"></div>
+                    <div id="wind_test" class="today_text">西南风两级</div>
+                </div>
+                <div id="humidity">
+                    <div id="hum_pic" class="today_pic"></div>
+                    <div id="hun_test" class="today_text">湿度</div>
+                </div>
+                <div id="pressure">
+                    <div id="press_pic" class="today_pic"></div>
+                    <div id="press_test" class="today_text">气压</div>
+                </div>
+                <div id="car">
+                    <div id="car_pic" class="today_pic"></div>
+                    <div id="car_test" class="today_text">限行</div>
+                </div>
+            </div>
+            <div id="today_4">
+                <div id="tips">
+                    <div id="tips_text" class="today_text">现在的温度比较舒适</div>
+                    <div id="tips_pic" class="today_pic"></div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="middle">
+        <div class="hour">
+            <div class="hour_header">
+                <div class="hour_h_l">
+                    <h2 class="title">逐小时预报</h2>
+                    <a class="title_a" href="" target="_blank">数据来源于中国天气网</a>
+                </div>
+                <div class="btn_two">
+                    <div class="btn_l"></div>
+                    <div class="btn_r"></div>
+                </div>
+            </div>
+        </div>
+        <div class="days_7">
+            <div class="hour_header">
+                <div class="hour_h_l">
+                    <h2 class="title">7日天气预报</h2>
+                </div>
+                <div class="to_15">
+                    <a id="days_15" href="" target="_blank">15日天气预报</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const oneday = document.getElementById('')
+        $.ajax({
+            url: "https://devapi.qweather.com/v7/weather/now?location=101010100&key=10f80340ea1945758e1d310429dd537e",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (error) {
+                console.log("错误")
+                console.log(error)
+            }
+        });
+    </script>
+</body>
+
+</html>

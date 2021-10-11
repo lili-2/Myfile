@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Object.seal//封闭对象 密封对象
+        // freeze不可修改 不可扩展 不可删除
+
+        // const obj = {
+        //     a: 1,
+        //     b: 2
+        // }
+        // Object.prototype.c = 3;
+
+        // const newObj = Object.seal(obj);
+        // console.log(newObj === obj);//同一个引用
+
+        // const res = Object.isSealed(obj);
+        // console.log(res);
+
+        // console.log(obj.a); //可读
+        // obj.a = 111;
+        // console.log(obj); // 可修改
+        // delete obj.b;//'use strict' 报错 TypeError
+        // console.log(obj);// 不可删除
+        // obj.d = 4;//'use strict' 报错 不可扩展
+        // console.log(obj);// 不可扩展
+       // ********************************2***************************************
+        // const obj = {
+        //     a: 1,
+        //     b: 2
+        // }
+        // Object.prototype.c = 3;
+
+        // const newObj = Object.seal(obj);
+
+        // obj.__proto__.c = 333;//不可以直接赋值
+        // console.log(obj);
+        // Object.prototype.c = 44;
+        // console.log(obj);
+
+        // obj.__proto = {
+        //     a: 1,
+        //     b: 2,
+        //     c: 3
+        // }//可以更改 不密封时
+
+        // Object.prototype = {
+        //     a: 1,
+        //     b: 2,
+        //     c: 3
+        // }//不可以 声明时obj已经new出来的 再修改对obj没用
+        // console.log(obj);
+
+        // let obj = {
+        //     a : 1
+        // }
+        // Object.seal(obj);
+
+        //不能重定义property 不可修改访问器
+        // Object.defineProperty(obj,'a',{
+        //     get(){
+        //         return 111;
+        //     }
+        // }) 
+
+        //可行 属性本身可修改
+        // Object.defineProperty(obj,'a',{
+        //     value: 111
+        // });
+
+        //不可扩展 报错
+        // Object.defineProperty(obj,'b',{
+        //     value: 2
+        // })
+
+        // console.log(obj);
+
+        // //es6 不报错，返回本身 es5 报错
+        // const res = Object.seal(true);
+        // console.log(res); 
+        
+
+        // const arr = [1,2,3];
+        // Object.seal(arr);
+
+        // console.log(arr);
+        // // arr.push(4);//报错
+        // delete arr[2];//不可删除 不报错 严格模式 报错
+        // console.log(arr);
+
+        // ********************************3***************************************
+        const obj = {
+            a: 1,
+            b: 2,
+            c: {
+                d: 4,
+                e: {
+                    f: 5
+                }
+            }
+        }
+    </script>
+</body>
+</html>

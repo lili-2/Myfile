@@ -1,0 +1,14 @@
+element.style 
+.article{
+    width: 900px;
+    margin: 0 auto;
+}
+.show-html{
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius: 5px;
+    font-size:16px;
+    height: 550px;
+    background-color: #f0f0f0;
+    overflow: auto;
+}

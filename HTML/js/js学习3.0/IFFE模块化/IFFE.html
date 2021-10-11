@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #my-tab{
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            margin: 50px auto;
+        }
+        .tab-wrapper{
+            display: flex;
+            height: 50px;
+            border-bottom: 1px solid black;
+        }
+        .tab-item{
+            width: 33.33%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+        .tab-item.current{
+            background-color: black;
+            color: #fff ;
+        }
+        .page-wrapper{
+            position: relative;
+            height: 450px;
+        }
+        .page-item{
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            line-height: 450px;
+        }
+        .page-item.current{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="my-tab" data='[
+            {
+                "tab": "选项1",
+                "page":"页面1"
+            },
+            {
+                "tab": "选项2",
+                "page":"页面2"
+            },
+            {
+                "tab": "选项3",
+                "page":"页面3"
+            }
+        ]'></div>
+    <!--需要这个 
+            <div>
+            ...tab按钮
+        </div>
+        <div>
+            ...页面
+        </div> -->
+    <script src="./untils.js"></script>
+    <script src="./tpl.js"></script>
+    <script src="./myTab.js"></script>
+    <script>
+        // ; (function () {
+        
+        // })()
+        // //立即执行函数
+        // ;(function () {
+
+        // })()
+        // //传参
+        // //立即执行函数 -> 1.独立的作用域 2.自动销毁 3.立即执行函数模拟模块化 向外部抛出一系列属性和方法
+        // //模块化 封闭作用域 抛出接口
+        // ;(function test(a,b,c,d){
+        //     console.log(test);
+        // })(1,2,3,4)
+
+
+        // new MyTab('#my-tab').init();  //这样写可以继续传参数
+        new MyTab('#my-tab')
+    </script>
+</body>
+
+</html>

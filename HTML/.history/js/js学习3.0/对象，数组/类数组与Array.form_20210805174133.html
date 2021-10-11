@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //Array.from() 方法从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。
+
+        //Array.from
+        // var obj = {
+        //     0: 1,
+        //     1: 2,
+        //     2: 3,
+        //     length:5
+        // }
+        // // length 决定了Array.from 最终返回的新数组的长度
+        // //剪裁掉 或者补齐undefined  若没有length 则默认为零
+        // // obj -> 伪装 -> 类似于数组的一种伪类型 -> 不是JS的类型
+        // var newArr = Array.from(obj);
+        // console.log(newArr); 
+        // console.log(newArr.length)
+
+        // var obj = {
+        //     0: 1,
+        //     1: 2,
+        //     2: 3,
+        //     push: [].push
+        // }
+
+        // obj.push(4);
+        // console.log(obj);//0: 4 1: 2 2: 3 length: 1
+
+
+
+        //______________________________________________________________
+        var obj = {                
+            0: 1,
+            1: 2,
+            2: 3,
+            length:3
+        }
+        // [
+        //     {
+        //         studentId: 1,
+        //         order:0
+        //     },
+        //     {
+        //         studentId: 2,
+        //         order:1
+        //     },
+        //     {
+        //         studentId: 3,
+        //         order:2
+        //     }
+        // ]
+
+        // const newArr = Array.from(obj);
+        
+        // const data = newArr.map((item,index) => {
+        //     return {
+        //         studentId: 'No.' + item,
+        //         order:index
+        //     }
+        // });  
+        //console.log(data)
+
+        const newArr = Array.from(obj,function(item,index){
+            return {
+                studentId: 'No.' + item,
+                order:index
+            }
+        })
+        console.log()
+    </script>
+</body>
+</html>

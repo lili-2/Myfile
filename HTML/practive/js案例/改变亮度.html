@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        :root {
+            --spacing: 5px;
+            --blur: 0px;
+            --base: #ffc600;
+        }
+        
+        body {
+            text-align: center;
+            background-color: #193549;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        img {
+            margin-top: 50px;
+            display: block;
+            padding: var(--spacing);
+            filter: blur(var(--blur));
+            background: var(--base);
+            /* padding: 5px;
+            filter: blur(0px);
+            background: #ffc600; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controls">
+        <label for="spacing">spancing</label>
+        <input id="spacing" type="range" name="spacing" min="20" max="200" value="5" data-sizing="px">
+
+        <label for="blur">Blur:</label>
+        <input type="range" id="blur" name="blur" min="0" max="25" value="2"  data-sizing="px">
+
+        <label for="blur">Base Color</label>
+        <input type="color" id="base" name="base" value="#ffc600">
+
+        <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=189563440,1413634148&fm=11&gp=0.jpgs">
+
+    </div>
+    <script>
+         const inputs = document.querySelectorAll('.controls input');
+         const img = document.querySelector('img');
+         function handUpdate(){
+            // console.log(`${this.name} = ${this.value}`);
+            // if(this.name == 'spacing'){
+            //     img.style.padding = `${this.value}px`;
+            // }
+            // if(this.name == 'blur'){
+            //     img.style.filter = `blur(${this.value}px)`;
+            // }
+            // if(this.name == 'base'){
+            //     img.style.backgroundColor = this.value;
+            // }
+            const suffix = this.dataset.sizing || '';
+            document.documentElement.style.setProperty(`--${this.name}`,this.value + suffix)
+         }
+          
+         inputs.forEach(input => {
+             input.addEventListener('change',handUpdate);
+         })
+    </script>
+</body>
+
+</html>

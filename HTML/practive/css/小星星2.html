@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-size: 0;
+      word-break: keep-all;
+    }
+
+    input {
+      /* opacity: 0.3; */
+      appearance: none;
+      width: 100px;
+      height: 100px;
+      z-index: 10;
+      position: relative;
+      border: none;
+      outline: none;
+
+    }
+    .bg{
+      width: 100vw;
+      height: 100vh;
+      z-index: 9;
+      position: absolute;
+    }
+    input:hover+div,input:checked+div {
+      background-image: url('./s2.png');
+      background-size: 100px 100px;
+      z-index: 6;
+    }
+    input:checked+div::after {
+      display: block;
+    }
+    .star1 {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 0;
+      background-image: url('./s1.png');
+      background-size: 100px 100px;
+      z-index: 5;
+    }
+
+    .star2 {
+      width: 200px;
+      height: 100px;
+      position: absolute;
+      top: 0;
+      background-image: url('./s1.png');
+      background-size: 100px 100px;
+      z-index: 4;
+    }
+
+    .star3 {
+      width: 300px;
+      height: 100px;
+      position: absolute;
+      top: 0;
+      background-image: url('./s1.png');
+      background-size: 100px 100px;
+      z-index: 3;
+    }
+
+    .star4 {
+      width: 400px;
+      height: 100px;
+      position: absolute;
+      top: 0;
+      background-image: url('./s1.png');
+      background-size: 100px 100px;
+      z-index: 2;
+    }
+
+    .star5 {
+      width: 500px;
+      height: 100px;
+      position: absolute;
+      top: 0;
+      background-image: url('./s1.png');
+      background-size: 100px 100px;
+      z-index: 1;
+    }
+    .star5::after {
+      position: absolute;
+      left: 500px;
+      content: '5分';
+      width: 200px;
+      height: 100px;
+      line-height: 100px;
+      font-size: 14px;
+      display: none;
+    }
+    .star4::after {
+      position: absolute;
+      left: 500px;
+      content: '4分';
+      width: 200px;
+      height: 100px;
+      line-height: 100px;
+      font-size: 14px;
+      display: none;
+    }
+    .star3::after {
+      position: absolute;
+      left: 500px;
+      content: '3分';
+      width: 200px;
+      height: 100px;
+      line-height: 100px;
+      font-size: 14px;
+      display: none;
+    }
+    .star2::after {
+      position: absolute;
+      left: 500px;
+      content: '2分';
+      width: 200px;
+      height: 100px;
+      line-height: 100px;
+      font-size: 14px;
+      display: none;
+    }
+    .star1::after {
+      position: absolute;
+      left: 500px;
+      content: '1分';
+      width: 200px;
+      height: 100px;
+      line-height: 100px;
+      font-size: 14px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <input class="bg" type="radio" name="1">
+  <input type="radio" name="1">
+  <div class="star1"></div>
+  <input type="radio" name="1">
+  <div class="star2"></div>
+  <input type="radio" name="1">
+  <div class="star3"></div>
+  <input type="radio" name="1">
+  <div class="star4"></div>
+  <input type="radio" name="1">
+  <div class="star5"></div>
+</body>
+
+</html>
