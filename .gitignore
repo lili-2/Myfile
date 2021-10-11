@@ -36,7 +36,8 @@ thumbs.db
 .svn  
 .CVS  
 .idea  
-node_modules/  
+node_modules/ 
+.history/ 
 jscoverage_lib/  
 bower_components/  
 dist/ 
