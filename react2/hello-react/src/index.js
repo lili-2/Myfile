@@ -1,11 +1,10 @@
+//引入react核心库
 import React from 'react'
-import ReactDOM  from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
-// import { HashRouter } from 'react-router-dom'
+//引入ReactDOM
+import ReactDOM from 'react-dom'
+//引入APP 只有.js可以省略
 import App from './App'
 
-ReactDOM.render(
-    <BrowserRouter>
-        <App/>
-    </BrowserRouter>,
-document.getElementById('root'))
+
+//渲染App到页面
+ReactDOM.render(<App/>,document.getElementById("root"))
