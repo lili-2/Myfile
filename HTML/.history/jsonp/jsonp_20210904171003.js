@@ -1,2 +1,0 @@
-
-localHandler(data)
