@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        
+    intervals = [[2,3],[4,5],[6,7],[8,9],[1,10]];
+
+        
+    var merge = function (intervals) {
+        let arr = [];
+        let len = 0;
+
+        intervals.sort((a, b) => (a[0] - b[0]))
+        for (let i = 1; i <= intervals.length; i++) {
+            if (i != intervals.length && intervals[i][0] <= intervals[i - 1][1]) {
+                len++;
+            }
+            else {           
+                if (intervals[i - 1 - len][1] > intervals[i - 1][1]) {
+                    arr.push([intervals[i - 1 - len][0], intervals[i - 1 - len][1]]);
+                }
+                else {
+                    arr.push([intervals[i - 1 - len][0], intervals[i - 1][1]]);
+                }
+                len = 0;
+            }
+            
+        }
+        return arr;
+    };
+
+        // var merge = function(intervals) {
+        // let arr = [];
+        // let len = 0;
+
+        // for(let i = 1;i < intervals.length;i++){
+        //         if(intervals[i][0] <= intervals[i-1][1]){
+        //             len++;
+        //         }   
+        //         else{
+        //             arr.push([intervals[i-1-len][0],intervals[i-1][1]]);
+        //             len=0;
+        //         }
+        //         if( i == intervals.length - 1){
+        //             arr.push([intervals[i - len][0],intervals[i][1]]);
+        //         }
+        //     }
+        //     return arr;
+        // };
+
+        console.log(...merge(intervals));
+    </script>
+</body>
+
+</html>

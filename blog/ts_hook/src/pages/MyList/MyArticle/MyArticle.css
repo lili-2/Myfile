@@ -1,0 +1,27 @@
+.list-title{
+    position: relative;
+}
+.comm-main{
+    display: flex;
+    justify-content: center;
+}
+.art-manager{
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+.art-manager>button{
+    border: none;
+    border-radius: 5px;
+    width: 45px;
+    height: 24px;
+    font-size: 13px;
+    cursor: pointer;
+    margin: 10px 5px;
+}
+.list-title:hover .delete{
+    display: block;
+}
+.list-icon{
+    position: relative;
+}

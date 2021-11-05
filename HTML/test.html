@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -33,5 +33,32 @@
         }
         console.log(Person.create());
     </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>js</title>
+</head>
+<body>
+<script type="text/javascript">
+function deal(form){
+    for(i=0; i < form.length; i++){
+        if(form.elements[i].value == ''){
+            alert(form.elements[i].title + "不能为空");
+        }
+    }
+}
+</script>
+
+<form name="form1">
+<tr>
+    <td>销售编号：</td>
+    <td><input type="text" name="num" title="销售编号"></td>
+</tr>
+<input type="button" onClick="deal(this.form);" id="change" value="提交">
+<input type="reset"  value="重置"/>
+</form>
 </body>
 </html>

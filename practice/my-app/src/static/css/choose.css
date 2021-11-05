@@ -1,0 +1,32 @@
+.choose_middle_ad{
+    border: 1px solid black;
+    height: 5rem;
+    padding: 2rem;
+    margin: 1rem 0;
+}
+.choose_middle_two header{
+    margin: 0.2rem;
+}
+.choose_middle_two>div>div{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+}
+.choose_middle_two{
+    display: flex;
+    justify-content: space-around;
+}
+.choose_middle_pic{
+    width: 5rem;
+    height: 5rem;
+}
+.footer{
+    margin-top: 2rem;
+}
+.footer>span{
+    font-weight: bolder;
+    font-size: 10px;
+    margin: 0 0.5rem;
+}

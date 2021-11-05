@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+            // var preorderTraversal = function(root) {
+            //     const stack = [];
+            //     const answer = [];
+            //     while(!root || !stack){
+            //         while(!root){
+            //             answer.push(root.val);
+            //             stack.push(root);
+            //             root = root.left;
+            //         }
+            //         root = stack.pop();
+            //         root = root.right;
+            //     }
+            //     console.log(answer)
+            // };
+    //         var preorderTraversal = function(root) {
+    //     // preorderTraversal 前序遍历
+    //     // 前序遍历：根节点、左节点、右节点
+    //     // 迭代法实现
+    //     const answer = []
+    //     const stack = []
+    //     if (!root) {
+    //         return answer
+    //     }
+    //     stack.push(root)
+    //     while (stack.length) {
+    //         const cur = stack.pop()
+    //         answer.push(cur.val)
+    //         // 依次推入右边、左边节点
+    //         // 为什么先推入右因为我们使用的是pop、
+    //         if (cur.right) {
+    //             stack.push(cur.right)
+    //         }
+    //         if (cur.left) {
+    //             stack.push(cur.left)
+    //         }
+    //     }
+    //     return answer
+    // };
+
+    let root = {
+        val : 1,
+        left: null,
+        right:{
+            val : 2,
+            left : {
+                val : 3,
+                left: null,
+                right: null
+            },
+            right :null
+        }
+    };
+    var preorderTraversal = function(root) {
+    const stack = [];
+    const answer = [];
+    while(root || stack.length){
+            while(root){
+                answer.push(root.val);
+                stack.push(root);
+                root = root.left;
+            }
+            if(root){
+                root = stack.pop();
+                root = root.right;
+            }
+        }
+        return answer;
+    };
+
+    console.log(preorderTraversal(root))
+
+    </script>
+</body>
+</html>

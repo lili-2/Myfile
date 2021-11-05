@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var majorityElement = function(nums) {
+        //     nums = nums.sort((a,b) => (a-b));
+        //     console.log(nums.length/2)
+        //     return nums[(nums.length/2)];
+        // };
+        // console.log(majorityElement([1,1,2]))
+
+        // var majorityElement = function(nums) {
+        //     const map = new Map();
+        //     for(let i = 0;i < nums.length; i++){
+        //         map.has(nums[i]) ? map.set(nums[i],map.get(nums[i])+1) : map.set(nums[i],1);
+        //         console.log(map)
+        //         if(map.get(nums[i]) > nums.length/2){
+                
+        //             return nums[i]
+        //         }
+        //     }    
+        // };
+        // console.log(majorityElement([1,1,2]));
+
+        var searchMatrix = function(matrix, target) {
+            const set = new Set();
+            let i;
+            matrix.forEach(i => i.forEach(j => set.add(j)));
+            return set.has(target)
+        };
+        searchMatrix([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]],5)
+    </script>
+</body>
+</html>

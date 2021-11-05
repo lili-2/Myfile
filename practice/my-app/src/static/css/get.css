@@ -1,0 +1,22 @@
+.get_note_item{
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    border: 1px solid black;
+    width: 90%;
+    margin: 0.5rem auto;
+    position: relative;
+}
+.get_note_item>div:first-child{
+    width: 3.5rem;
+    height: 3.5rem;
+}
+.get_note_item>div:nth-child(2){
+    width: 62%;
+    text-align: left;
+    border: 1px solid black;
+}
+.get_note_item button{
+    position: absolute;
+    right: 0.5rem;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <audio src="./sound/1.mp3" class="audio"></audio>
+        <audio src="./sound/boom.wav" class="audio"></audio>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script>
+
+        const audio = document.getElementsByClassName('audio');
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext('2d');
+
+        const stack = []
+        const arr = [[0, 0, 1, 0, 0, 0, 1, 0],
+        [0, 0, 1, 0, 0, 0, 1, 0],
+        [0, 0, 0, 0, 1, 1, 0, 1],
+        [0, 1, 1, 1, 0, 0, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 1, 0, 1],
+        [0, 1, 1, 1, 1, 0, 0, 1],
+        [1, 1, 0, 0, 0, 1, 0, 1],
+        [1, 1, 0, 0, 0, 0, 0, 0]]
+
+
+        let i = 0, j = 0;
+        let m = 9, n = 8;
+
+        canvas.width = n * 40;
+        canvas.height = m * 40
+        let c_width = canvas.width;
+        let c_height = canvas.height;
+        i = 0, j = 0;
+        function* maze() {
+            while (i != m - 1 || j != n - 1) {
+                if (arr[i][j + 1] == 0 && j + 1 < n)//向右1
+                {
+                    stack.push({ i, j, dir: "1" })
+                    yield arr[i][j] = 3;
+                    j++;
+                }
+                else if (arr[i + 1][j] == 0 && i + 1 < m)//向下2
+                {
+                    stack.push({ i, j, dir: "2" })
+                    yield arr[i][j] = 3;
+                    i++;
+                }
+                else if (arr[i][j - 1] == 0 && j - 1 >= 0)//向左3
+                {
+                    stack.push({ i, j, dir: "3" })
+                    yield arr[i][j] = 3;
+                    j--;
+                }
+                else if (i - 1 >= 0 && arr[i - 1][j] == 0)//向上4
+                {
+                    stack.push({ i, j, dir: "4" })
+                    yield arr[i][j] = 3;
+                    i--;
+                } else {
+                    yield arr[i][j] = 2;
+                    i = stack[stack.length - 1].i;
+                    j = stack[stack.length - 1].j;
+                    yield arr[i][j] = 0;
+                    stack.pop();
+                }
+            }
+            yield arr[m - 1][n - 1] = 3;
+        }
+        const f = maze();
+
+        function render() {
+            for (let i = 0; i <= arr.length; i++) {
+                for (let j = 0; j <= arr[0].length; j++) {
+                    if (arr[j][i] == 1) {
+                        ctx.fillStyle = "lightgreen";
+                        ctx.fillRect(i * 40, j * 40, 40, 40);
+                    }
+                }
+            }
+            ctx.fill();
+        }
+        function updata1(x, y, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x * 40, y * 40, 40, 40);
+            ctx.fill();
+        }
+        function updata2(x, y, src) {
+            let image = new Image();
+            image.src = src;
+            ctx.drawImage(image, x * 40, y * 40, 40, 40);
+            ctx.fill();
+        }
+
+        let d = 0
+        const timer = setInterval(() => {
+            if (f.next().done) {
+                clearInterval(timer);
+            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            render();
+            for (let a = 0; a <= arr.length; a++) {
+                for (let b = 0; b <= arr[0].length; b++) {
+                    if (arr[b][a] === 3) {
+                        updata2(a, b, './happy.jpg')
+                    } else if (arr[b][a] === 2) {
+                        updata2(a, b, './sad.jpg')
+                    }
+                }
+            }
+        }, 500)
+    </script>
+</body>
+</html>

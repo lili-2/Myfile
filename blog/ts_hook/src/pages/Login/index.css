@@ -1,0 +1,16 @@
+body{
+    background-color: #f0f0f0;
+}
+.from-login{
+    margin: 200px auto !important; 
+    width: 300px;
+}
+.from-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.from-header>span:first-child{
+    font-weight: bolder;
+}

@@ -19,13 +19,14 @@
     </style>
 </head>
 <body>
+    <div style="width: 100px;height: 100px; background-color: lightgreen"></div>
     <canvas id="canvas"  style="box-shadow: #33d9b2 0px 0px 8px; "></canvas>
     <script>
             
             let canvas = document.getElementById("canvas");
             let ctx = canvas.getContext('2d');
 
-            const stack =[]
+            const stack = []
             const arr = [[0,0,1,0,0,0,1,0],
                          [0,0,1,0,0,0,1,0],
                          [0,0,0,0,1,1,0,1],
@@ -55,7 +56,7 @@
                     j++;
                 }
                 else if(arr[i+1][j] == 0 && i+1<m)//向下2
-                {
+                { 
                     // pushStack(top,i,j,2);	
                     stack.push({i,j,dir: "2"})
                     arr[i][j] = 3; 
@@ -89,7 +90,6 @@
             stack.push({i:m-1,j:n-1,dir: "4"})
             
             class map{
-
                 render(){
                     for(let i = 0; i <= arr.length;i++)
                     {

@@ -28,23 +28,23 @@
         // }
 
         //3. 请说出下面代码的for in 结果 js
-        var a = {
-            num:18,
-            age:19,
-            name:'hello'
-        }
-        Object.defineProperty(a,'button',{
-            enumerable:true,
-            value:25
-        })
-        var b = {
-            num:25,
-            action:'play'
-        }
-        b.__proto__ = a;
-        for (var i in b){
-            console.log(i,b[i]);
-        }
+        // var a = {
+        //     num:18,
+        //     age:19,
+        //     name:'hello'
+        // }
+        // Object.defineProperty(a,'button',{
+        //     enumerable:true,
+        //     value:25
+        // })
+        // var b = {
+        //     num:25,
+        //     action:'play'
+        // }
+        // b.__proto__ = a;
+        // for (var i in b){
+        //     console.log(i,b[i]);
+        // }
 
         //num action age name button
 
@@ -61,14 +61,15 @@
         //         console.log(i)
         //     })
         // }
+
         //2
-        for(var i = 0 ; i < 5;i++){
-            (function(i){
-                setTimeout(function(){
-                    console.log(i)
-                });
-            })(i)
-        }
+        // for(var i = 0 ; i < 5;i++){
+        //     (function(i){
+        //         setTimeout(function(){
+        //             console.log(i)
+        //         });
+        //     })(i)
+        // }
 
         //5. 请说出下面的代码的执行结果
 

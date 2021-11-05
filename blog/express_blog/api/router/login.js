@@ -2,7 +2,7 @@ const express = require('express')
 
 const router = express.Router()
 
-const login = require('../midderware/login')
+const login = require('../util/login')
 
 router.post('/',login.checkLogin)
 
