@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        window.onload = function () {
+            console.log('Let us Start the GAME!');
+            const dataArr = [
+                { image: './img/a11.png', bg: 'rgba(238, 36, 36,1)', title: '涓讳汉鍏�:<br/>涓讳汉鍏殑浜虹墿璁惧畾涓洪粦鑹插嵎鍙戙€佹繁鐏拌壊鐬冲瓟銆傝櫧鐒朵僵鎴寸潃榛戞鐪奸暅锛屼笉杩囦粠娓告垙涓湅鏉ヤ笂浠栫殑瑙嗗姏杩樹笉閿欙紝鎴栬€呰鐪奸暅鍙槸浣滀负瑁呴グ涓€鏍风殑瀛樺湪銆備篃鏈変竴绉嶇溂闀滄槸浠呬粎浠栫殑浼鐨勮娉曘€傛寜鐓ф瘡涓€浠ｉ兘鎴栧鎴栧皯鏈夎嚧鏁墠浣滅殑鎴愬垎鐨勪紶缁燂紝鐪奸暅鍙兘鏄嚧鏁€婂コ绁炲紓闂诲綍4銆嬬殑鐪奸暅璁捐銆�<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b11.png', upperBox: './img/c11.png', LLbox: '' },
+                { image: './img/a1.png', bg: 'rgba(247, 217, 153,1)', title: '楂樺嵎鏉�:<br/>鐖舵瘝鍏╀汉閮芥槸鏈嶈瑷▓甯紝缍撳父鍑哄湅宸ヤ綔锛屾墍浠ュぇ澶氭檪闁撻兘鏄嚜宸变竴浜烘浮閬庛€傛斁瀛稿緦鏈冨吋鑱锋ā鐗瑰厭鐨勫伐浣溿€傚湪濂藉弸閳翠簳蹇楀竼鑷澶辨晽寰岋紝寰炲ス鍙ｄ腑寰楃煡鍕曟鑰屾焙瀹氬悜榇ㄥ織鐢板崜鍫变粐銆傚湪涓讳汉鍏拰鍧傛湰榫嶅徃鍟熷嫊鈥滅暟涓栫晫灏庤埅鈥濋€插叆娈垮爞鏅傝鎹插叆鍏朵腑锛岃闄板奖榇ㄥ織鐢板崜鐨勫畧琛涙姄浣忋€傛渶寰屽洜鐐哄緸闄板奖榇ㄥ織鐢板崜瑕嬭瓨鍒伴川蹇楃敯鍗撳収蹇冩繁铏曠殑閱滄儭锛屽湪婵€鎲や箣涓嬭閱掍簡Persona 鑳藉姏銆�<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b1.png', upperBox: './img/c1.png', LLbox: '' },
+                { image: './img/a2.png', bg: 'rgba(34, 37, 59,1)', title: '鍠滃宸濈浠�:<br/>楂樻牎浜屽勾绾х敓锛屽湪缇庢湳澶у笀鏂戠洰涓€娴佹枊澶勫涔犵粯鐢汇€傛瘝浜插湪鍏朵笁宀佺殑鏃跺€欏氨鍘讳笘浜嗭紝琚€佸笀鏂戠洰鎶氬吇闀垮ぇ鐨勩€傚湪鍚埌浜嗘枒鐩槾褰辩殑鐙櫧鍚庯紝鍙戠幇鑷繁灏婃暚鐨勮€佸笀涓嶈繃鏄埄鐢ㄥ鐢熻鑷繁鍑哄悕鐨勯獥瀛愯€岃婵€鎬掞紝瑙夐啋浜哖ersona鑳藉姏銆傛枒鐩墍璋撶殑鍑哄悕浣溾€滃皬鐧惧悎鈥濆叾瀹炲嚭鑷浠嬬殑姣嶄翰锛屾渶鍚庣浠嬪皢鈥滃皬鐧惧悎鈥濇寕鍦ㄥ嫆甯冩湕鍜栧暋搴楀唴锛岃嚜宸变笉鏃朵細鍓嶆潵鐪嬬湅銆�<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b2.png', upperBox: './img/c2.png', LLbox: '' },
+                { image: './img/a12.png', bg: 'rgba(255, 250, 82,1)', title: '鍧傛湰榫欏徃:<br/>杩囧幓鏈潵鏄敯寰勯儴鐨勬垚鍛橈紝鍥犲弽鎶楅腑蹇楃敯鍗擄紝缁撴灉浠モ€滄褰撻槻鍗€濅负鐢辫鎵撲激锛岀敯寰勯儴杩樿寮鸿搴熼儴銆傚湪涓讳汉鍏涓€澶╀笂瀛︽椂鐩搁亣骞舵棤鎰忛棿涓€璧疯繘鍏ヤ簡楦織鐢板崜鐨勬鍫傗€滃彜鍩庘€濄€傚綋涓讳汉鍏拰鎽╁皵鍔犵撼琚槾褰遍腑蹇楃敯鍗撶殑瀹堝崼鎵撹触鍚庯紝浠庨槾褰遍腑蹇楃敯鍗撳彛涓緱鐭ヤ粬鐨勬兂娉曞悗锛屼粬瀵归腑蹇楃敯鍗撶殑鎰ゆ€掕€屼护浠栫殑Persona 鑳藉姏瑙夐啋銆�<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b12.png', upperBox: './img/c12.png', LLbox: '' },
+                { image: './img/a13.png', bg: 'rgba(65, 118, 250,1)', title: '鎽╁皵鍔犵撼:<br/>涓庝富浜哄叕鍜屽潅鏈緳鍙稿湪娈垮爞鈥滃彜鍩庘€濅腑閫冧骸鏃剁浉閬囷紝骞跺崗鍔╀粬浠€冪娈垮爞銆傚鑷繁鐨勮繃鍘讳竴鏃犳墍鐭ワ紝骞惰涓鸿嚜宸辫繃鍘讳篃鏄汉绫伙紝鍙槸澶卞幓浜嗗師鏈殑濮挎€併€傛暀鎺堜粬浠洍鍙栧績鐏电殑鏂规硶銆傜敱浜庤窡涓讳汉鍏揪鎴愬崗璁紝鎵€浠ョ粡甯歌窡涓讳汉鍏鍔紝骞舵暀瀵间富浜哄叕鍒朵綔娼滃叆娈垮爞鏃朵娇鐢ㄧ殑閬撳叿锛岀浉瀵圭殑锛屼富浜哄叕涓哄畠鎻愪緵椋熷銆�<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b13.png', upperBox: './img/c13.png', LLbox: '' },
+                { image: './img/a8.png', bg: 'rgba(214, 183, 145,1)', title: '鏄庢櫤鍚鹃儙<br/>楂樹腑鐢熶睛鎺紝鈥滀睛鎺㈢帇瀛愨€濓紝鍗忓姪璀︽柟璋冩煡鈥滄€洍鍥⑩€濅簨浠躲€傜粡甯稿弬鍔犵數瑙嗚璋堣妭鐩紝鎷ユ湁寰堥珮鐨勪汉姘旓紝琚涓烘槸姝ｄ箟鐨勫寲韬€傝嚜绉颁睛鎺㈠伐浣滃拰鐢佃鑺傜洰缁欎粬鐨勫鏍″嚭鍕ら€犳垚浜嗕笉灏忕殑楹荤儲銆傚伓鐒跺湴涓庝富浜哄叕鍜屼粬鐨勪紮浼翠滑缁撹瘑锛屾鍚庝篃鏃朵笉鏃跺湴鐩搁亣銆傚悗鏉ヤ负浜嗚疮褰昏嚜宸辩殑姝ｄ箟锛屼笌鎬洍鍥㈣揪鎴愪簡鏆傛椂鐨勫悎浣滃叧绯汇€�<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b8.png', upperBox: './img/c8.png', LLbox: '' },
+                { image: './img/a3.png', bg: 'rgba(160, 102, 66,1)', title: '鏂板矝鐪�:<br/>骞村辜鏃舵瘝浜插幓涓栵紝韬负璀﹀療鐨勭埗浜蹭篃娈夎亴锛屼粠灏忓洖鍚堜綔涓烘瀵熷畼鐨勫濮愮浉渚濅负鍛姐€傜湡涓€鐩磋寰楄嚜宸辨湁鎰т簬杈涜嫤宸ヤ綔鐨勫濮愶紝浜庢槸鍔姏瀛︿範鍑嗗浜夊彇杩涘叆澶у鍑忚交濮愬鐨勮礋鎷呫€備箣鍚庢牎闀夸互鍙兘浼氬彇娑堝ス鐨勫悕鏍℃帹鑽愮殑璧勬牸涓哄▉鑳侊紝鐪熶笉寰椾笉璋冩煡璧蜂富瑙掑洟闃熺殑鏃ュ父娲诲姩銆傚湪寰楃煡閲戝煄鐨勯噹蹇冨悗锛屾瀬澶у湴鍒烘縺鍜屾縺鎬掍簡濂圭殑姝ｄ箟涔嬪績锛屾寮忚閱掍簡Persona鑳藉姏骞舵垚涓轰簡绗簲浣嶆€洍鍥㈡垚鍛樸€�<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b3.png', upperBox: './img/c3.png', LLbox: '' },
+                { image: './img/a4.png', bg: 'rgba(73, 28, 74,1)', title: '濂ユ潙鏄�:<br/>鏄ユ槸濂ユ潙闆嗗洟鐨勭ぞ闀垮ゥ鏉戦偊鍜岀殑濂冲効锛屽嚭韬簬涓婃祦绀句細锛屾嫢鏈夎壇濂界殑鏁欒偛鍜屼慨鍏伙紝浣嗘槸濂圭殑鐖朵翰涓轰簡韪忓叆鏀垮潧鑰屼笉椤惧ス鐨勬剰鎰匡紝鎵ф剰灏嗗ス瀚佺粰璁憳鐨勫効瀛愭潐鏉戙€傚湪鍒濇閬囪鎬洍鍥㈡椂宸茬粡鍙互鍙樿韩锛屼絾鏄嫆缁濆悓浠栦滑鍚堜綔銆傛湡闂磋鐖朵翰鐨勯槾鏆楁兂娉曟縺鎬掕€岃閱掍簡閮ㄥ垎Persona鑳藉姏銆傚悗鍔犲叆鎬洍鍥紝甯屾湜閫氳繃鏀瑰績鏉ユ敼鍙樼埗浜层€�<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b4.png', upperBox: './img/c4.png', LLbox: '' },
+                { image: './img/a14.png', bg: 'rgba(0, 49, 109,1)', title: '鑺笣姹€濞�:<br/>鍗¤悵鑾夊鍜岃姰涓濇眬濞滅湅璧锋潵鏄竴瀵瑰弻鑳炶儙濮婂锛屾槸鏈綔涓彉涓虹洃鐙辩殑澶╅箙缁掓埧闂寸殑鐙卞崚銆備笌浼婃牸灏斿悓鏍锋槸澶╅箙缁掓埧闂寸殑灞呮皯銆傝姰涓濇眬濞滅殑鎬ф牸杈冨喎闈欙紝鎵嬩笂鎷跨潃妗ｆ澶癸紝璇皵骞崇ǔ锛屼絾姣掕垖鍢茶鑳藉姏缁欎簣鐨勪激瀹充笉浜氫簬濮愬鐨勮妫嶃€傝姰涓濇眬濞滅殑鍚嶅瓧鍦ㄥ痉璇腑浠ｈ〃鐫€姝ｄ箟锛岃繖涔熸槸鏁翠釜娓告垙鐨勪富棰樹箣涓€銆�<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b14.png', upperBox: './img/c142.png', LLbox: '' },
+                { image: './img/a16.png', bg: 'rgba(0, 49, 109,1)', title: '鍗¤悵鑾夊:<br/>鍗¤悵鑾夊鍜岃姰涓濇眬濞滅湅璧锋潵鏄竴瀵瑰弻鑳炶儙濮婂锛屾槸鏈綔涓彉涓虹洃鐙辩殑澶╅箙缁掓埧闂寸殑鐙卞崚銆備笌浼婃牸灏斿悓鏍锋槸澶╅箙缁掓埧闂寸殑灞呮皯銆傚崱钀濊帀濞滅殑鎬ф牸杈冩€ヨ簛锛岃姘斿嚩鎭讹紝鏈夋椂浼氱敤鐢靛嚮鎹ф暡鎵撲富瑙掔墷鎴跨殑閾佺銆傚崱缃楄帀濞滅殑甯藉瓙涓婂嵃鏈�"X-M-R-N"瀛楁瘝锛岃姰涓濇眬濞滅殑甯藉瓙涓婂嵃鏈�"O-Y-O-O"瀛楁瘝锛岀粍鍚堣捣鏉ュ氨鏄崟璇�"OXYMORON锛堝弽琛垨鐭涚浘淇緸娉曪級<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b14.png', upperBox: './img/c142.png', LLbox: '' },
+                { image: './img/a15.png', bg: 'rgba(219, 217, 203,1)', title: '鎷夐洴濡�:<br/>鏈綔澶╅箙缁掗棿鐪熸鐨勬埧瀹紝鍓嶄綔澶╅箙缁掗棿鎴垮鐜涙牸涓界壒锛屼紛涓借帋鐧藉拰杩ゥ澶氱殑鏈锛屾湰浣撳拰濂圭殑鍝ュ摜濮愬涓€鏍蜂负涓嶆槑瀛樺湪銆傝鍋囧啋浼婃牸灏旂殑鎭剁鍒嗚涓轰簡鍗¤悵鑾夊鍜岃姰涓濇眬濞滐紝涓や釜鐪嬭捣鏉ユ槸涓€瀵瑰弻鑳炶儙濮婂鐨勪釜浣撱€傚悓鏃跺皢鍏朵娇鍛芥敼涓轰簡涓庝箣涓嶇鐨勨€滄潃鎴€濄€傛槸鐪熸鐨勪紛鏍煎皵鐨勪粠鑰呯殑鏈潵濮挎€併€傚湪涓讳汉鍏潰瀵规伓绁炵殑铔婃儜鏃讹紝甯屾湜浠栧潥鎸佽嚜鎴戙€傗€滈偅涓湡鐨勬槸姝ｇ‘鐨勪笘鐣屽悧锛熲€�<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b15.png', upperBox: './img/c142.png', LLbox: '' },
+                { image: './img/a5.png', bg: 'rgba(195, 113, 55,1)', title: '浣愪粨鍙屽彾:<br/>涓€涓悕涓衡€滈樋閲屽反宸粹€濈殑鍖垮悕鑰呭鎵樻€洍鍥㈠幓鍋疯蛋鑷繁鐨勫績锛屾伆閫㈠悕涓衡€滄鍚夊鈥濈殑榛戝鍥紮涔熷湪鏁ｅ竷瀵规€洍鐨勫▉鑳佸瑷€銆傜粡杩囨柊宀涚湡鐨勫垎鏋愶紝鈥滈樋閲屽反宸粹€濈殑鐪熷疄韬唤寰堝彲鑳芥槸搴楅暱鍒绘剰闅愯棌鐨勫吇濂炽€傚洜涓哄弻鍙朵弗閲嶇殑绀句氦鎭愭儳鐥囷紝鍙屾柟鍙ｅご浜ゆ秹鏈灉銆傚湪杩涘叆浜嗚嚜宸辩殑娈垮爞鈥滈噾瀛楀鈥濓紝骞堕亣鍒颁簡鑷繁鐨勯槾褰便€傞€氳繃鑷垜寮€瀵硷紝濂硅閱掍簡Persona鑳藉姏锛屽苟鍔犲叆浜嗘€洍鍥€�<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b5.png', upperBox: './img/c5.png', LLbox: '' },
+                { image: './img/a7.png', bg: 'rgba(112, 17, 16,1)', title: '鑺虫辰闇�:<br/>鎴戣寰楀府鍔╀汉鏄竴浠跺緢浜嗕笉璧风殑浜嬨€備絾鏄垜鍙兘鏃犳硶璁ゅ悓鎬洍鍥€傛垜鎬昏寰楀儚鎬洍鍥㈣繖鏍风殑瀛樺湪锛屾渶缁堜笉浼氱粰杩欎釜绀句細甯︽潵濂藉......濡傛灉澶у閮芥斁寮冨姫鍔涳紝涓€鍒囬兘浠拌禆鎬洍鍥紝鎴戣寰楀杩欎釜绀句細涔熸槸涓嶅ソ鐨勪竴浠朵簨鎯呫€�-----鑺虫辰闇�<br/><br/>浠嬬粛杞浇鑷悓濞樼櫨绉�', bgImg: './img/b7.png', upperBox: './img/c7.png', LLbox: '' },];
+
+          
+
+            function a1() {
+                const LLboxText = document.querySelector('.LLbox').querySelector('p');
+                const images = document.querySelector('.images').querySelectorAll('li');
+                const main = document.querySelector('.main');
+                const upperBox = document.querySelector('.upperBox');
+                const LLbox = document.querySelector('.LLbox');
+           
+                LLbox.style.opacity = '1';
+                upperBox.style.backgroundImage = `url('${dataArr[0].upperBox}')`;
+                console.log(upperBox);
+                console.log(images);
+                images.forEach((el, index) => {
+                    el.style.backgroundImage = `url('${dataArr[index].image}')`;
+                    el.style.top += `${420 * (index + 0.8)}px`;
+                    if (index === 0) {
+                        el.style.width = '108%';
+                        main.style.background = dataArr[index].bg;
+                        LLboxText.innerHTML = dataArr[index].title;
+                      
+                    }
+                })
+                const imagesBox = document.querySelector('.images');
+                console.log(imagesBox);
+                console.log(images[2].offsetTop, parseInt(images[2].style.top.split('px')[0]));
+
+                window.onmousewheel = document.onmousewheel = function (e) {
+                    if (e.wheelDelta > 0) {
+                        imagesBox.style.opacity = '1';
+
+                        images.forEach((el, index) => {
+                            el.style.top = `${parseInt(images[index].style.top.split('px')[0]) + 210}px`;
+                            if (el.style.top === '336px') {
+                                el.style.width = '108%';
+                                el.classList.add('t1');
+                                main.style.background = dataArr[index].bg;
+                                LLboxText.innerHTML = dataArr[index].title;
+                                upperBox.style.backgroundImage = `url('${dataArr[index].upperBox}')`;
+                               
+                                LLbox.style.transform = `rotateZ(${370 + 360 * index}deg)`
+                            } else {
+                                el.style.width = '100%';
+                                el.classList.remove('t1');
+                            }
+                        })
+                    } else {
+                    
+                        imagesBox.style.opacity = '1';
+                        images.forEach((el, index) => {
+                            el.style.top = `${parseInt(images[index].style.top.split('px')[0]) - 210}px`;
+                            if (el.style.top === '336px') {
+                                el.style.width = '108%';
+                                el.classList.add('t1');
+                                main.style.background = dataArr[index].bg;
+                                LLboxText.innerHTML = dataArr[index].title;
+                                upperBox.style.backgroundImage = `url('${dataArr[index].upperBox}')`;
+                              
+                                LLbox.style.transform = `rotateZ(${370 + 360 * index}deg)`;
+                            } else {
+                                el.style.width = '100%';
+                                el.classList.remove('t1');
+                            }
+                        })
+                    }
+                }
+                imagesBox.addEventListener('mouseover', function () {
+                    
+                    this.style.transform = 'rotateZ(0deg)translateX(300px) scale(.3) scaleX(1.6)';
+                   
+                })
+                imagesBox.addEventListener('mouseout', function () {
+                   
+                    this.style.transform = 'rotateZ(15deg)';
+                  
+
+                })
+                images.forEach((el, index) => {
+                    el.addEventListener('click', () => {
+                    
+                        if (el.classList[0] === 't1') {
+                       
+                            main.style.backgroundImage = `url('${dataArr[index].bgImg}')`;
+
+                            imagesBox.style.opacity = '0.4';
+                            main.style.backgroundPosition = 'center';
+                            main.style.backgroundSize = '100% 100%';
+                            main.style.backgroundRepeat = 'no-repeat';
+                            upperBox.style.backgroundImage = `none`;
+                           
+                        } else {
+                            
+                            imagesBox.style.opacity = '1';
+                            console.log(el);
+                            upperBox.style.backgroundImage = `url('${dataArr[index].upperBox}')`;
+                            let elnow = document.querySelector('.t1');
+                            
+                            let t1Top = parseInt(elnow.style.top.split('px'));
+                            let elTop = parseInt(el.style.top.split('px'));
+                            elnow.classList.remove('t1');
+                            el.classList.add('t1');
+                            main.style.background = dataArr[index].bg;
+                            console.log(t1Top, elTop);
+                            if (1) {//鎴戣秴!
+                                images.forEach((ele) => {
+                                    ele.style.top = `${parseInt(ele.style.top.split('px')) + (t1Top - elTop)}px`
+                                })
+                            }
+                        }
+                    })
+                })
+                //Fin
+            }
+
+
+            //涔嬪悗鏄皝闈㈡晥鏋�
+            const cover = document.querySelector('.cover');
+            const coverCanvas = document.querySelector('.coverCanvas');
+            coverCanvas.width = WIDTH = document.documentElement.clientWidth;
+            coverCanvas.height = HEIGHT = document.documentElement.clientHeight;
+            const coverContext = coverCanvas.getContext('2d');
+            const loading = document.querySelector('.loading');
+            const loadingHead = document.querySelector('.loadingHead');
+            const loadingTitle = document.querySelector('.loadingTitle');
+            function pxDot(x, y, r, maxR, color,) {
+                this.x = x;
+                this.y = y;
+                this.r = r;
+                this.maxR = ran(maxR);//鐬棿涔卞簭浜�!!
+                this.color = color || 'black';
+            }
+            pxDot.prototype.show = function () {
+                drawCircle(this.x, this.y, this.r, this.color);
+                this.change();
+            }
+            pxDot.prototype.show2 = function () {
+                drawCircle2(this.x, this.y, this.r, this.color);
+                this.change2();
+            }
+            pxDot.prototype.change = function () {
+                if (this.r < this.maxR) this.r += 0.2;
+                // console.log(this.color);
+            }
+            pxDot.prototype.change2 = function () {
+                if (this.r - 0.1 > 0) this.r -= 0.1;
+                // console.log(123);
+            }
+        
+
+            function drawCircle(x, y, r, color) {
+                coverContext.beginPath();
+                coverContext.arc(x, y, r, 0, Math.PI * 2, false);
+                coverContext.fillStyle = color || 'blue';
+                coverContext.fill();
+            }
+            function ran(num) { return Math.random() * num }
+
+            const coverImage = new Image();
+            coverImage.src = '../img/cover.png';
+
+            //鎶婂紓姝ユ搷浣滃彉鎹负鍚屾鐨勫嚱鏁�!!
+            function getImage(coverImage) {
+                return new Promise((res) => {
+                    coverImage.onload = function () {
+                        coverContext.drawImage(coverImage, 0, 0, WIDTH, HEIGHT);
+                        let coverCopy = coverContext.getImageData(0, 0, WIDTH, HEIGHT);
+                        res(coverCopy);
+                    }
+                })
+            }
+            const leap = 50;
+            let pxDotArr = [];
+            let isClick = false;
+            getImage(coverImage).then((v) => {
+                cover.addEventListener('click', () => {
+                    if (!isClick) {
+                        for (let y = 0; y < HEIGHT; y += leap) {
+                            for (let x = 0; x < WIDTH; x += leap) {
+                                let index = x + y * WIDTH;
+                                let r = v.data[index * 4 + 0];
+                                let g = v.data[index * 4 + 1];
+                                let b = v.data[index * 4 + 2];
+                                let a = v.data[index * 4 + 3];
+                                if (a > 128) {
+                                    let pD = new pxDot(x, y, 1, leap, `rgba(${r},${g},${b},${ran(a / (255 * 1.4))})`);
+                                    // console.log(pD.color);
+                                    pxDotArr.push(pD);
+                                }
+                            }
+                        }
+                        function coverAnimate() {
+                            for (let i = 0; i < pxDotArr.length; i++) {
+                                pxDotArr[i].show();
+                            }
+                            requestAnimationFrame(coverAnimate);
+                        }
+                        coverAnimate();
+
+                        loading.style.opacity = '1';
+                        let deg = 1;
+                        loadingHead.style.transform = `translate(-50%,-8%) rotateY(${180 * deg}deg)`
+                        const coverTimer = setInterval(() => {
+                            loadingHead.style.transform = `translate(-50%,-8%) rotateY(${180 * (deg + 1)}deg)`;
+                            loadingTitle.style.transform = `translate(-50%,0%) rotateY(${360 * (deg)}deg)`;
+                            deg++;
+                        }, 2000);
+                        setTimeout(() => {
+                            clearInterval(coverTimer);
+                            cover.style.display = 'none';
+                            a1();
+                        }, 6000);
+                        isClick = true;
+                    }
+                })
+            })
+        }
+    </script>
+</body>
+</html>

@@ -55,13 +55,11 @@
             me that they don’t care how I do well in the exam, they just want me to be happy. I know I should relax
             myself and be happy.
         </p>
-        <p class="text">
-            a
-        </p>
     </div>
     <script>
         const text = document.querySelector('.text');
-        text.innerHTML = document.textContent.replace(/\s/g, "<span>$&</span>");
+        text.innerHTML = document.textContent.replace(/\s{1}/g, "<span>$&</span>");
+        
     </script>
 </body>
 

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .wrapper{
+            width: 1200px;
+            height: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .item{
+            width: 100px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- <div class="item" style="left: ;right: ;width: ;height: ;">
+            <img src="./image/0.jpg" />
+        </div> -->
+    </div>
+    <script>
+
+        const wrapper = document.getElementsByClassName('wrapper')[0];
+
+        const col = 5;
+        const mar = 10;
+        const arr = new Array(col).fill(0);
+
+        const widthImg = (1200 -(col - 1)*mar)/col;
+
+        function ajax({type = 'GET',url = "",data=null,success = function(){},async=true}){
+            const xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function(){
+               
+                // console.log(xhr.status)
+                if(xhr.readyState == 4){
+                    // console.log("123")
+                    if(xhr.status < 300 && xhr.status >= 200){
+                      
+                        success(xhr.responseText)
+                    }else{
+                        console.log("err")
+                    }
+                }
+            }
+
+            xhr.open("GET",url,async);
+            xhr.send(null)
+        }
+
+        ajax({
+            url:'./data.json',
+            success : function(data){
+                renderDOM(JSON.parse(data));
+            }
+        })
+        let string = "";
+
+        const renderDOM = (data) => {
+            
+            data.forEach((item,i) => {
+  
+                    let minIndex = getMinIndex(arr);
+                    string += `
+                        <div class="item" style="top: ${arr[minIndex]}px;left: ${minIndex * (widthImg + mar)}px;width:${widthImg}px ;height: ${widthImg * (item.height/item.width)}px;">
+                            <img src="${item.img}" />
+                        </div>
+                    `
+                    arr[minIndex] += widthImg * (item.height/item.width ) + mar;
+                // }
+            })
+            
+
+            wrapper.innerHTML += string;
+        }
+
+        let h1,h2,h;
+        let timer = null; 
+
+        window.onscroll = function(){
+            h1 = window.innerHeight;
+            h2 = window.pageYOffset;
+            h = arr[getMinIndex(arr)]
+
+            if(timer) clearTimeout(timer);
+
+            timer = setTimeout(fn,200)
+        }
+
+        function fn(){
+            console.log("zhix")
+                if(h1 + h2 > h){
+                    ajax({
+                        url:'./data.json',
+                        success : function(data){
+                            renderDOM(JSON.parse(data));
+                        }
+                    })
+                }
+        }
+        const getMinIndex = (arr) => {
+            Math.min(...arr)
+            return arr.indexOf(Math.min(...arr))
+        }
+    </script>
+</body>
+</html>

@@ -19,7 +19,7 @@ function MyArticle() {
     const getAllArticles = async () => {
         const result = await myAxios.get('http://localhost:3000/mylist').then(
             response => {
-                console.log(myAxios);
+                console.log(response);
                 return response.data;
             }
         )

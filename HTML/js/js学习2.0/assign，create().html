@@ -11,9 +11,8 @@
 
         //Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。
         //  //  Object.assign test4与test1 指向同一个引用
-        //1. const test4 = Object.assign(test1,test2,test3);//test2 test3 传输对象的可枚举键值对 只传value 不传描述器
 
-
+        // 1. const test4 = Object.assign(test1,test2,test3);//test2 test3 传输对象的可枚举键值对 只传value 不传描述器
 
         // const v1 = 123;
         // const v2 = '123';  
@@ -25,6 +24,7 @@
         // const v4 = function test(){};
         // // 都不是对象 会进行一次对象的包装，转换为对象  new Number(v1);   --> Number{}  不可枚举 只有v2可以枚举 
         // const v5 = Object.assign({},v1,v2,v3,v4);
+
         // console.log(v5)  //{0: "1", 1: "2", 2: "3"}
 
         // //目标对象，需要增加的属性，属性描述器 descriptors

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-// import { useHistory } from "react-router"
+import { useHistory } from "react-router"
 import { Row, Col, List } from "antd"
 import 'antd/dist/antd.css'
 import { CalendarFilled, HeartFilled, MessageFilled } from "@ant-design/icons"
@@ -16,7 +16,7 @@ import { Articles } from '../../../interface'
 //     content: string
 // }
 function Index() {
-    // const history = useHistory()
+    const history = useHistory()
     const [mylist, setMylist] = useState<Articles[] | undefined>()
 
     useEffect(() => {
@@ -28,10 +28,10 @@ function Index() {
     const getAllArticles = async () => {
         const result = await myAxios.get('http://localhost:3000/mylist').then(
             response => {
-                // if(response === 'res'){
+                // if(response == 'res'){
                 //     history.push('/')
                 // }else{
-                    console.log(myAxios);
+                    console.log(response);
                 return response.data
                 // }
             }
