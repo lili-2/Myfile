@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var firstUniqChar = function (s) {
+            const map = new Map();
+            for (let i = 0; i < s.length; i++) {
+                if (map.has(s[i])) {
+                    map.set(s[i], (map.get(s[i])) + 1);
+                } else {
+                    map.set(s[i], 1);
+                }
+            }
+            console.log(map)
+            map.forEach((value,key)=>{
+                if(value === 1){
+                    return  key;
+                }
+            })
+        };
+        console.log(firstUniqChar('hello'))
+    </script>
+</body>
+
+</html>

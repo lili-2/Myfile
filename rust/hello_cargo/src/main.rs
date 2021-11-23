@@ -1,19 +1,19 @@
-// match 它允许将一个值与一系列的模式相比较 并根据匹配的模式执行相应的代码
-enum Coin {
-    Penny,
-    Nickel,
-    Dime,
-    Quarter,
-}
-fn value_in_cents(coin:Coin) -> u32{
-    match coin {
-        Coin::Penny => 1,
-        _ => 2,
-    }
-}
-fn main(){
+// // match 它允许将一个值与一系列的模式相比较 并根据匹配的模式执行相应的代码
+// enum Coin {
+//     Penny,
+//     Nickel,
+//     Dime,
+//     Quarter,
+// }
+// fn value_in_cents(coin:Coin) -> u32{
+//     match coin {
+//         Coin::Penny => 1,
+//         _ => 2,
+//     }
+// }
+// fn main(){
     
-}
+// }
 
 
 
@@ -129,16 +129,16 @@ fn main(){
 // }
 
 //连续输入
-// use std::io;
+use std::io;
 
-// fn main() {
-//     let mut input = String::new();
-//     io::stdin().read_line(&mut input).unwrap();
-//     let ns: Vec<i32> = input.trim().split(' ').map(|x| x.parse().unwrap()).collect();
-//     for v in ns {
-//         print!("{} ", v);
-//     }
-// }
+fn main() {
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).unwrap();
+    let ns: Vec<i32> = input.trim().split(' ').map(|x| x.parse().unwrap()).collect();
+    for v in ns {
+        print!("{} ", v);
+    }
+}
 
 
     
